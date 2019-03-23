@@ -108,8 +108,8 @@ rule all_genotype:
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
         # # ref_panel_alt files
-        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
-        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
         # # intersect_RP_PEAC files
         #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
         #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
