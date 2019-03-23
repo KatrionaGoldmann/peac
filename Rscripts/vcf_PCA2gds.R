@@ -4,36 +4,24 @@ library(parallel)
 
 ## Reads data from vcf files and convert into SNP GDS Format, calls snpgdsVCF2GDS from SNPRelate package
 
+in.list = c("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz",
+            "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz") #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["geno_vcf"]).keys())
+len = length(in.list)
+method="biallelic.only"
+##prefix=config['output_dir'] + "/DNA/"
+out.list = list("peac"="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds", "rp"="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_PCA.gds")
+vcf.in = list(in.list[1:(len/2)], in.list[(len/2+1):len])
+
 len=length(snakemake@input)
+in.list = snakemake@input 
+vcf.in = list(in.list[1:(len/2)], in.list[(len/2+1):len])
+out.list = snakemake@output
 
-vcf.in = list(snakemake@input[1:(len/2)], snakemake@input[(len/2+1):len])
-## convert each vcf into gds and then merge them: merge gds didnt work
 
-##peac.vcf <- snakemake@input[1:(len/2)]
-##rp.vcf <- snakemake@input[(len/2+1):len]
+# snpgdsVCF2GDS(vcf.fn=unlist(vcf.in[[1]]),
+#               method="biallelic.only",
+#               out.fn=out.list[[1]])
 
+set.seed(1234, kind = "L'Ecuyer-CMRG" )
 mclapply(1:2 ,function(i)  snpgdsVCF2GDS(vcf.fn=unlist(vcf.in[[i]]), method=snakemake@params[['method']],out.fn=snakemake@output[[i]]), mc.cores = snakemake@threads)
-
-
-## ## peac
-## mclapply( 1:length(peac.vcf) ,
-##          function(i)  snpgdsVCF2GDS(vcf.fn=peac.vcf[[i]], method=snakemake@params[['method']], out.fn=paste0(snakemake@params[['prefix']],"PEAC_", i,".gds" )),
-##          mc.cores = snakemake@threads)
-
-## ## rp
-## mclapply( 1:length(rp.vcf) ,function(i)  snpgdsVCF2GDS(vcf.fn=rp.vcf[[i]], method=snakemake@params[['method']],out.fn=paste0(snakemake@params[['prefix']],"RP_", i,".gds" )), mc.cores = snakemake@threads)
-
-## ## merge
-
-## peac <- list.files(path=snakemake@params[['prefix']], pattern="PEAC_[0-9]+.gds", full.names=TRUE)
-
-## rp <- list.files(path=snakemake@params[['prefix']], pattern="RP_[0-9]+.gds", full.names=TRUE)
-
-## snpgdsCombineGeno(gds.fn=peac, out.fn=snakemake@output[['peac']])
-## snpgdsCombineGeno(gds.fn=rp, out.fn=snakemake@output[['rp']])
- 
-## ## remove temp files
-
-## file.remove(peac)
-## file.remove(rp)
 

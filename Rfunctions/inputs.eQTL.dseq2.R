@@ -1,4 +1,4 @@
-source('/home/ev250/Bayesian_inf/trecase/Functions/real.data.R')
+source('/home/kgoldmann/Documents/Git/peac/Rfunctions/real.data.R')
 
 ##library(devtools)
 
@@ -26,101 +26,126 @@ library(GUESSFM)
 #' in.deseq2()
 
 in.deseq2 <- function(gene, chr, snps=5*10^5,counts.f,gene.coord,vcf, nhets=5,tag.threshold=.9, out=".", prefix=NULL, missing=5) {
+  
+  l = NULL
+  saveRDS(l, paste0(out, "/",gene,".rds"))
+  
+  ## check inputs
+  files <- c(counts.f,gene.coord,vcf)
+  w <- !file.exists(files)
+  if(any(w)) {
+    reason = paste("invalid file names ", paste(files[w], collapse= ", "))
+    write.table(data.frame(gene, reason), "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/Error_output.txt", sep = ",", col.names = T, row.names=F, append = T)
+    stop(paste("invalid file names ", paste(files[w], collapse= ", ")))
+  }
+  if(!(tag.threshold >=0 & tag.threshold <=1 | tag.threshold =="no")) stop("invalid  'tag.threshold' argument")
+  if(!(dir.exists(out))) stop("invalid 'out' argument")
+  num <- list(nhets, missing)
+  names(num) <-  c("nhets", "missing")
+  w <- !sapply(num, is.numeric)
+  if(any(w)) {
+    reason = paste("invalid arguments:",paste(names(num)[w], collapse=", "))
+    stop(paste("invalid arguments:",paste(names(num)[w], collapse=", ")))
+  }
+  
+  ## Extract inputs for gene
+  
+  ## get counts 
+  counts.g <- fread(cmd=paste("grep -e V1 -e ",gene,counts.f), header=TRUE)
+  if(nrow(counts.g)==0) {
+    reason = "Gene id is not found in count matrix"
+    write.table(data.frame(gene, reason), "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/Error_output.txt", sep = ",", col.names = T, row.names=F, append = T)
+    stop("Gene id is not found in count matrix")
+  }
+  counts.g <- counts.g[,2:ncol(counts.g),with=F] ## removes gene_id
+  
+  ## get rsnps and extract GT, remove non-informative snps (missing or hom in all samples)
+  ## create dt to collect rsnps excluded from analysis
+  rsnps.ex <- data.table(id=character(), reason=character())
+  gcoord <- fread(gene.coord)
+  
+  
+  if(is.numeric(snps)) {
+    cis_window <- tryCatch({gcoord[gene_id==gene & chrom==chr,.(start,end)] + c(-snps, snps)},
+                           error=function(e) {paste("Gene " ,gene, "and chromosome", chr, "are incompatibles in gene.coord input")})
     
-    ## check inputs
-    files <- c(counts.f,gene.coord,vcf)
-    w <- !file.exists(files)
-    if(any(w)) stop(paste("invalid file names ", paste(files[w], collapse= ", ")))
-    if(!(tag.threshold >=0 & tag.threshold <=1 | tag.threshold =="no")) stop("invalid  'tag.threshold' argument")
-    if(!(dir.exists(out))) stop("invalid 'out' argument")
-    num <- list(nhets, missing)
-    names(num) <-  c("nhets", "missing")
-    w <- !sapply(num, is.numeric)
-    if(any(w)) stop(paste("invalid arguments:",paste(names(num)[w], collapse=", ")))
-    
-    ## Extract inputs for gene
-
-    ## get counts 
-    counts.g <- fread(cmd=paste("grep -e gene_id -e ",gene,counts.f), header=TRUE)
-    if(nrow(counts.g)==0) stop("Gene id is not found in count matrix")
-    counts.g <- counts.g[,2:ncol(counts.g),with=F] ## removes gene_id
-    
-    ## get rsnps and extract GT, remove non-informative snps (missing or hom in all samples)
-    ## create dt to collect rsnps excluded from analysis
-    rsnps.ex <- data.table(id=character(), reason=character())
-    gcoord <- fread(gene.coord)
-
-    
-    if(is.numeric(snps)) {
-        cis_window <- tryCatch({gcoord[gene_id==gene & chrom==chr,.(start,end)] + c(-snps, snps)},
-                               error=function(e) {paste("Gene " ,gene, "and chromosome", chr, "are incompatibles in gene.coord input")})
-        
-        gt.as <- vcf_w2(vcf,chr, st=cis_window[["start"]], end=cis_window[["end"]], f.arg='"%CHROM %POS %ID %REF %ALT[ %GT]\\n"', exclude="yes")
-        if(is.character(gt.as)) stop(print(gt.as))
-        rsnps.ex <- gt.as$excluded
-        gt.as <- gt.as$keep
-        rs <- copy(gt.as)
-        
-    } else {
-        pos <- as.numeric(sapply(strsplit(snps, split=":"), `[[`,1))
-        w <- which(!is.na(pos))
-        if(!length(w)) stop(cat("Invalid format for snps ", snps[w]))
-        ## get gene start and end, ciswindow=0
-        st_end <- tryCatch({gcoord[gene_id==gene & chrom==chr,.(start,end)] + rep(0, 2)},
-                               error=function(e) {paste("Gene " ,gene, "and chromosome", chr, "are incompatibles in gene.coord input")})
-        if(is.character(st_end)) stop(st_end)
-        ## construct cis-window with snps, making sure to include the whole gene
-        m <- min(pos) < st_end[[1]]
-        M <- max(pos) > st_end[[2]]
-        cis_window <- ifelse(m, min(pos), st_end[[1]])
-        cis_window <- c(cis_window, ifelse(M, max(pos), st_end[[2]]))
-        gt.as <- vcf_w2(vcf,chr, cis_window[1], cis_window[2], f.arg='"%CHROM %POS %ID %REF %ALT[ %GT]\\n"', exclude = "yes")
-        if(is.character(gt.as)) stop(print("snps not found in vcf"))
-        rsnps.ex <- gt.as$excluded[id %in% snps,]
-        gt.as <- gt.as$keep
-        rs <- gt.as[id %in% snps,]
-        if(!nrow(rs)) stop("Missing GT or homozygous snps in all samples")        
-    }    
-    ## further process of rsnps   
-    ## recode to 0,1,2 scale, missing data NA
-    rec.rs <- rec_unphase_rSNPs(y=rs)
-    ## remove those with less than nhets
-    GT.aux <- rec.rs[,grep("_GT",names(rec.rs)),with=F] ## to make easier calculation of correlations, etc.   
-    ## counts number of hets per rsnp
-    rec.rs[, nhet:=apply(GT.aux ,1, function(i) sum(i==1, na.rm=T))] 
-    ## remove snps with less than min hets
-    w <- rec.rs[nhet<nhets, which = TRUE]
-    rsnps.ex <- rbind(rsnps.ex, data.table(id=rec.rs[w,id], reason=rep(paste("rsnp with less than", nhets ,"het ind."), length(w))))
-    rec.rs <- rec.rs[!w,]
-    if(nrow(rec.rs)==0) stop(cat("No rsnp with at least", nhets ,"het ind."))
-    ## add number of missing GT per snp
-    rec.rs[, mis.GT:= apply(GT.aux[!w,] ,1, function(i) sum(is.na(i)))]
-    
-    ## remove SNPS with more missing values than allowed
-    rem <- rec.rs[mis.GT>=ncol(GT.aux)*missing/100, which=TRUE]
-    rsnps.ex <- rbind(rsnps.ex, data.table(id=rec.rs[rem,id], reason=rep(paste("rsnp with more missing genotypes than", missing ,"%."), length(rem))))
-    rec.rs <- rec.rs[!rem,]
-    
-    if(tag.threshold!="no") {
-        ## Group rsnps by r2, recode rec.rs for input in tags function from GUESSFM
-        if(nrow(rs)==1) stop("Only one regulatory snp to test, please set tag.threshold='no' \n Cannot cluster one snp only")
-        re.guess <- rec.guess(DT=rec.rs)
-        x <- as(re.guess-1, "SnpMatrix")
-        rtag <- GUESSFM::tag(X=x,tag.threshold=tag.threshold)
-        ## save rtag as data.table 
-        dt <- data.table(Gene_id=gene,tag=tags(rtag), SNP=rtag@.Data)
-        if(!is.null(prefix)){
-            write.table(dt,paste0(out,"/",prefix,".tags.lookup.txt"), row.names=FALSE)
-        } else {
-            write.table(dt,paste0(out,"/",gene,".eqtl.tags.lookup.txt"), row.names=FALSE)
-        }
-        
-        ## restrict rsnp to tag snps
-        rec.rs <- rec.rs[id %in% unique(tags(rtag)),]
+    gt.as <- vcf_w2(vcf,chr, st=cis_window[["start"]], end=cis_window[["end"]], f.arg='"%CHROM %POS %ID %REF %ALT[ %GT]\\n"', exclude="yes")
+    if(is.character(gt.as)) {
+      reason = gt.as
+      write.table(data.frame(gene, reason), "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/Error_output.txt", sep = ",", col.names = T, row.names=F, append = T)
+      stop(print(gt.as))
     }
-    ## save inputs
-    l <- list(counts=counts.g, genotype=rec.rs)
-    saveRDS(l, paste0(out, "/",gene,".dseq2.inputs.rds")
-
+    rsnps.ex <- gt.as$excluded
+    gt.as <- gt.as$keep
+    rs <- copy(gt.as)
+    
+  } else {
+    pos <- as.numeric(sapply(strsplit(snps, split=":"), `[[`,1))
+    w <- which(!is.na(pos))
+    if(!length(w)) stop(cat("Invalid format for snps ", snps[w]))
+    ## get gene start and end, ciswindow=0
+    st_end <- tryCatch({gcoord[gene_id==gene & chrom==chr,.(start,end)] + rep(0, 2)},
+                       error=function(e) {paste("Gene " ,gene, "and chromosome", chr, "are incompatibles in gene.coord input")})
+    if(is.character(st_end)) stop(st_end)
+    ## construct cis-window with snps, making sure to include the whole gene
+    m <- min(pos) < st_end[[1]]
+    M <- max(pos) > st_end[[2]]
+    cis_window <- ifelse(m, min(pos), st_end[[1]])
+    cis_window <- c(cis_window, ifelse(M, max(pos), st_end[[2]]))
+    gt.as <- vcf_w2(vcf,chr, cis_window[1], cis_window[2], f.arg='"%CHROM %POS %ID %REF %ALT[ %GT]\\n"', exclude = "yes")
+    if(is.character(gt.as)) stop(print("snps not found in vcf"))
+    rsnps.ex <- gt.as$excluded[id %in% snps,]
+    gt.as <- gt.as$keep
+    rs <- gt.as[id %in% snps,]
+    if(!nrow(rs)) stop("Missing GT or homozygous snps in all samples")        
+  }    
+  ## further process of rsnps   
+  ## recode to 0,1,2 scale, missing data NA
+  rec.rs <- rec_unphase_rSNPs(y=rs)
+  ## remove those with less than nhets
+  GT.aux <- rec.rs[,grep("_GT",names(rec.rs)),with=F] ## to make easier calculation of correlations, etc.   
+  ## counts number of hets per rsnp
+  rec.rs[, nhet:=apply(GT.aux ,1, function(i) sum(i==1, na.rm=T))] 
+  ## remove snps with less than min hets
+  w <- rec.rs[nhet<nhets, which = TRUE]
+  rsnps.ex <- rbind(rsnps.ex, data.table(id=rec.rs[w,id], reason=rep(paste("rsnp with less than", nhets ,"het ind."), length(w))))
+  rec.rs <- rec.rs[!w,]
+  if(nrow(rec.rs)==0) {
+    reason = cat("No rsnp with at least", nhets ,"het ind.")
+    write.table(data.frame(gene, reason), "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/Error_output.txt", sep = ",", col.names = T, row.names=F, append = T)
+    stop(cat("No rsnp with at least", nhets ,"het ind."))
+  }
+  ## add number of missing GT per snp
+  rec.rs[, mis.GT:= apply(GT.aux[!w,] ,1, function(i) sum(is.na(i)))]
+  
+  ## remove SNPS with more missing values than allowed
+  rem <- rec.rs[mis.GT>=ncol(GT.aux)*missing/100, which=TRUE]
+  rsnps.ex <- rbind(rsnps.ex, data.table(id=rec.rs[rem,id], reason=rep(paste("rsnp with more missing genotypes than", missing ,"%."), length(rem))))
+  rec.rs <- rec.rs[!rem,]
+  
+  if(tag.threshold!="no") {
+    ## Group rsnps by r2, recode rec.rs for input in tags function from GUESSFM
+    if(nrow(rs)==1) {
+      reason = "Only one regulatory snp to test, please set tag.threshold='no' \n Cannot cluster one snp only"
+      write.table(data.frame(gene, reason), "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/Error_output.txt", sep = ",", col.names = T, row.names=F, append = T)
+      stop("Only one regulatory snp to test, please set tag.threshold='no' \n Cannot cluster one snp only")
+    }
+    re.guess <- rec.guess(DT=rec.rs)
+    x <- as(re.guess-1, "SnpMatrix")
+    rtag <- GUESSFM::tag(X=x,tag.threshold=tag.threshold)
+    ## save rtag as data.table 
+    dt <- data.table(Gene_id=gene,tag=tags(rtag), SNP=rtag@.Data)
+    if(!is.null(prefix)){
+      write.table(dt,paste0(out,"/tags/",prefix,".tags.lookup.txt"), row.names=FALSE)
+    } else {
+      write.table(dt,paste0(out,"/tags/",gene,".eqtl.tags.lookup.txt"), row.names=FALSE)
+    }
+    
+    ## restrict rsnp to tag snps
+    rec.rs <- rec.rs[id %in% unique(tags(rtag)),]
+  }
+  ## save inputs
+  l <- list(counts=counts.g, genotype=rec.rs)
+  saveRDS(l, paste0(out, "/",gene,".rds"))
+          
 }
-
