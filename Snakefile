@@ -159,42 +159,42 @@ rule star_index:
          " --sjdbGTFfile {input[1]} "
          " --sjdbOverhang 100 "
 
-rule star:
-    """ Map paired or sigle end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
-    input:
-        lambda wildcards: read_samples()[wildcards.sample][7]
-        #lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()
-    output:
-        config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam"
-    params:
-        index=config['indices'],
-        read="zcat"
-        #out=expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
-    threads: 16
-    log: "logs/abc123.log"
-    run:
-        fq=[input] if isinstance(input, str) else input
-        #sec = [item[8] for item in read_samples().values()]
-        #sec=[sec] if isinstance(sec, str) else sec
-        fq1 = fq#(fq[0:len(fq):2])
-        fq2 = [item.replace("_R1", "_R2") for item in fq1]
-        fq2 = [item.replace("_1", "_2") for item in fq2]
-
-        out_dir = [item.replace("Aligned.sortedByCoord.out.bam", "") for item in output[0]]
-        for i in range(0, len(out)) : #len(fq1)) :
-            input_str = fq1[i] + ',' + fq2[i]
-            od = out_dir[i]
-
-            shell(
-                "{config[STAR]} "
-                " --runThreadN {threads} "
-                " --genomeDir {params.index} "
-                " --readFilesIn {input_str} "
-                " --readFilesCommand {params.read} "
-                " --outSAMtype BAM SortedByCoordinate "
-                " --outFileNamePrefix {od} "
-                " --outStd Log "
-                " {log}")
+# rule star:
+#     """ Map paired or sigle end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
+#     input:
+#         lambda wildcards: read_samples()[wildcards.sample][7]
+#         #lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()
+#     output:
+#         config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam"
+#     params:
+#         index=config['indices'],
+#         read="zcat"
+#         #out=expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
+#     threads: 16
+#     log: "logs/abc123.log"
+#     run:
+#         fq=[input] if isinstance(input, str) else input
+#         #sec = [item[8] for item in read_samples().values()]
+#         #sec=[sec] if isinstance(sec, str) else sec
+#         fq1 = fq#(fq[0:len(fq):2])
+#         fq2 = [item.replace("_R1", "_R2") for item in fq1]
+#         fq2 = [item.replace("_1", "_2") for item in fq2]
+#
+#         out_dir = [item.replace("Aligned.sortedByCoord.out.bam", "") for item in output[0]]
+#         for i in range(0, len(out)) : #len(fq1)) :
+#             input_str = fq1[i] + ',' + fq2[i]
+#             od = out_dir[i]
+#
+#             shell(
+#                 "{config[STAR]} "
+#                 " --runThreadN {threads} "
+#                 " --genomeDir {params.index} "
+#                 " --readFilesIn {input_str} "
+#                 " --readFilesCommand {params.read} "
+#                 " --outSAMtype BAM SortedByCoordinate "
+#                 " --outFileNamePrefix {od} "
+#                 " --outStd Log "
+#                 " {log}")
 
 rule exon_by_gene:
     """ Get exons per gene as a GRangesList from the gft annotation file used for the alignment, if not already done (to be uses for calculating total raw gene counts). Make a file with gene coordinates to define SNPS within cis-window. """
