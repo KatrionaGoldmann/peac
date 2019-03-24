@@ -8,26 +8,26 @@
 import pandas as pd
 configfile: "config.yaml"
 
-# def read_samples():
-#     """
-#     Function to get names and fastq paths from a sample file specified
-#     in the configuration.
-#     It works for single or paired sequencing with any number of files per sample. Input file is expected to have ID column followed by as many columns as needed to accommodate all fastq files required, use NA for samples with less files.
-#     For emedlab I have the following order:
-#      <SampleID..QMUL.or.Genentech.> <unique_individual_id=HospitalNumber><ID in vcf=SampleID..QMUL.ID.only.><Batch><Reads><Timepoint><Tissue><Diagnosis><GenotypeDir><fastq1.R1_path> <fastq1.R2_path> <fastq2.R1_path> <fastq2.R2_path>. This function produces a dictionary of sample_id keys and values(individualID, Batch, Reads, Timepoint, Tissue, Diagnosis, Dir with genotype, and a sub-list of (fq1, fq2, ...,)
-#      Input file prepared in /home/ev250/emedlab/snake-pipe/Rscripts/files4fastqc.R
-#     """
-#     with open(config['sample_file'], "r") as f:
-#         samp_dict = {}
-#         for line in f:
-#             words = line.strip().split(",")
-#             words2 = words[9:]
-#             while 'NA'in words2:
-#                 words2.remove('NA')
-#             words = words[:14]
-#             words.append(words2)
-#             samp_dict[words[0]] = words[1:]
-#     return samp_dict
+def read_samples():
+    """
+    Function to get names and fastq paths from a sample file specified
+    in the configuration.
+    It works for single or paired sequencing with any number of files per sample. Input file is expected to have ID column followed by as many columns as needed to accommodate all fastq files required, use NA for samples with less files.
+    For emedlab I have the following order:
+     <SampleID..QMUL.or.Genentech.> <unique_individual_id=HospitalNumber><ID in vcf=SampleID..QMUL.ID.only.><Batch><Reads><Timepoint><Tissue><Diagnosis><GenotypeDir><fastq1.R1_path> <fastq1.R2_path> <fastq2.R1_path> <fastq2.R2_path>. This function produces a dictionary of sample_id keys and values(individualID, Batch, Reads, Timepoint, Tissue, Diagnosis, Dir with genotype, and a sub-list of (fq1, fq2, ...,)
+     Input file prepared in /home/ev250/emedlab/snake-pipe/Rscripts/files4fastqc.R
+    """
+    with open(config['sample_file'], "r") as f:
+        samp_dict = {}
+        for line in f:
+            words = line.strip().split(",")
+            words2 = words[9:]
+            while 'NA'in words2:
+                words2.remove('NA')
+            words = words[:14]
+            words.append(words2)
+            samp_dict[words[0]] = words[1:]
+    return samp_dict
 
 #
 # def group_samples():
@@ -97,6 +97,9 @@ def gene_chrom(File=config['output_dir'] + "/gene_coord.txt", sep=" "):
     dic=dict(zip(keys,values))
     return dic
 
+rule all_counts:
+    """ Get the gene counts """
+    expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
@@ -138,101 +141,99 @@ rule all_genotype:
 #         #expand(config['output_dir'] + "/matqtl/output/pcs0.{peerBSex}.txt",
 #         #       peerBSex=["peerCqn" + str(x) for x in range(1,int(config['N factors'])+1)] + ["covSexBatch"])
 #         #
-# rule star_index:
-#     """Create index for alignment using STAR"""
-#     input:
-#         config['ref_fasta'],
-#         config['ref_gtf']
-#     params:
-#         config['indices']
-#     shell:
-#          "{config[STAR]} "
-#          " --runThreadN {threads} "
-#          " --runMode genomeGenerate "
-#          " --genomeDir {params[0]} "
-#          " --genomeFastaFiles {input[0]} "
-#          " --sjdbGTFfile {input[1]} "
-#          " --sjdbOverhang 100 "
-#
-# rule star:
-#     """ Map paired or sigle end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
-#     input:
-#         #lambda wildcards: read_samples()[wildcards.sample][7]
-#         lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()
-#     #output:
-# #        expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
-#     params:
-#         index=config['indices'],
-#         read="zcat"
-#         #out=expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
-#     threads: 16
-#     run:
-#         fq=[input] if isinstance(input, str) else input
-#         #sec = [item[8] for item in read_samples().values()]
-#         #sec=[sec] if isinstance(sec, str) else sec
-#         fq1 = fq#(fq[0:len(fq):2])
-#         fq2 = [item.replace("_R1", "_R2") for item in fq1]
-#         fq2 = [item.replace("_1", "_2") for item in fq2]
-#
-#         out = expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
-#
-#
-#         out_dir = [item.replace("Aligned.sortedByCoord.out.bam", "") for item in out]
-#         for i in range(0, len(out)) : #len(fq1)) :
-#             input_str = fq1[i] + ',' + fq2[i]
-#             od = out_dir[i]
-#
-#             shell(
-#                 "{config[STAR]} "
-#                 " --runThreadN {threads} "
-#                 " --genomeDir {params.index} "
-#                 " --readFilesIn {input_str} "
-#                 " --readFilesCommand {params.read} "
-#                 " --outSAMtype BAM SortedByCoordinate "
-#                 " --outFileNamePrefix {od} "
-#                 " --outStd Log "
-#                 " {log}")
-#
-# rule exon_by_gene:
-#     """ Get exons per gene as a GRangesList from the gft annotation file used for the alignment, if not already done (to be uses for calculating total raw gene counts). Make a file with gene coordinates to define SNPS within cis-window. """
-#     input:
-#         config['ref_gtf']
-#     output:
-#         config['ebg'],
-#         config['output_dir'] + "/gene_coord.txt"
-#     script:
-#          config['scripts_dir'] + "/Rscripts/exon_by_gene.R"
-#
-#
-# rule total_gene_counts:
-#     """ Calculate total gene counts from RNA-seq BAM files"""
-#     input:
-#         config['ebg'] ,
-#         lambda wildcards: [item[12] for item in read_samples().values()]
-#         #lambda wildcards: config['output_dir'] + "/STAR/2/" + read_samples().keys() + "/Aligned.sortedByCoord.out.bam"
-#         #lambda wildcards: [item[13] for item in read_samples().values()]
-#     params:
-#        mode="Union",
-#        ignore_strand="TRUE"
-#     #output:
-#         #config['output_dir'] + "/RNA_counts/{sample}.txt"
-#     #    expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
-#     script:
-#         #print([item[12] for item in read_samples().values()]) #[item[7] for item in read_samples().values()])
-#         "Rscripts/total_gene_counts.R"
-#
-# rule group_gene_counts:
-#     """ Group total gene counts by tissue, timepoint, diagnosis and batch and make matrix with log(library size)"""
-#     input:
-#         lambda wildcards: expand(config['output_dir'] + "/RNA_counts/{sample}.txt",  sample=read_samples().keys())
-#     params:
-#         filter=config['filter']
-#     output:
-#         config['output_dir'] + "/RNA_counts/groups/Genentech.txt",
-#         config['output_dir'] + "/RNA_counts/groups/Genentech_lib_size.rds"
-#     script:
-#          "Rscripts/group_gene_counts.R"
-#
+rule star_index:
+    """Create index for alignment using STAR"""
+    input:
+        config['ref_fasta'],
+        config['ref_gtf']
+    params:
+        config['indices']
+    log: "logs/abc123.log"
+    shell:
+         "{config[STAR]} "
+         " --runThreadN {threads} "
+         " --runMode genomeGenerate "
+         " --genomeDir {params[0]} "
+         " --genomeFastaFiles {input[0]} "
+         " --sjdbGTFfile {input[1]} "
+         " --sjdbOverhang 100 "
+
+rule star:
+    """ Map paired or sigle end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
+    input:
+        lambda wildcards: read_samples()[wildcards.sample][7]
+        #lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()
+    output:
+        config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam"
+    params:
+        index=config['indices'],
+        read="zcat"
+        #out=expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
+    threads: 16
+    log: "logs/abc123.log"
+    run:
+        fq=[input] if isinstance(input, str) else input
+        #sec = [item[8] for item in read_samples().values()]
+        #sec=[sec] if isinstance(sec, str) else sec
+        fq1 = fq#(fq[0:len(fq):2])
+        fq2 = [item.replace("_R1", "_R2") for item in fq1]
+        fq2 = [item.replace("_1", "_2") for item in fq2]
+
+        out_dir = [item.replace("Aligned.sortedByCoord.out.bam", "") for item in output[0]]
+        for i in range(0, len(out)) : #len(fq1)) :
+            input_str = fq1[i] + ',' + fq2[i]
+            od = out_dir[i]
+
+            shell(
+                "{config[STAR]} "
+                " --runThreadN {threads} "
+                " --genomeDir {params.index} "
+                " --readFilesIn {input_str} "
+                " --readFilesCommand {params.read} "
+                " --outSAMtype BAM SortedByCoordinate "
+                " --outFileNamePrefix {od} "
+                " --outStd Log "
+                " {log}")
+
+rule exon_by_gene:
+    """ Get exons per gene as a GRangesList from the gft annotation file used for the alignment, if not already done (to be uses for calculating total raw gene counts). Make a file with gene coordinates to define SNPS within cis-window. """
+    input:
+        config['ref_gtf']
+    output:
+        config['ebg'],
+        config['output_dir'] + "/gene_coord.txt"
+    script:
+         config['scripts_dir'] + "/Rscripts/exon_by_gene.R"
+
+rule total_gene_counts:
+    """ Calculate total gene counts from RNA-seq BAM files"""
+    input:
+        config['ebg'] ,
+        lambda wildcards: [item[12] for item in read_samples().values()]
+        #lambda wildcards: config['output_dir'] + "/STAR/2/" + read_samples().keys() + "/Aligned.sortedByCoord.out.bam"
+        #lambda wildcards: [item[13] for item in read_samples().values()]
+    params:
+       mode="Union",
+       ignore_strand="TRUE"
+    #output:
+        #config['output_dir'] + "/RNA_counts/{sample}.txt"
+    #    expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
+    script:
+        #print([item[12] for item in read_samples().values()]) #[item[7] for item in read_samples().values()])
+        "Rscripts/total_gene_counts.R"
+
+rule group_gene_counts:
+    """ Group total gene counts by tissue, timepoint, diagnosis and batch and make matrix with log(library size)"""
+    input:
+        lambda wildcards: expand(config['output_dir'] + "/RNA_counts/{sample}.txt",  sample=read_samples().keys())
+    params:
+        filter=config['filter']
+    output:
+        config['output_dir'] + "/RNA_counts/groups/Genentech.txt",
+        config['output_dir'] + "/RNA_counts/groups/Genentech_lib_size.rds"
+    script:
+         "Rscripts/group_gene_counts.R"
+
 
 rule vcf_pca:
     """ From vcf input per chromosome removes alleles A/T, T/A, C/G or G/C to avoid switching issues when performing PCA. Because PEAC files for chr1-9 are labelled 01 t0 09"""
@@ -241,6 +242,7 @@ rule vcf_pca:
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz" ,
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi"
+    log: "logs/abc.log"
     run:
         shell(
             "bcftools view {input} -e '"' REF = "A" & ALT = "T" '"'  -Ou | "
@@ -260,6 +262,7 @@ rule HW_filter:
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz" ,
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi"
+    log: "logs/abc.log"
     run:
         shell(
             "bcftools view -i'ID=@{input[0]}' {input[1]} | "
@@ -279,6 +282,7 @@ rule ref_panel_alt:
     output:
         config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf" ,
         config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi"
+    log: "logs/abc.log"
     shell:
         "bcftools view {input[0]} -Ob -o {output[0]}; "
         "head=$(bcftools view -h {input[0]} | wc -l) ; "
@@ -300,6 +304,7 @@ rule intersect_RP_PEAC:
     output:
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz",
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi"
+    log: "logs/abc.log"
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output[0]} ; "
          "tabix {output[0]} "
@@ -313,6 +318,7 @@ rule intersect_PEAC_RP:
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr"+ wildcards.chrom + "_sub.vcf.gz.tbi"
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz"
+    log: "logs/abc.log"
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output} "
 
@@ -333,6 +339,7 @@ rule vcf_gds:
     params:
         method="biallelic.only",
         ##prefix=config['output_dir'] + "/DNA/"
+    log: "logs/abc.log"
     output:
         peac=config['output_dir'] + "/DNA/PEAC_PCA.gds",
         rp=config['output_dir'] + "/DNA/RP_PCA.gds"
@@ -347,6 +354,7 @@ rule RP_PCA:
     output:
         PC=config['output_dir'] + "/DNA/RP_pcs.rds",
         Loads=config['output_dir'] + "/DNA/RP_loads.rds"
+    log: "logs/abc.log"
     params:
         ld=0.01,
         maf=0.05,
@@ -368,6 +376,7 @@ rule PCs_PEER:
         maf=0.05,
         Nfactors=config['N factors'],
         prefix=["pcs", "peerCqn"]
+    log: "logs/abc.log"
     output:
         covars=expand(config['output_dir'] + "/matqtl/inputs/{pcs}.{peer}.txt",
                       pcs=["pcs" + str(x) for x in range(1,int(config['N factors'])+1)],
@@ -428,6 +437,7 @@ rule Deseq2_inputs:
         tag=0.9,
         missing=5,
         out=config['output_dir'] + "/deseq2/inputs"
+    log: "logs/abc.log"
     output:
         in_deseq=config['output_dir'] + "/deseq2/inputs/{gene}.rds"
     script:
