@@ -99,7 +99,8 @@ def gene_chrom(File=config['output_dir'] + "/gene_coord.txt", sep=" "):
 
 rule all_counts:
     """ Get the gene counts """
-    expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
+    input:
+        expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys()),
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
