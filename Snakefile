@@ -100,7 +100,7 @@ def gene_chrom(File=config['output_dir'] + "/gene_coord.txt", sep=" "):
 rule all_counts:
     """ Get the gene counts """
     input:
-        expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys()),
+        expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
@@ -243,7 +243,6 @@ rule vcf_pca:
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz" ,
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi"
-    log: "logs/abc.log"
     run:
         shell(
             "bcftools view {input} -e '"' REF = "A" & ALT = "T" '"'  -Ou | "
@@ -263,7 +262,7 @@ rule HW_filter:
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz" ,
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi"
-    log: "logs/abc.log"
+
     run:
         shell(
             "bcftools view -i'ID=@{input[0]}' {input[1]} | "
@@ -283,7 +282,6 @@ rule ref_panel_alt:
     output:
         config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf" ,
         config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi"
-    log: "logs/abc.log"
     shell:
         "bcftools view {input[0]} -Ob -o {output[0]}; "
         "head=$(bcftools view -h {input[0]} | wc -l) ; "
@@ -305,7 +303,7 @@ rule intersect_RP_PEAC:
     output:
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz",
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi"
-    log: "logs/abc.log"
+
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output[0]} ; "
          "tabix {output[0]} "
@@ -319,7 +317,7 @@ rule intersect_PEAC_RP:
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr"+ wildcards.chrom + "_sub.vcf.gz.tbi"
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz"
-    log: "logs/abc.log"
+
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output} "
 
@@ -340,7 +338,7 @@ rule vcf_gds:
     params:
         method="biallelic.only",
         ##prefix=config['output_dir'] + "/DNA/"
-    log: "logs/abc.log"
+
     output:
         peac=config['output_dir'] + "/DNA/PEAC_PCA.gds",
         rp=config['output_dir'] + "/DNA/RP_PCA.gds"
@@ -355,7 +353,6 @@ rule RP_PCA:
     output:
         PC=config['output_dir'] + "/DNA/RP_pcs.rds",
         Loads=config['output_dir'] + "/DNA/RP_loads.rds"
-    log: "logs/abc.log"
     params:
         ld=0.01,
         maf=0.05,
@@ -377,7 +374,6 @@ rule PCs_PEER:
         maf=0.05,
         Nfactors=config['N factors'],
         prefix=["pcs", "peerCqn"]
-    log: "logs/abc.log"
     output:
         covars=expand(config['output_dir'] + "/matqtl/inputs/{pcs}.{peer}.txt",
                       pcs=["pcs" + str(x) for x in range(1,int(config['N factors'])+1)],
