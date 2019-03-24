@@ -147,14 +147,14 @@ rule star_index:
     input:
         config['ref_fasta'],
         config['ref_gtf']
-    params:
+    output:
         config['indices']
     log: "logs/abc123.log"
     shell:
          "{config[STAR]} "
          " --runThreadN {threads} "
          " --runMode genomeGenerate "
-         " --genomeDir {params[0]} "
+         " --genomeDir {output[0]} "
          " --genomeFastaFiles {input[0]} "
          " --sjdbGTFfile {input[1]} "
          " --sjdbOverhang 100 "
