@@ -421,24 +421,24 @@ rule PCs_PEER:
 # #         "Rscripts/matqtl2.R"
 # #
 # #
-rule Deseq2_inputs:
-    """ Prepares inputs for running eQTL using Deseq2. Saves an R list with 2 elements: 1) data table with counts for gene; 2) data table with sample genotypes coded as 0,1,2 and NA plus columns SNP information. Also saves inputs into "out" directory. Saves file to match tags to SNPs, when tag option is chosen."""
-    input:
-        counts=expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt", group=["Genentech"]),
-        genecoord=config['output_dir'] + "/gene_coord.txt",
-        vcf= lambda wildcards: vcf2(config["geno_vcf2"])[wildcards.gene]
-    params:
-        chrom=lambda wildcards: gene_chrom()[wildcards.gene],
-        snps=5*10^-5,
-        nhets=5,
-        tag=0.9,
-        missing=5,
-        out=config['output_dir'] + "/deseq2/inputs"
-    log: "logs/abc.log"
-    output:
-        in_deseq=config['output_dir'] + "/deseq2/inputs/{gene}.rds"
-    script:
-        "Rscripts/deseq2.in.R"
+# rule Deseq2_inputs:
+#     """ Prepares inputs for running eQTL using Deseq2. Saves an R list with 2 elements: 1) data table with counts for gene; 2) data table with sample genotypes coded as 0,1,2 and NA plus columns SNP information. Also saves inputs into "out" directory. Saves file to match tags to SNPs, when tag option is chosen."""
+#     input:
+#         counts=expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt", group=["Genentech"]),
+#         genecoord=config['output_dir'] + "/gene_coord.txt",
+#         vcf= lambda wildcards: vcf2(config["geno_vcf2"])[wildcards.gene]
+#     params:
+#         chrom=lambda wildcards: gene_chrom()[wildcards.gene],
+#         snps=5*10^-5,
+#         nhets=5,
+#         tag=0.9,
+#         missing=5,
+#         out=config['output_dir'] + "/deseq2/inputs"
+#     log: "logs/abc.log"
+#     output:
+#         in_deseq=config['output_dir'] + "/deseq2/inputs/{gene}.rds"
+#     script:
+#         "Rscripts/deseq2.in.R"
 
 
 # #
