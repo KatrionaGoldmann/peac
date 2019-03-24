@@ -175,25 +175,23 @@ rule star:
         "logs/{read}/{sample}.log"
     run:
         fq=[input] if isinstance(input, str) else input
-        fq1 = fq
-        fq2 = [item.replace("_R1", "_R2") for item in fq1]
-        fq2 = [item.replace("_1", "_2") for item in fq2]
-
-        out_dir = [item.replace("Aligned.sortedByCoord.out.bam", "") for item in output[0]]
-        for i in range(0, len(out)) :
-            input_str = fq1[i] + ',' + fq2[i]
-            od = out_dir[i]
-
-            shell(
-                "{config[STAR]} "
-                " --runThreadN {threads} "
-                " --genomeDir {params.index} "
-                " --readFilesIn {input_str} "
-                " --readFilesCommand {params.read} "
-                " --outSAMtype BAM SortedByCoordinate "
-                " --outFileNamePrefix {od} "
-                " --outStd Log "
-                " {log}")
+        fq1 = ",".join(fq[0:len(fq):2])
+        fq2 = ",".join(fq[1:len(fq):2])
+        if len(fq2)>0:
+            assert len(fq1) == len(fq2), "input-> equal number of files required for paired fasq files"
+        input_str =  " ".join([fq1, fq2])
+        print(input_str)
+        out_dir = [item.replace("Aligned.sortedByCoord.out.bam", "") for item in output]
+        shell(
+            "{config[STAR]} "
+            " --runThreadN {threads} "
+            " --genomeDir {params.index} "
+            " --readFilesIn {input_str} "
+            " --readFilesCommand {params.read} "
+            " --outSAMtype BAM SortedByCoordinate "
+            " --outFileNamePrefix {out_dir} "
+            " --outStd Log "
+            " {log}")
 
 rule exon_by_gene:
     """ Get exons per gene as a GRangesList from the gft annotation file used for the alignment, if not already done (to be uses for calculating total raw gene counts). Make a file with gene coordinates to define SNPS within cis-window. """
