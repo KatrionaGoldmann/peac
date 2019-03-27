@@ -101,9 +101,14 @@ rule all_counts:
     """ Get the gene counts """
     input:
         # star index
-        config['indices'],
+        #config['indices'],
         # star
-        expand(config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()])
+        #expand(config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
+        # exon_by_gene
+        #config['ebg']
+        # total_gene_counts
+        expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
+
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
@@ -209,15 +214,15 @@ rule total_gene_counts:
     """ Calculate total gene counts from RNA-seq BAM files"""
     input:
         config['ebg'] ,
-        lambda wildcards: [item[12] for item in read_samples().values()]
+        #lambda wildcards: [item[12] for item in read_samples().values()]
+        lambda wildcards: config['output_dir'] + "/STAR/" + read_samples()[wildcards.sample][2] + "/" + wildcards.sample+ "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: config['output_dir'] + "/STAR/2/" + read_samples().keys() + "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: [item[13] for item in read_samples().values()]
     params:
        mode="Union",
        ignore_strand="TRUE"
-    #output:
-        #config['output_dir'] + "/RNA_counts/{sample}.txt"
-    #    expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
+    output:
+        config['output_dir'] + "/RNA_counts/{sample}.txt"
     script:
         #print([item[12] for item in read_samples().values()]) #[item[7] for item in read_samples().values()])
         "Rscripts/total_gene_counts.R"
