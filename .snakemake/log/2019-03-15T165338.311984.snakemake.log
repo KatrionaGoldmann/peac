@@ -1,0 +1,245 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	Deseq2_inputs
+	22	HW_filter
+	1	all_genotype
+	22	extract_snp_ids
+	22	intersect_PEAC_RP
+	22	intersect_RP_PEAC
+	20	ref_panel_alt
+	110
+
+[Fri Mar 15 16:56:10 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr2.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf.csi
+    jobid: 56
+    wildcards: chrom=2
+
+[Fri Mar 15 17:29:37 2019]
+Finished job 56.
+1 of 110 steps (0.91%) done
+
+[Fri Mar 15 17:29:37 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr1.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf.csi
+    jobid: 45
+    wildcards: chrom=1
+
+[Fri Mar 15 18:00:12 2019]
+Finished job 45.
+2 of 110 steps (2%) done
+
+[Fri Mar 15 18:00:12 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr4.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr4.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_alt_added.bcf.csi
+    jobid: 61
+    wildcards: chrom=4
+
+[Fri Mar 15 18:27:32 2019]
+Finished job 61.
+3 of 110 steps (3%) done
+
+[Fri Mar 15 18:27:32 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr3.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr3.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_alt_added.bcf.csi
+    jobid: 60
+    wildcards: chrom=3
+
+[Fri Mar 15 18:55:10 2019]
+Finished job 60.
+4 of 110 steps (4%) done
+
+[Fri Mar 15 18:55:10 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr6.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr6.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_alt_added.bcf.csi
+    jobid: 63
+    wildcards: chrom=6
+
+[Fri Mar 15 19:19:23 2019]
+Finished job 63.
+5 of 110 steps (5%) done
+
+[Fri Mar 15 19:19:23 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr5.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr5.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_alt_added.bcf.csi
+    jobid: 62
+    wildcards: chrom=5
+
+[Fri Mar 15 19:44:20 2019]
+Finished job 62.
+6 of 110 steps (5%) done
+
+[Fri Mar 15 19:44:20 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr7.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr7.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_alt_added.bcf.csi
+    jobid: 64
+    wildcards: chrom=7
+
+[Fri Mar 15 20:06:47 2019]
+Finished job 64.
+7 of 110 steps (6%) done
+
+[Fri Mar 15 20:06:47 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr8.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr8.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_alt_added.bcf.csi
+    jobid: 65
+    wildcards: chrom=8
+
+[Fri Mar 15 20:28:29 2019]
+Finished job 65.
+8 of 110 steps (7%) done
+
+[Fri Mar 15 20:28:29 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr10.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr10.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_alt_added.bcf.csi
+    jobid: 46
+    wildcards: chrom=10
+
+[Fri Mar 15 20:47:35 2019]
+Finished job 46.
+9 of 110 steps (8%) done
+
+[Fri Mar 15 20:47:35 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr11.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr11.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_alt_added.bcf.csi
+    jobid: 47
+    wildcards: chrom=11
+
+[Fri Mar 15 21:06:45 2019]
+Finished job 47.
+10 of 110 steps (9%) done
+
+[Fri Mar 15 21:06:45 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr12.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr12.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_alt_added.bcf.csi
+    jobid: 48
+    wildcards: chrom=12
+
+[Fri Mar 15 21:25:09 2019]
+Finished job 48.
+11 of 110 steps (10%) done
+
+[Fri Mar 15 21:25:09 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr9.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr9.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_alt_added.bcf.csi
+    jobid: 66
+    wildcards: chrom=9
+
+[Fri Mar 15 21:42:07 2019]
+Finished job 66.
+12 of 110 steps (11%) done
+
+[Fri Mar 15 21:42:07 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr13.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr13.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_alt_added.bcf.csi
+    jobid: 49
+    wildcards: chrom=13
+
+[Fri Mar 15 21:55:50 2019]
+Finished job 49.
+13 of 110 steps (12%) done
+
+[Fri Mar 15 21:55:50 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr14.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr14.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_alt_added.bcf.csi
+    jobid: 50
+    wildcards: chrom=14
+
+[Fri Mar 15 22:08:26 2019]
+Finished job 50.
+14 of 110 steps (13%) done
+
+[Fri Mar 15 22:08:26 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr16.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr16.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_alt_added.bcf.csi
+    jobid: 52
+    wildcards: chrom=16
+
+[Fri Mar 15 22:21:08 2019]
+Finished job 52.
+15 of 110 steps (14%) done
+
+[Fri Mar 15 22:21:08 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr15.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr15.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_alt_added.bcf.csi
+    jobid: 51
+    wildcards: chrom=15
+
+[Fri Mar 15 22:32:38 2019]
+Finished job 51.
+16 of 110 steps (15%) done
+
+[Fri Mar 15 22:32:38 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr18.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr18.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_alt_added.bcf.csi
+    jobid: 54
+    wildcards: chrom=18
+
+[Fri Mar 15 22:43:25 2019]
+Finished job 54.
+17 of 110 steps (15%) done
+
+[Fri Mar 15 22:43:25 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr17.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr17.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_alt_added.bcf.csi
+    jobid: 53
+    wildcards: chrom=17
+
+[Fri Mar 15 22:54:26 2019]
+Finished job 53.
+18 of 110 steps (16%) done
+
+[Fri Mar 15 22:54:26 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr19.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr19.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_alt_added.bcf.csi
+    jobid: 55
+    wildcards: chrom=19
+
+[Fri Mar 15 23:03:12 2019]
+Finished job 55.
+19 of 110 steps (17%) done
+
+[Fri Mar 15 23:03:12 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr20.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr20.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_alt_added.bcf.csi
+    jobid: 57
+    wildcards: chrom=20
+
+[Fri Mar 15 23:11:46 2019]
+Finished job 57.
+20 of 110 steps (18%) done
+
+[Fri Mar 15 23:11:46 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr2.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz.tbi
+    jobid: 34
+    wildcards: chrom=2
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-15T165338.311984.snakemake.log

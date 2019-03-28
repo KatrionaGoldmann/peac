@@ -1,0 +1,5 @@
+Building DAG of jobs...
+File path /home/kgoldmann/Documents/PEAC_eqtl/Data/RP//ALL.chr22.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+MissingInputException in line 229 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule ref_panel_alt:
+/home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL_1000G_phase1integrated_v3_annotated_legends/ALL_1000G_phase1integrated_v3_chr22_impute.legend.gz

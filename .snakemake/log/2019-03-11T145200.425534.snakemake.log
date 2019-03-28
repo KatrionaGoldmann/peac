@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 401 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+AttributeError: type object 'Series' has no attribute 'read_csv'
+Wildcards:
+gene=ENSG00000141956

@@ -1,0 +1,50 @@
+Building DAG of jobs...
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr1.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr10.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr11.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr12.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr13.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr14.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr15.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr16.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr17.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr18.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr19.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr2.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr20.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr21.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr22.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr3.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr4.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr5.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr6.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr7.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr8.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf//PEAC_1000G_Phase3_Oct14_chr9.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	vcf_gds
+	1
+
+[Mon Mar  4 14:33:33 2019]
+rule vcf_gds:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr22.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_PCA.gds
+    jobid: 0
+
+[Mon Mar  4 14:33:33 2019]
+Error in rule vcf_gds:
+    jobid: 0
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_PCA.gds
+
+RuleException:
+CalledProcessError in line 296 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;  Rscript --vanilla /home/kgoldmann/Documents/Git/peac/.snakemake/scripts/tmpgz3bwux5.vcf_PCA2gds.R ' returned non-zero exit status 1.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 296, in __rule_vcf_gds
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-04T143332.722055.snakemake.log

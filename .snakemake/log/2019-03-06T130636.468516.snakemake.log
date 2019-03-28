@@ -1,0 +1,63 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	intersect_PEAC_RP
+	1	intersect_RP_PEAC
+	1	ref_panel_alt
+	1	vcf_gds
+	1	vcf_pca
+	5
+
+[Wed Mar  6 13:06:36 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr22.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL_1000G_phase1integrated_v3_annotated_legends/ALL_1000G_phase1integrated_v3_chr22_impute.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi
+    jobid: 4
+
+[Wed Mar  6 13:06:53 2019]
+Finished job 4.
+1 of 5 steps (20%) done
+
+[Wed Mar  6 13:06:53 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr22.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi
+    jobid: 3
+
+[Wed Mar  6 13:07:03 2019]
+Finished job 3.
+2 of 5 steps (40%) done
+
+[Wed Mar  6 13:07:03 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz.tbi
+    jobid: 2
+
+[Wed Mar  6 13:07:14 2019]
+Finished job 2.
+3 of 5 steps (60%) done
+
+[Wed Mar  6 13:07:14 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz
+    jobid: 1
+
+[Wed Mar  6 13:07:25 2019]
+Finished job 1.
+4 of 5 steps (80%) done
+
+[Wed Mar  6 13:07:25 2019]
+rule vcf_gds:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_PCA.gds
+    jobid: 0
+
+[Wed Mar  6 13:07:31 2019]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-06T130636.468516.snakemake.log

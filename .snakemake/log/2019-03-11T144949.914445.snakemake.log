@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in line 401 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule Deseq2_inputs:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech_Paired_Baseline_Synovium_RA_Geno.txt
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_inputs/gene_coord.txt
+/home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chrX.vcf.gz

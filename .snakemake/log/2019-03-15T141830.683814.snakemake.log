@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 254 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule HW_filter:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr1.txt

@@ -1,0 +1,3 @@
+NameError in line 101 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+name 'merge_by_wildcard' is not defined
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 101, in <module>

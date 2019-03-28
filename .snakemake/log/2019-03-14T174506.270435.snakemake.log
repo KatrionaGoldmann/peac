@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_genotype
+	2	extract_snp_ids
+	3
+
+[Thu Mar 14 17:45:06 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr22.txt
+    jobid: 8
+    wildcards: chrom=22
+
+[Thu Mar 14 17:45:06 2019]
+Finished job 8.
+1 of 3 steps (33%) done
+
+[Thu Mar 14 17:45:06 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr21.txt
+    jobid: 7
+    wildcards: chrom=21
+
+[Thu Mar 14 17:45:07 2019]
+Finished job 7.
+2 of 3 steps (67%) done
+
+[Thu Mar 14 17:45:07 2019]
+localrule all_genotype:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr21.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr22.txt
+    jobid: 0
+
+[Thu Mar 14 17:45:07 2019]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-14T174506.270435.snakemake.log

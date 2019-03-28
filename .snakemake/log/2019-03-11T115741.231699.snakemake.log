@@ -1,0 +1,64 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	2	ref_panel_alt
+	2	vcf_pca
+	5
+
+[Mon Mar 11 11:57:41 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr21.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr21.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf.csi
+    jobid: 3
+    wildcards: chrom=21
+
+[Mon Mar 11 12:00:23 2019]
+Finished job 3.
+1 of 5 steps (20%) done
+
+[Mon Mar 11 12:00:23 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr22.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi
+    jobid: 4
+    wildcards: chrom=22
+
+[Mon Mar 11 12:03:03 2019]
+Finished job 4.
+2 of 5 steps (40%) done
+
+[Mon Mar 11 12:03:03 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi
+    jobid: 1
+    wildcards: chrom=21
+
+[Mon Mar 11 12:03:14 2019]
+Finished job 1.
+3 of 5 steps (60%) done
+
+[Mon Mar 11 12:03:14 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr22.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi
+    jobid: 2
+    wildcards: chrom=22
+
+[Mon Mar 11 12:03:25 2019]
+Finished job 2.
+4 of 5 steps (80%) done
+
+[Mon Mar 11 12:03:25 2019]
+localrule all:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi
+    jobid: 0
+
+[Mon Mar 11 12:03:25 2019]
+Finished job 0.
+5 of 5 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-11T115741.231699.snakemake.log

@@ -1,0 +1,17 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	5	Deseq2_inputs
+	1	all_genotype
+	6
+
+[Mon Mar 11 13:27:20 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr22.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000025708.rds
+    jobid: 13
+    wildcards: gene=ENSG00000025708
+

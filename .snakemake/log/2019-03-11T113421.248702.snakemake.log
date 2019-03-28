@@ -1,0 +1,2 @@
+SyntaxError in line 233 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+No rule keywords allowed after run/shell/script/wrapper/cwl in rule vcf_pca. (Snakefile, line 233)

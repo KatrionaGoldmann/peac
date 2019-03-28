@@ -1,0 +1,4 @@
+TypeError in line 22 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+'tuple' object is not callable
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 145, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 22, in read_samples

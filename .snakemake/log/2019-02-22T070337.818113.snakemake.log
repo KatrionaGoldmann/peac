@@ -1,0 +1,15 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	exon_by_gene
+	1
+
+[Fri Feb 22 07:03:38 2019]
+rule exon_by_gene:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.87.gtf
+    output: /mrc-bsu/scratch/ev250/EGEUV1/quant/RNA_counts/b37_ebg.rds, /mrc-bsu/scratch/ev250/emedlab/RNA/gene_inputs/gene_coord.txt
+    jobid: 0
+

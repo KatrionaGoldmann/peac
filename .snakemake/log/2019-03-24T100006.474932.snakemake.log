@@ -1,0 +1,142 @@
+Building DAG of jobs...
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2008043_Med_RNA_CTTGTA_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2008044_Lat_RNA_GGCTAC_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2008053_Med_RNA_GATCAG_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2010028_Mid_RNA_TAGCTT_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2010054_Mid_RNA_GGCTAC_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2010056_Mid_RNA_TTAGGC_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2011069_RNA_ACAGTG_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch2/QMUL2011079_RNA_AGTTCC_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12092_SAM9103802_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12093_SAM9103803_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12094_SAM9103804_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12095_SAM9103805_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12096_SAM9103806_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12097_SAM9103807_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12098_SAM9103808_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12099_SAM9103809_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12104_SAM9103814_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12105_SAM9103815_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12106_SAM9103816_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12107_SAM9103817_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12108_SAM9103818_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12109_SAM9103819_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12110_SAM9103820_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12111_SAM9103821_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12112_SAM9103822_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12113_SAM9103823_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12114_SAM9103824_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12115_SAM9103825_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12116_SAM9103826_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12117_SAM9103827_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12118_SAM9103828_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12119_SAM9103829_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12120_SAM9103830_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12121_SAM9103832_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12122_SAM9103833_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12123_SAM9103834_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12124_SAM9103835_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12125_SAM9103836_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12126_SAM9103837_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12127_SAM9103838_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12128_SAM9103839_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12129_SAM9103840_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12131_SAM9103843_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12132_SAM9103844_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12133_SAM9103845_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12134_SAM9103847_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12136_SAM9103849_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12137_SAM9103850_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12138_SAM9103851_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12139_SAM9103852_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12140_SAM9103853_R1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298024_L7_D703_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298025_L7_D705_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298026_L8_D706_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298028_L3_D701_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298029_L3_D703_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298030_L3_D704_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298060_L3_D711_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298031_L5_D702_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298061_L3_D712_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298032_L6_D708_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298033_L6_D709_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298062_L4_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298034_L8_D707_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298035_L1_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298036_L4_D706_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298037_L1_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298039_L8_D709_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298040_L16_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298041_L6_D711_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298042_L1_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298063_L25_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298043_L7_D701_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298044_L4_D707_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298045_L4_D709_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298046_L4_D710_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298047_L5_D711_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298048_L7_D702_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298049_L8_D710_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298052_L5_D701_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298054_L1_D711_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298084_L11_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298056_L1_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298057_L1_D701_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298065_L1_D707_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298089_L1_D709_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298091_L4_D703_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298093_L4_D704_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297961_L21_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298095_L2_D712_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298098_L2_D701_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298100_L2_D703_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298101_L4_D705_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298108_L4_D706_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298109_L4_D707_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298110_L2_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298111_L3_D706_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298112_L3_D707_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297965_L8_D701_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298116_L3_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298120_L3_D709_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297966_L12_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298122_L5_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298123_L4_D710_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298127_L4_D711_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298130_L5_D711_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298132_L5_D712_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298135_L1_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298136_L5_D703_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24298142_L6_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297977_L3_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297982_L1_D706_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297979_L1_D707_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297978_L5_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297976_L6_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297985_L13_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297980_L14_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297981_L8_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297983_L16_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297984_L17_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+File path /mnt/volume1//PEAC_Raw/GenentechBatch3/SAM24297986_L18_1.fastq.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_counts
+	121	star
+	122
+
+[Sun Mar 24 10:00:06 2019]
+rule star:
+    input: /mnt/volume1//PEAC_Raw/GenentechBatch1/LIB12092_SAM9103802_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/GenentechBatch1/SAM9103802/Aligned.sortedByCoord.out.bam
+    log: logs/GenentechBatch1/SAM9103802.log
+    jobid: 10
+    wildcards: read=GenentechBatch1, sample=SAM9103802
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-24T100006.474932.snakemake.log

@@ -1,0 +1,181 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_counts
+	15	star
+	16
+
+[Tue Mar 26 15:38:49 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12092_SAM9103802_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103802/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103802.log
+    jobid: 5
+    wildcards: read=Paired, sample=SAM9103802
+
+[Tue Mar 26 16:00:51 2019]
+Finished job 5.
+1 of 16 steps (6%) done
+
+[Tue Mar 26 16:00:51 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12097_SAM9103807_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103807/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103807.log
+    jobid: 10
+    wildcards: read=Paired, sample=SAM9103807
+
+[Tue Mar 26 16:19:02 2019]
+Finished job 10.
+2 of 16 steps (12%) done
+
+[Tue Mar 26 16:19:02 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24297961_L21_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24297961/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24297961.log
+    jobid: 14
+    wildcards: read=Paired, sample=SAM24297961
+
+[Tue Mar 26 16:44:23 2019]
+Finished job 14.
+3 of 16 steps (19%) done
+
+[Tue Mar 26 16:44:23 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24297965_L8_D701_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24297965/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24297965.log
+    jobid: 15
+    wildcards: read=Paired, sample=SAM24297965
+
+[Tue Mar 26 17:03:06 2019]
+Finished job 15.
+4 of 16 steps (25%) done
+
+[Tue Mar 26 17:03:06 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12095_SAM9103805_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103805/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103805.log
+    jobid: 8
+    wildcards: read=Paired, sample=SAM9103805
+
+[Tue Mar 26 17:14:27 2019]
+Finished job 8.
+5 of 16 steps (31%) done
+
+[Tue Mar 26 17:14:27 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12096_SAM9103806_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103806/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103806.log
+    jobid: 9
+    wildcards: read=Paired, sample=SAM9103806
+
+[Tue Mar 26 17:25:32 2019]
+Finished job 9.
+6 of 16 steps (38%) done
+
+[Tue Mar 26 17:25:32 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12098_SAM9103808_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103808/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103808.log
+    jobid: 11
+    wildcards: read=Paired, sample=SAM9103808
+
+[Tue Mar 26 17:35:30 2019]
+Finished job 11.
+7 of 16 steps (44%) done
+
+[Tue Mar 26 17:35:30 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12094_SAM9103804_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103804/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103804.log
+    jobid: 7
+    wildcards: read=Paired, sample=SAM9103804
+
+[Tue Mar 26 17:45:41 2019]
+Finished job 7.
+8 of 16 steps (50%) done
+
+[Tue Mar 26 17:45:41 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12099_SAM9103809_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103809/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103809.log
+    jobid: 12
+    wildcards: read=Paired, sample=SAM9103809
+
+[Tue Mar 26 17:57:29 2019]
+Finished job 12.
+9 of 16 steps (56%) done
+
+[Tue Mar 26 17:57:29 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12093_SAM9103803_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103803/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103803.log
+    jobid: 6
+    wildcards: read=Paired, sample=SAM9103803
+
+[Tue Mar 26 18:06:29 2019]
+Finished job 6.
+10 of 16 steps (62%) done
+
+[Tue Mar 26 18:06:29 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch2/QMUL2008044_Lat_RNA_GGCTAC_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/QMUL2008044/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/QMUL2008044.log
+    jobid: 3
+    wildcards: read=Paired, sample=QMUL2008044
+
+Job failed, going on with independent jobs.
+
+[Tue Mar 26 18:12:18 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch2/QMUL2008043_Med_RNA_CTTGTA_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/QMUL2008043/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/QMUL2008043.log
+    jobid: 2
+    wildcards: read=Paired, sample=QMUL2008043
+
+Job failed, going on with independent jobs.
+
+[Tue Mar 26 18:17:28 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch2/QMUL2008053_Med_RNA_GATCAG_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/QMUL2008053/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/QMUL2008053.log
+    jobid: 4
+    wildcards: read=Paired, sample=QMUL2008053
+
+Job failed, going on with independent jobs.
+
+[Tue Mar 26 18:23:10 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24297976_L6_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24297976/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24297976.log
+    jobid: 16
+    wildcards: read=Paired, sample=SAM24297976
+
+Job failed, going on with independent jobs.
+
+[Tue Mar 26 18:23:20 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12104_SAM9103814_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103814/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103814.log
+    jobid: 13
+    wildcards: read=Paired, sample=SAM9103814
+
+Job failed, going on with independent jobs.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-26T153849.460088.snakemake.log

@@ -1,0 +1,14 @@
+Job counts:
+	count	jobs
+	1	Deseq2_inputs
+	1
+[Thu Mar  7 18:54:37 2019]
+Error in rule Deseq2_inputs:
+    jobid: 0
+
+RuleException:
+CalledProcessError in line 384 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;  Rscript --vanilla /home/kgoldmann/Documents/Git/peac/.snakemake/scripts/tmpw584f4e2.deseq2.in.R ' returned non-zero exit status 1.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 384, in __rule_Deseq2_inputs
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Exiting because a job execution failed. Look above for error message

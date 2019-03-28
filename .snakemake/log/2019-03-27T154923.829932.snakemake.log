@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	sub_star
+	1
+
+[Wed Mar 27 15:49:25 2019]
+rule sub_star:
+    input: bastion.emedlab.ac.uk:22/home/kgoldmann/test.txt
+    log: logs/test/test.log
+    jobid: 0
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-27T154923.829932.snakemake.log

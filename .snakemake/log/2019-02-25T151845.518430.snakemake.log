@@ -1,0 +1,2 @@
+SyntaxError in line 127 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+EOF in multi-line statement (Snakefile, line 127)

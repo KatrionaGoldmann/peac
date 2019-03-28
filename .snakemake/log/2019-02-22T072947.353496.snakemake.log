@@ -1,0 +1,3 @@
+NameError in line 281 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+name 'vcf' is not defined
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 281, in <module>

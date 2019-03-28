@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 93 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule all_genotype:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz.tbi
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz.tbi

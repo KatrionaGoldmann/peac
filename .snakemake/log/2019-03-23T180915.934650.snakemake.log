@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	22	HW_filter
+	1	all_genotype
+	22	extract_snp_ids
+	22	intersect_PEAC_RP
+	22	intersect_RP_PEAC
+	22	ref_panel_alt
+	22	vcf_pca
+	133
+
+[Sat Mar 23 18:09:16 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr2.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr2.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf.csi
+    jobid: 56
+    wildcards: chrom=2
+
+[Sat Mar 23 18:42:39 2019]
+Finished job 56.
+1 of 133 steps (0.75%) done
+
+[Sat Mar 23 18:42:39 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr1.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr1.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf.csi
+    jobid: 45
+    wildcards: chrom=1
+

@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	intersect_PEAC_RP
+	1
+
+[Wed Mar  6 15:30:31 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz
+    jobid: 0
+
+[Wed Mar  6 15:30:50 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-06T153031.578145.snakemake.log

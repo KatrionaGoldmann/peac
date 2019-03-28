@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 292 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule intersect_RP_PEAC:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz.tbi

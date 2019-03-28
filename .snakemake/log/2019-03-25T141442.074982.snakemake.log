@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Deleting the following files:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+Skipped removing non-empty directory /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/QMUL2008043/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/QMUL2008044/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/QMUL2008053/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103802/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103803/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103804/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103805/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103806/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103807/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103808/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103809/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24297961/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24297965/Aligned.sortedByCoord.out.bam
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Single/SAM24297966/Aligned.sortedByCoord.out.bam

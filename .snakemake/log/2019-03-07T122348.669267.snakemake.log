@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	ref_panel_alt
+	1
+
+[Thu Mar  7 12:23:48 2019]
+rule ref_panel_alt:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/1000GP_Phase3/1000GP_Phase3_chr22.legend.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi
+    jobid: 0
+
+[Thu Mar  7 12:23:48 2019]
+Error in rule ref_panel_alt:
+    jobid: 0
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi
+
+RuleException:
+CalledProcessError in line 256 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;   bcftools view /home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr22.phase3_shapeit2_mvncall_integrated_v5a.20130502.genotypes.vcf.gz -o /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf tabix /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf ' returned non-zero exit status 255.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 256, in __rule_ref_panel_alt
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-07T122348.669267.snakemake.log

@@ -1,0 +1,20 @@
+Building DAG of jobs...
+File path /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR//home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz/Aligned.sortedByCoord.out.bam contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	star
+	1
+
+[Fri Feb 22 17:49:09 2019]
+rule star:
+    input: /home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR//home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz/Aligned.sortedByCoord.out.bam
+    log: logs/trial.log
+    jobid: 0
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-02-22T174909.275515.snakemake.log

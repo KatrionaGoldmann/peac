@@ -1,0 +1,3 @@
+WildcardError in line 274 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+No values given for wildcard 'chrom'.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 274, in <module>

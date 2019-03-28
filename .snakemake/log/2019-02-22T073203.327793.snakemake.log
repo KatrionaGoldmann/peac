@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	star_index
+	1
+
+[Fri Feb 22 07:32:03 2019]
+rule star_index:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.87.gtf
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+    jobid: 0
+
+[Fri Feb 22 07:32:03 2019]
+Error in rule star_index:
+    jobid: 0
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+
+RuleException:
+CalledProcessError in line 133 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;  /home/kgoldmann/Applications/STAR/source/STAR  --runMode genomeGenerate  --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices  --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz  --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.87.gtf  --sjdbOverhang 100 ' returned non-zero exit status 127.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 133, in __rule_star_index
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-02-22T073203.327793.snakemake.log

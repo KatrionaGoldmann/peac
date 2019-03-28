@@ -1,0 +1,980 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	Deseq2_inputs
+	21	HW_filter
+	1	all_genotype
+	22	extract_snp_ids
+	22	intersect_PEAC_RP
+	21	intersect_RP_PEAC
+	88
+
+[Mon Mar 18 10:17:13 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr2.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz.tbi
+    jobid: 34
+    wildcards: chrom=2
+
+[Mon Mar 18 10:18:15 2019]
+Finished job 34.
+1 of 88 steps (1%) done
+
+[Mon Mar 18 10:18:15 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_sub.vcf.gz.tbi
+    jobid: 78
+    wildcards: chrom=2
+
+[Mon Mar 18 10:19:24 2019]
+Finished job 78.
+2 of 88 steps (2%) done
+
+[Mon Mar 18 10:19:24 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr1.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz.tbi
+    jobid: 23
+    wildcards: chrom=1
+
+[Mon Mar 18 10:20:21 2019]
+Finished job 23.
+3 of 88 steps (3%) done
+
+[Mon Mar 18 10:20:21 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_sub.vcf.gz.tbi
+    jobid: 67
+    wildcards: chrom=1
+
+[Mon Mar 18 10:21:25 2019]
+Finished job 67.
+4 of 88 steps (5%) done
+
+[Mon Mar 18 10:21:25 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr4.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz.tbi
+    jobid: 39
+    wildcards: chrom=4
+
+[Mon Mar 18 10:22:17 2019]
+Finished job 39.
+5 of 88 steps (6%) done
+
+[Mon Mar 18 10:22:17 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_sub.vcf.gz.tbi
+    jobid: 83
+    wildcards: chrom=4
+
+[Mon Mar 18 10:23:14 2019]
+Finished job 83.
+6 of 88 steps (7%) done
+
+[Mon Mar 18 10:23:14 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr3.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz.tbi
+    jobid: 38
+    wildcards: chrom=3
+
+[Mon Mar 18 10:24:06 2019]
+Finished job 38.
+7 of 88 steps (8%) done
+
+[Mon Mar 18 10:24:06 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_sub.vcf.gz.tbi
+    jobid: 82
+    wildcards: chrom=3
+
+[Mon Mar 18 10:25:03 2019]
+Finished job 82.
+8 of 88 steps (9%) done
+
+[Mon Mar 18 10:25:03 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr6.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz.tbi
+    jobid: 41
+    wildcards: chrom=6
+
+[Mon Mar 18 10:25:50 2019]
+Finished job 41.
+9 of 88 steps (10%) done
+
+[Mon Mar 18 10:25:50 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_sub.vcf.gz.tbi
+    jobid: 85
+    wildcards: chrom=6
+
+[Mon Mar 18 10:26:40 2019]
+Finished job 85.
+10 of 88 steps (11%) done
+
+[Mon Mar 18 10:26:40 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr5.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz.tbi
+    jobid: 40
+    wildcards: chrom=5
+
+[Mon Mar 18 10:27:27 2019]
+Finished job 40.
+11 of 88 steps (12%) done
+
+[Mon Mar 18 10:27:27 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_sub.vcf.gz.tbi
+    jobid: 84
+    wildcards: chrom=5
+
+[Mon Mar 18 10:28:18 2019]
+Finished job 84.
+12 of 88 steps (14%) done
+
+[Mon Mar 18 10:28:18 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr7.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz.tbi
+    jobid: 42
+    wildcards: chrom=7
+
+[Mon Mar 18 10:28:59 2019]
+Finished job 42.
+13 of 88 steps (15%) done
+
+[Mon Mar 18 10:28:59 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_sub.vcf.gz.tbi
+    jobid: 86
+    wildcards: chrom=7
+
+[Mon Mar 18 10:29:46 2019]
+Finished job 86.
+14 of 88 steps (16%) done
+
+[Mon Mar 18 10:29:46 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr8.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz.tbi
+    jobid: 43
+    wildcards: chrom=8
+
+[Mon Mar 18 10:30:27 2019]
+Finished job 43.
+15 of 88 steps (17%) done
+
+[Mon Mar 18 10:30:27 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_sub.vcf.gz.tbi
+    jobid: 87
+    wildcards: chrom=8
+
+[Mon Mar 18 10:31:12 2019]
+Finished job 87.
+16 of 88 steps (18%) done
+
+[Mon Mar 18 10:31:12 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr10.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz.tbi
+    jobid: 24
+    wildcards: chrom=10
+
+[Mon Mar 18 10:31:48 2019]
+Finished job 24.
+17 of 88 steps (19%) done
+
+[Mon Mar 18 10:31:48 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_sub.vcf.gz.tbi
+    jobid: 68
+    wildcards: chrom=10
+
+[Mon Mar 18 10:33:08 2019]
+Finished job 68.
+18 of 88 steps (20%) done
+
+[Mon Mar 18 10:33:08 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_sub.vcf.gz
+    jobid: 90
+    wildcards: chrom=10
+
+[Mon Mar 18 10:33:40 2019]
+Finished job 90.
+19 of 88 steps (22%) done
+
+[Mon Mar 18 10:33:40 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr11.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz.tbi
+    jobid: 25
+    wildcards: chrom=11
+
+[Mon Mar 18 10:34:16 2019]
+Finished job 25.
+20 of 88 steps (23%) done
+
+[Mon Mar 18 10:34:16 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_sub.vcf.gz.tbi
+    jobid: 69
+    wildcards: chrom=11
+
+[Mon Mar 18 10:35:35 2019]
+Finished job 69.
+21 of 88 steps (24%) done
+
+[Mon Mar 18 10:35:35 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_sub.vcf.gz
+    jobid: 91
+    wildcards: chrom=11
+
+[Mon Mar 18 10:36:07 2019]
+Finished job 91.
+22 of 88 steps (25%) done
+
+[Mon Mar 18 10:36:07 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr12.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz.tbi
+    jobid: 26
+    wildcards: chrom=12
+
+[Mon Mar 18 10:36:42 2019]
+Finished job 26.
+23 of 88 steps (26%) done
+
+[Mon Mar 18 10:36:42 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_sub.vcf.gz.tbi
+    jobid: 70
+    wildcards: chrom=12
+
+[Mon Mar 18 10:37:57 2019]
+Finished job 70.
+24 of 88 steps (27%) done
+
+[Mon Mar 18 10:37:57 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_sub.vcf.gz
+    jobid: 92
+    wildcards: chrom=12
+
+[Mon Mar 18 10:38:28 2019]
+Finished job 92.
+25 of 88 steps (28%) done
+
+[Mon Mar 18 10:38:28 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr9.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz.tbi
+    jobid: 44
+    wildcards: chrom=9
+
+[Mon Mar 18 10:39:00 2019]
+Finished job 44.
+26 of 88 steps (30%) done
+
+[Mon Mar 18 10:39:00 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_sub.vcf.gz.tbi
+    jobid: 88
+    wildcards: chrom=9
+
+[Mon Mar 18 10:39:35 2019]
+Finished job 88.
+27 of 88 steps (31%) done
+
+[Mon Mar 18 10:39:35 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_sub.vcf.gz
+    jobid: 100
+    wildcards: chrom=2
+
+[Mon Mar 18 10:39:54 2019]
+Finished job 100.
+28 of 88 steps (32%) done
+
+[Mon Mar 18 10:39:54 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_sub.vcf.gz
+    jobid: 89
+    wildcards: chrom=1
+
+[Mon Mar 18 10:40:13 2019]
+Finished job 89.
+29 of 88 steps (33%) done
+
+[Mon Mar 18 10:40:13 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_sub.vcf.gz
+    jobid: 105
+    wildcards: chrom=4
+
+[Mon Mar 18 10:40:30 2019]
+Finished job 105.
+30 of 88 steps (34%) done
+
+[Mon Mar 18 10:40:30 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_sub.vcf.gz
+    jobid: 104
+    wildcards: chrom=3
+
+[Mon Mar 18 10:40:46 2019]
+Finished job 104.
+31 of 88 steps (35%) done
+
+[Mon Mar 18 10:40:46 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr13.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz.tbi
+    jobid: 27
+    wildcards: chrom=13
+
+[Mon Mar 18 10:41:13 2019]
+Finished job 27.
+32 of 88 steps (36%) done
+
+[Mon Mar 18 10:41:13 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_sub.vcf.gz.tbi
+    jobid: 71
+    wildcards: chrom=13
+
+[Mon Mar 18 10:42:10 2019]
+Finished job 71.
+33 of 88 steps (38%) done
+
+[Mon Mar 18 10:42:10 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_sub.vcf.gz
+    jobid: 93
+    wildcards: chrom=13
+
+[Mon Mar 18 10:42:34 2019]
+Finished job 93.
+34 of 88 steps (39%) done
+
+[Mon Mar 18 10:42:34 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_sub.vcf.gz
+    jobid: 107
+    wildcards: chrom=6
+
+[Mon Mar 18 10:42:49 2019]
+Finished job 107.
+35 of 88 steps (40%) done
+
+[Mon Mar 18 10:42:49 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr14.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz.tbi
+    jobid: 28
+    wildcards: chrom=14
+
+[Mon Mar 18 10:43:13 2019]
+Finished job 28.
+36 of 88 steps (41%) done
+
+[Mon Mar 18 10:43:13 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_sub.vcf.gz.tbi
+    jobid: 72
+    wildcards: chrom=14
+
+[Mon Mar 18 10:44:05 2019]
+Finished job 72.
+37 of 88 steps (42%) done
+
+[Mon Mar 18 10:44:05 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_sub.vcf.gz
+    jobid: 94
+    wildcards: chrom=14
+
+[Mon Mar 18 10:44:25 2019]
+Finished job 94.
+38 of 88 steps (43%) done
+
+[Mon Mar 18 10:44:25 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_sub.vcf.gz
+    jobid: 106
+    wildcards: chrom=5
+
+[Mon Mar 18 10:44:40 2019]
+Finished job 106.
+39 of 88 steps (44%) done
+
+[Mon Mar 18 10:44:40 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr16.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz.tbi
+    jobid: 30
+    wildcards: chrom=16
+
+[Mon Mar 18 10:45:03 2019]
+Finished job 30.
+40 of 88 steps (45%) done
+
+[Mon Mar 18 10:45:03 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_sub.vcf.gz.tbi
+    jobid: 74
+    wildcards: chrom=16
+
+[Mon Mar 18 10:45:51 2019]
+Finished job 74.
+41 of 88 steps (47%) done
+
+[Mon Mar 18 10:45:51 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_sub.vcf.gz
+    jobid: 96
+    wildcards: chrom=16
+
+[Mon Mar 18 10:46:10 2019]
+Finished job 96.
+42 of 88 steps (48%) done
+
+[Mon Mar 18 10:46:10 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_sub.vcf.gz
+    jobid: 108
+    wildcards: chrom=7
+
+[Mon Mar 18 10:46:24 2019]
+Finished job 108.
+43 of 88 steps (49%) done
+
+[Mon Mar 18 10:46:24 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr15.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz.tbi
+    jobid: 29
+    wildcards: chrom=15
+
+[Mon Mar 18 10:46:46 2019]
+Finished job 29.
+44 of 88 steps (50%) done
+
+[Mon Mar 18 10:46:46 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_sub.vcf.gz.tbi
+    jobid: 73
+    wildcards: chrom=15
+
+[Mon Mar 18 10:47:31 2019]
+Finished job 73.
+45 of 88 steps (51%) done
+
+[Mon Mar 18 10:47:31 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_sub.vcf.gz
+    jobid: 95
+    wildcards: chrom=15
+
+[Mon Mar 18 10:47:49 2019]
+Finished job 95.
+46 of 88 steps (52%) done
+
+[Mon Mar 18 10:47:49 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_sub.vcf.gz
+    jobid: 109
+    wildcards: chrom=8
+
+[Mon Mar 18 10:48:02 2019]
+Finished job 109.
+47 of 88 steps (53%) done
+
+[Mon Mar 18 10:48:02 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr18.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz.tbi
+    jobid: 32
+    wildcards: chrom=18
+
+[Mon Mar 18 10:48:23 2019]
+Finished job 32.
+48 of 88 steps (55%) done
+
+[Mon Mar 18 10:48:23 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_sub.vcf.gz.tbi
+    jobid: 76
+    wildcards: chrom=18
+
+[Mon Mar 18 10:49:07 2019]
+Finished job 76.
+49 of 88 steps (56%) done
+
+[Mon Mar 18 10:49:07 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_sub.vcf.gz
+    jobid: 98
+    wildcards: chrom=18
+
+[Mon Mar 18 10:49:25 2019]
+Finished job 98.
+50 of 88 steps (57%) done
+
+[Mon Mar 18 10:49:25 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr17.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz.tbi
+    jobid: 31
+    wildcards: chrom=17
+
+[Mon Mar 18 10:49:44 2019]
+Finished job 31.
+51 of 88 steps (58%) done
+
+[Mon Mar 18 10:49:44 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_sub.vcf.gz.tbi
+    jobid: 75
+    wildcards: chrom=17
+
+[Mon Mar 18 10:50:27 2019]
+Finished job 75.
+52 of 88 steps (59%) done
+
+[Mon Mar 18 10:50:27 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_sub.vcf.gz
+    jobid: 97
+    wildcards: chrom=17
+
+[Mon Mar 18 10:50:44 2019]
+Finished job 97.
+53 of 88 steps (60%) done
+
+[Mon Mar 18 10:50:44 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr19.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz.tbi
+    jobid: 33
+    wildcards: chrom=19
+
+[Mon Mar 18 10:51:00 2019]
+Finished job 33.
+54 of 88 steps (61%) done
+
+[Mon Mar 18 10:51:00 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_sub.vcf.gz.tbi
+    jobid: 77
+    wildcards: chrom=19
+
+[Mon Mar 18 10:51:35 2019]
+Finished job 77.
+55 of 88 steps (62%) done
+
+[Mon Mar 18 10:51:35 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_sub.vcf.gz
+    jobid: 99
+    wildcards: chrom=19
+
+[Mon Mar 18 10:51:49 2019]
+Finished job 99.
+56 of 88 steps (64%) done
+
+[Mon Mar 18 10:51:49 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_sub.vcf.gz
+    jobid: 110
+    wildcards: chrom=9
+
+[Mon Mar 18 10:51:59 2019]
+Finished job 110.
+57 of 88 steps (65%) done
+
+[Mon Mar 18 10:51:59 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr20.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz.tbi
+    jobid: 35
+    wildcards: chrom=20
+
+[Mon Mar 18 10:52:15 2019]
+Finished job 35.
+58 of 88 steps (66%) done
+
+[Mon Mar 18 10:52:15 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_sub.vcf.gz.tbi
+    jobid: 79
+    wildcards: chrom=20
+
+[Mon Mar 18 10:52:50 2019]
+Finished job 79.
+59 of 88 steps (67%) done
+
+[Mon Mar 18 10:52:50 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_sub.vcf.gz
+    jobid: 101
+    wildcards: chrom=20
+
+[Mon Mar 18 10:53:04 2019]
+Finished job 101.
+60 of 88 steps (68%) done
+
+[Mon Mar 18 10:53:04 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273492.rds
+    jobid: 868
+    wildcards: gene=ENSG00000273492
+
+[Mon Mar 18 10:53:08 2019]
+Finished job 868.
+61 of 88 steps (69%) done
+
+[Mon Mar 18 10:53:08 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz
+    jobid: 103
+    wildcards: chrom=22
+
+[Mon Mar 18 10:53:16 2019]
+Finished job 103.
+62 of 88 steps (70%) done
+
+[Mon Mar 18 10:53:16 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr21.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi
+    jobid: 36
+    wildcards: chrom=21
+
+[Mon Mar 18 10:53:26 2019]
+Finished job 36.
+63 of 88 steps (72%) done
+
+[Mon Mar 18 10:53:26 2019]
+rule intersect_RP_PEAC:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz.tbi
+    jobid: 80
+    wildcards: chrom=21
+
+[Mon Mar 18 10:53:48 2019]
+Finished job 80.
+64 of 88 steps (73%) done
+
+[Mon Mar 18 10:53:48 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz
+    jobid: 102
+    wildcards: chrom=21
+
+[Mon Mar 18 10:53:57 2019]
+Finished job 102.
+65 of 88 steps (74%) done
+
+[Mon Mar 18 10:53:57 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr10.txt
+    jobid: 112
+    wildcards: chrom=10
+
+[Mon Mar 18 10:53:57 2019]
+Finished job 112.
+66 of 88 steps (75%) done
+
+[Mon Mar 18 10:53:57 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr11.txt
+    jobid: 113
+    wildcards: chrom=11
+
+[Mon Mar 18 10:53:58 2019]
+Finished job 113.
+67 of 88 steps (76%) done
+
+[Mon Mar 18 10:53:58 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr12.txt
+    jobid: 114
+    wildcards: chrom=12
+
+[Mon Mar 18 10:53:59 2019]
+Finished job 114.
+68 of 88 steps (77%) done
+
+[Mon Mar 18 10:53:59 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr13.txt
+    jobid: 115
+    wildcards: chrom=13
+
+[Mon Mar 18 10:53:59 2019]
+Finished job 115.
+69 of 88 steps (78%) done
+
+[Mon Mar 18 10:53:59 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr16.txt
+    jobid: 118
+    wildcards: chrom=16
+
+[Mon Mar 18 10:54:00 2019]
+Finished job 118.
+70 of 88 steps (80%) done
+
+[Mon Mar 18 10:54:00 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr14.txt
+    jobid: 116
+    wildcards: chrom=14
+
+[Mon Mar 18 10:54:00 2019]
+Finished job 116.
+71 of 88 steps (81%) done
+
+[Mon Mar 18 10:54:00 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr15.txt
+    jobid: 117
+    wildcards: chrom=15
+
+[Mon Mar 18 10:54:01 2019]
+Finished job 117.
+72 of 88 steps (82%) done
+
+[Mon Mar 18 10:54:01 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr18.txt
+    jobid: 120
+    wildcards: chrom=18
+
+[Mon Mar 18 10:54:01 2019]
+Finished job 120.
+73 of 88 steps (83%) done
+
+[Mon Mar 18 10:54:01 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr17.txt
+    jobid: 119
+    wildcards: chrom=17
+
+[Mon Mar 18 10:54:02 2019]
+Finished job 119.
+74 of 88 steps (84%) done
+
+[Mon Mar 18 10:54:02 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr19.txt
+    jobid: 121
+    wildcards: chrom=19
+
+[Mon Mar 18 10:54:02 2019]
+Finished job 121.
+75 of 88 steps (85%) done
+
+[Mon Mar 18 10:54:02 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr20.txt
+    jobid: 123
+    wildcards: chrom=20
+
+[Mon Mar 18 10:54:02 2019]
+Finished job 123.
+76 of 88 steps (86%) done
+
+[Mon Mar 18 10:54:02 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr22.txt
+    jobid: 125
+    wildcards: chrom=22
+
+[Mon Mar 18 10:54:02 2019]
+Finished job 125.
+77 of 88 steps (88%) done
+
+[Mon Mar 18 10:54:02 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr21.txt
+    jobid: 124
+    wildcards: chrom=21
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 124.
+78 of 88 steps (89%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr5.txt
+    jobid: 128
+    wildcards: chrom=5
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 128.
+79 of 88 steps (90%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr3.txt
+    jobid: 126
+    wildcards: chrom=3
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 126.
+80 of 88 steps (91%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr7.txt
+    jobid: 130
+    wildcards: chrom=7
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 130.
+81 of 88 steps (92%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr8.txt
+    jobid: 131
+    wildcards: chrom=8
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 131.
+82 of 88 steps (93%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr1.txt
+    jobid: 111
+    wildcards: chrom=1
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 111.
+83 of 88 steps (94%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr4.txt
+    jobid: 127
+    wildcards: chrom=4
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 127.
+84 of 88 steps (95%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr2.txt
+    jobid: 122
+    wildcards: chrom=2
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 122.
+85 of 88 steps (97%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr9.txt
+    jobid: 132
+    wildcards: chrom=9
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 132.
+86 of 88 steps (98%) done
+
+[Mon Mar 18 10:54:03 2019]
+rule extract_snp_ids:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_sub.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr6.txt
+    jobid: 129
+    wildcards: chrom=6
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 129.
+87 of 88 steps (99%) done
+
+[Mon Mar 18 10:54:03 2019]
+localrule all_genotype:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_alt_added.bcf, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_alt_added.bcf.csi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr1_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr10_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr11_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr12_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr13_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr14_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr15_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr16_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr17_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr18_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr19_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr2_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr20_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr22_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr3_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr4_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr5_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr6_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr7_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr8_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr9_sub.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr1.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr10.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr11.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr12.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr13.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr14.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr15.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr16.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr17.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr18.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr19.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr2.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr20.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr21.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr22.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr3.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr4.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr5.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr6.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr7.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr8.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/snp_coords/chr9.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000141956.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000141959.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142149.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142156.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142166.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142168.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142173.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142178.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142182.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142185.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142188.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142192.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142197.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000142207.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154639.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154640.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154642.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154645.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154646.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154654.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154719.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154721.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154723.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154727.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154734.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000154736.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000155304.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000155307.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000155313.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156239.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156253.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156256.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156261.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156265.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156273.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156282.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156284.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156299.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000156304.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157538.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157540.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157542.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157551.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157554.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157557.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157578.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157601.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000157617.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159055.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159079.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159082.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159086.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159110.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159128.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159131.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159140.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159147.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159197.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159200.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159212.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159216.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159228.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159231.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159256.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159259.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159261.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159263.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000159267.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160179.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160180.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160181.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160182.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160183.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160185.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160188.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160190.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160191.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160193.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160194.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160199.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160200.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160201.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160202.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160207.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160208.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160209.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160213.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160214.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160216.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160218.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160221.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160223.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160224.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160226.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160233.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160255.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160256.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160282.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160284.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160285.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160294.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160298.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160299.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160305.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160307.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000160310.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000166157.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000166265.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000166351.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000166979.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000168122.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000169861.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000170262.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000171189.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000171587.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000173231.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000173276.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000173638.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000174680.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000175302.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000175894.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000176054.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000177398.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000177692.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000178457.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000179381.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000180509.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000180530.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182093.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182240.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182362.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182586.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182591.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182670.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182816.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182871.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000182912.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183036.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183067.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183145.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183249.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183250.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183255.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183421.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183486.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183527.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183535.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183570.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183640.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183653.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183778.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000183844.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184012.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184029.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184032.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184221.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184274.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184351.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184385.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184441.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184586.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184724.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184787.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184809.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184856.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000184900.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185186.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185272.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185390.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185433.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185437.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185658.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185808.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185917.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186842.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186866.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186924.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186925.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186930.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186965.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186967.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186970.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186971.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186977.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000186980.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000187005.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000187026.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000187172.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000187175.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000187766.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000188155.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000188660.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000188681.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000188694.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000188992.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000189089.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000189169.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000197381.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000197683.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000197934.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198054.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198390.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198434.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198618.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198743.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198862.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000199030.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000199598.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000199698.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000199806.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000199962.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000200213.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000200754.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000200792.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000201025.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000201812.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000201984.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000202239.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000202339.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000203616.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205424.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205439.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205441.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205445.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205581.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205622.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205670.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205726.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205758.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205927.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205929.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000205930.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000206102.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000206104.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000206105.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000206106.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000206107.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000206802.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207097.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207098.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207147.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207416.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207476.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207503.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207638.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000207863.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000211590.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212136.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212479.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212564.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212609.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212932.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212933.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212935.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000212938.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000213440.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000213885.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214319.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214326.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214867.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214889.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214914.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214955.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000214976.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215005.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215088.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215317.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215326.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215351.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215353.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215369.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215386.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215424.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215447.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215454.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215455.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215458.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215533.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215559.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215562.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000215734.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000216197.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000217026.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000218125.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000218549.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000219280.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000219368.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000219592.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221041.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221210.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221335.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221396.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221398.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221497.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221837.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221859.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000221864.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000222018.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000222042.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223078.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223262.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223287.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223400.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223431.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223488.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223563.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223608.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223662.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223671.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223692.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223741.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223768.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223799.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223806.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223822.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223870.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223901.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223925.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000223975.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224018.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224100.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224141.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224247.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224269.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224309.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224388.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224413.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224421.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224427.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224524.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224541.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224574.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224598.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224602.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224649.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224747.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224790.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224832.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224860.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224905.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224922.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224924.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224930.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225043.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225218.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225267.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225298.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225330.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225331.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225431.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225502.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225555.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225637.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225731.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225735.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225745.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000225906.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226012.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226043.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226054.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226115.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226204.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226298.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226406.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226433.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226496.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226501.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226527.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226543.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226580.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226751.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226771.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226818.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226930.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226935.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226956.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226983.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000226996.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227039.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227054.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227075.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227090.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227256.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227330.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227342.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227406.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227438.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227456.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227691.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227698.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227702.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227716.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227721.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227757.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227840.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227874.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000227999.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228107.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228120.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228137.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228149.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228159.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228184.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228235.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228314.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228318.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228349.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228355.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228404.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228433.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228592.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228600.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228677.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228708.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228709.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228798.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228817.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228861.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228930.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228941.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000228961.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229007.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229025.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229046.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229047.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229086.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229231.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229289.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229306.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229336.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229356.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229382.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229425.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229623.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229761.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229880.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229925.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229962.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000229986.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230061.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230198.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230212.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230233.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230323.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230366.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230379.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230479.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230794.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230859.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230870.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230965.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230972.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230978.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230982.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231058.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231068.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231106.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231123.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231125.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231136.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231201.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231231.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231236.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231300.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231324.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231355.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231480.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231620.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231713.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231755.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231867.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231962.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231986.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232010.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232079.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232118.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232124.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232193.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232260.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232263.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232360.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232401.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232512.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232539.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232560.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232608.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232623.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232687.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232692.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232698.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232777.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232797.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232806.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232837.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232855.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232884.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232886.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232969.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233036.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233056.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233206.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233213.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233215.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233236.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233300.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233316.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233393.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233442.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233480.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233640.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233676.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233754.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233756.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233767.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233783.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233818.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233922.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233956.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000233997.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234008.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234030.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234034.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234035.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234052.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234083.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234107.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234159.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234289.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234293.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234340.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234380.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234439.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234509.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234538.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234643.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234703.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234730.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234880.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234883.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235012.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235023.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235123.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235277.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235312.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235374.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235476.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235514.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235564.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235609.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235701.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235772.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235808.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235878.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235888.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235890.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000235965.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236056.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236119.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236332.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236382.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236384.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236400.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236471.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236519.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236532.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236545.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236612.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236663.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236677.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236830.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000236883.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237138.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237202.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237232.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237325.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237338.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237373.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237444.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237484.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237527.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237569.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237594.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237604.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237609.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237646.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237664.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237721.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237731.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237735.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237841.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237864.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237945.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237989.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238141.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238197.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238220.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238257.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238265.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238314.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238390.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238411.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238556.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238581.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238591.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238627.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238660.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238851.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000239023.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000239107.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000239171.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000239179.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000239415.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000239930.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000240432.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000240755.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000240770.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000241123.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000241728.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000241837.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000241945.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000242220.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000242553.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000242871.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000243064.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000243440.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000243489.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000243627.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000243646.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000243927.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000244025.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000244278.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000244294.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000244362.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000244624.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000244676.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000248476.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000249209.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000249493.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000249624.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000250973.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000251778.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000251851.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000251894.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000251972.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252045.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252199.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252273.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252462.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252606.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252613.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252619.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252771.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252915.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252950.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252963.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000255568.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000255902.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000256073.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000256212.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000256386.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000256715.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000256818.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000259981.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000260256.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000260583.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000261610.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000261706.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000263681.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000263796.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000263839.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000263969.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000263973.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264002.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264009.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264055.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264063.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264452.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264462.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264580.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000264691.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000265007.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000265590.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000265841.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000265882.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266007.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266133.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266195.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266211.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266299.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266692.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266838.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000266892.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000267812.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000267857.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000267883.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000267913.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000267937.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000267976.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000268040.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000268098.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000268265.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000268805.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000268856.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000269011.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000269430.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000269950.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270071.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270093.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270116.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270139.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270533.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270652.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000270835.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000271308.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000271486.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272015.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272283.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272657.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272659.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272825.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272948.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272958.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272962.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000272991.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273017.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273027.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273091.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273102.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273104.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273115.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273199.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273210.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273254.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273271.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273464.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273492.rds
+    jobid: 0
+
+[Mon Mar 18 10:54:03 2019]
+Finished job 0.
+88 of 88 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-18T101439.732578.snakemake.log

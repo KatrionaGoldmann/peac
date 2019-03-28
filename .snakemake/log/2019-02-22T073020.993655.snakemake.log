@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 120 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule star_index:
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.dna.primary_assembly.fa

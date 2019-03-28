@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	group_gene_counts
+	1
+
+[Tue Mar  5 17:21:13 2019]
+rule group_gene_counts:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103802.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103803.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103804.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103805.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103806.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103807.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103808.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103809.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103810.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103811.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103812.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103813.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103814.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103815.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103816.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103817.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103818.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103819.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103820.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103821.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103822.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103823.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103824.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103825.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103826.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103827.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103828.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103829.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103830.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103832.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103833.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103834.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103835.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103836.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103837.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103838.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM9103839.txt
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech_lib_size.rds
+    jobid: 0
+
+[Tue Mar  5 17:21:14 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-05T172113.209397.snakemake.log

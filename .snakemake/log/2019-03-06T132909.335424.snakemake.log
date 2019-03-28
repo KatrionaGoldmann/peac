@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 229 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule ref_panel_alt:
+"/home/kgoldmann/Documents/PEAC_eqtl/Data/RP/ALL.chr22.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz"

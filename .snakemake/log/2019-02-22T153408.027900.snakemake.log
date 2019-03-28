@@ -1,0 +1,4 @@
+AttributeError in line 31 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+'function' object has no attribute 'keys'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 94, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 31, in read_samples

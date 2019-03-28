@@ -1,0 +1,10 @@
+TypeError in line 45 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+cannot do label indexing on <class 'pandas.core.indexes.base.Index'> with these indexers [0] of <class 'int'>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 143, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 45, in read_samples
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1500, in __getitem__
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1912, in _getitem_axis
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1799, in _validate_key
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 262, in _convert_scalar_indexer
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 2880, in _convert_scalar_indexer
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 3066, in _invalid_indexer

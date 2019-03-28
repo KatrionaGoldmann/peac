@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 138 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule star:
+/home/kgoldmann/NAS/RNASEQ/PEAC_RawData/BHAM2009002_RNA_GATCAG_R1_fastqc.zip BHAM2009002

@@ -1,0 +1,4 @@
+AttributeError in line 33 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+'list' object has no attribute 'values'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 96, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 33, in read_samples

@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 124 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+KeyError: 7
+Wildcards:
+

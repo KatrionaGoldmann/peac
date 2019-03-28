@@ -1,0 +1,4 @@
+FileNotFoundError in line 77 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+[Errno 2] No such file or directory: '/mrc-bsu/scratch/ev250/emedlab/RNA/objects/refPanel_list.txt'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 98, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 77, in vcf

@@ -1,0 +1,3 @@
+TypeError in line 274 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+'dict_keys' object is not callable
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 274, in <module>

@@ -1,0 +1,4 @@
+NameError in line 87 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+name 'head' is not defined
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 111, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 87, in gene_chrom

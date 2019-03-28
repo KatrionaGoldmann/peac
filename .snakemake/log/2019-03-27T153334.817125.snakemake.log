@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 173 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule sub_star:
+tet.txt

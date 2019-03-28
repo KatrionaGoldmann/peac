@@ -1,0 +1,3 @@
+TypeError in line 260 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+must be str, not dict_values
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 260, in <module>

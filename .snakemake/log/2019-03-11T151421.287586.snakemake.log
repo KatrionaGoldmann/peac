@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 400 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+KeyError: 'ENSG00000000419'
+Wildcards:
+gene=ENSG00000000419

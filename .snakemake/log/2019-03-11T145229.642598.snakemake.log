@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 401 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule Deseq2_inputs:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_inputs/gene_coord.txt

@@ -1,0 +1,5 @@
+IndexError in line 78 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+list index out of range
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 98, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 78, in vcf
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 78, in <listcomp>

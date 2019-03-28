@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 95 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule all_genotype:
+22
+21

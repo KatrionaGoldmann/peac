@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 290 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+NameError: name 'wilcards' is not defined
+Wildcards:
+chrom=21

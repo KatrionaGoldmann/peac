@@ -1,0 +1,261 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_genotype
+	22	vcf_pca
+	23
+
+[Fri Mar 15 13:54:25 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr2.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz.tbi
+    jobid: 12
+    wildcards: chrom=2
+
+[Fri Mar 15 13:55:35 2019]
+Finished job 12.
+1 of 23 steps (4%) done
+
+[Fri Mar 15 13:55:35 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr1.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz.tbi
+    jobid: 1
+    wildcards: chrom=1
+
+[Fri Mar 15 13:56:38 2019]
+Finished job 1.
+2 of 23 steps (9%) done
+
+[Fri Mar 15 13:56:38 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr4.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz.tbi
+    jobid: 17
+    wildcards: chrom=4
+
+[Fri Mar 15 13:57:37 2019]
+Finished job 17.
+3 of 23 steps (13%) done
+
+[Fri Mar 15 13:57:37 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr3.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz.tbi
+    jobid: 16
+    wildcards: chrom=3
+
+[Fri Mar 15 13:58:35 2019]
+Finished job 16.
+4 of 23 steps (17%) done
+
+[Fri Mar 15 13:58:35 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr5.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz.tbi
+    jobid: 18
+    wildcards: chrom=5
+
+[Fri Mar 15 13:59:28 2019]
+Finished job 18.
+5 of 23 steps (22%) done
+
+[Fri Mar 15 13:59:28 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr6.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz.tbi
+    jobid: 19
+    wildcards: chrom=6
+
+[Fri Mar 15 14:00:21 2019]
+Finished job 19.
+6 of 23 steps (26%) done
+
+[Fri Mar 15 14:00:21 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr7.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz.tbi
+    jobid: 20
+    wildcards: chrom=7
+
+[Fri Mar 15 14:01:09 2019]
+Finished job 20.
+7 of 23 steps (30%) done
+
+[Fri Mar 15 14:01:09 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr8.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz.tbi
+    jobid: 21
+    wildcards: chrom=8
+
+[Fri Mar 15 14:01:56 2019]
+Finished job 21.
+8 of 23 steps (35%) done
+
+[Fri Mar 15 14:01:56 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr10.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz.tbi
+    jobid: 2
+    wildcards: chrom=10
+
+[Fri Mar 15 14:02:36 2019]
+Finished job 2.
+9 of 23 steps (39%) done
+
+[Fri Mar 15 14:02:36 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr11.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz.tbi
+    jobid: 3
+    wildcards: chrom=11
+
+[Fri Mar 15 14:03:18 2019]
+Finished job 3.
+10 of 23 steps (43%) done
+
+[Fri Mar 15 14:03:18 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr12.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz.tbi
+    jobid: 4
+    wildcards: chrom=12
+
+[Fri Mar 15 14:03:57 2019]
+Finished job 4.
+11 of 23 steps (48%) done
+
+[Fri Mar 15 14:03:57 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr9.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz.tbi
+    jobid: 22
+    wildcards: chrom=9
+
+[Fri Mar 15 14:04:34 2019]
+Finished job 22.
+12 of 23 steps (52%) done
+
+[Fri Mar 15 14:04:34 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr13.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz.tbi
+    jobid: 5
+    wildcards: chrom=13
+
+[Fri Mar 15 14:05:04 2019]
+Finished job 5.
+13 of 23 steps (57%) done
+
+[Fri Mar 15 14:05:04 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr16.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz.tbi
+    jobid: 8
+    wildcards: chrom=16
+
+[Fri Mar 15 14:05:30 2019]
+Finished job 8.
+14 of 23 steps (61%) done
+
+[Fri Mar 15 14:05:30 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr14.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz.tbi
+    jobid: 6
+    wildcards: chrom=14
+
+[Fri Mar 15 14:05:57 2019]
+Finished job 6.
+15 of 23 steps (65%) done
+
+[Fri Mar 15 14:05:57 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr15.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz.tbi
+    jobid: 7
+    wildcards: chrom=15
+
+[Fri Mar 15 14:06:23 2019]
+Finished job 7.
+16 of 23 steps (70%) done
+
+[Fri Mar 15 14:06:23 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr18.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz.tbi
+    jobid: 10
+    wildcards: chrom=18
+
+[Fri Mar 15 14:06:47 2019]
+Finished job 10.
+17 of 23 steps (74%) done
+
+[Fri Mar 15 14:06:47 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr17.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz.tbi
+    jobid: 9
+    wildcards: chrom=17
+
+[Fri Mar 15 14:07:10 2019]
+Finished job 9.
+18 of 23 steps (78%) done
+
+[Fri Mar 15 14:07:10 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr19.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz.tbi
+    jobid: 11
+    wildcards: chrom=19
+
+[Fri Mar 15 14:07:28 2019]
+Finished job 11.
+19 of 23 steps (83%) done
+
+[Fri Mar 15 14:07:28 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr20.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz.tbi
+    jobid: 13
+    wildcards: chrom=20
+
+[Fri Mar 15 14:07:45 2019]
+Finished job 13.
+20 of 23 steps (87%) done
+
+[Fri Mar 15 14:07:45 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz.tbi
+    jobid: 14
+    wildcards: chrom=21
+
+[Fri Mar 15 14:07:56 2019]
+Finished job 14.
+21 of 23 steps (91%) done
+
+[Fri Mar 15 14:07:56 2019]
+rule vcf_pca:
+    input: /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr22.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz.tbi
+    jobid: 15
+    wildcards: chrom=22
+
+[Fri Mar 15 14:08:07 2019]
+Finished job 15.
+22 of 23 steps (96%) done
+
+[Fri Mar 15 14:08:07 2019]
+localrule all_genotype:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_4PCA_all.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_4PCA_all.vcf.gz.tbi
+    jobid: 0
+
+[Fri Mar 15 14:08:07 2019]
+Finished job 0.
+23 of 23 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-15T135424.996217.snakemake.log

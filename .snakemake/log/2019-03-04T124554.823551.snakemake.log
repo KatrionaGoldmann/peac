@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	RP_PCA
+	1
+
+[Mon Mar  4 12:45:55 2019]
+rule RP_PCA:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_PCA.gds
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_pcs.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_loads.rds
+    jobid: 0
+
+[Mon Mar  4 12:45:56 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-04T124554.823551.snakemake.log

@@ -1,0 +1,3 @@
+ModuleNotFoundError in line 8 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+No module named 'pandas'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 8, in <module>

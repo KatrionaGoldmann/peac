@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	5	Deseq2_inputs
+	1	all_genotype
+	6
+
+[Mon Mar 11 14:02:12 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr22.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000040608.rds
+    jobid: 15
+    wildcards: gene=ENSG00000040608
+
+[Mon Mar 11 14:02:15 2019]
+Error in rule Deseq2_inputs:
+    jobid: 15
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000040608.rds
+
+RuleException:
+CalledProcessError in line 409 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;  Rscript --vanilla /home/kgoldmann/Documents/Git/peac/.snakemake/scripts/tmp1vragl7a.deseq2.in.R ' returned non-zero exit status 1.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 409, in __rule_Deseq2_inputs
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-11T140212.325492.snakemake.log

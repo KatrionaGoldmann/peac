@@ -1,0 +1,3 @@
+TypeError in line 185 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+must be str, not list
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 185, in <module>

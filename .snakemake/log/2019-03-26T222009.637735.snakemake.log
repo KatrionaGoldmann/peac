@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 165 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule star:
+/mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12104_SAM9103814_R1.fastq.gz

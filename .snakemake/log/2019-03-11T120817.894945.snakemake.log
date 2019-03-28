@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_genotype
+	2	intersect_PEAC_RP
+	3
+
+[Mon Mar 11 12:08:18 2019]
+rule intersect_PEAC_RP:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz.tbi, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz.tbi
+    jobid: 7
+    wildcards: chrom=21
+
+[Mon Mar 11 12:08:18 2019]
+Error in rule intersect_PEAC_RP:
+    jobid: 7
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz.tbi
+
+RuleException:
+CalledProcessError in line 287 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;  bcftools isec -n=2 -w1 /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_4PCA.vcf.gz /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_chr21_sub.vcf.gz -Oz -o /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz.tbi ' returned non-zero exit status 255.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 287, in __rule_intersect_PEAC_RP
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-11T120817.894945.snakemake.log

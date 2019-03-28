@@ -1,0 +1,25 @@
+Building DAG of jobs...
+MissingInputException in line 281 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Missing input files for rule vcf_gds:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr21_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr3_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr10_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr20_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr16_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr18_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr7_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr5_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr8_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr6_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr22_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr9_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr15_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr4_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr13_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr14_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr17_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr1_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr12_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr19_sub.vcf.gz
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr11_sub.vcf.gz

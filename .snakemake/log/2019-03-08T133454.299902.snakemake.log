@@ -1,0 +1,3 @@
+NameError in line 392 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+name 'gene_chrom' is not defined
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 392, in <module>

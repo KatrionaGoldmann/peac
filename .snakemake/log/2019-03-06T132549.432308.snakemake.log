@@ -1,0 +1,4 @@
+AttributeError in line 78 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+'list' object has no attribute 'replace'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 103, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 78, in vcf

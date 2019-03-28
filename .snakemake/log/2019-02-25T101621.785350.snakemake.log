@@ -1,0 +1,4 @@
+TypeError in line 20 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+from_csv() got an unexpected keyword argument 'squeeze'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 143, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 20, in read_samples

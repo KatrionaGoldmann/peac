@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_counts
+	1	exon_by_gene
+	2
+
+[Wed Mar 27 12:43:07 2019]
+rule exon_by_gene:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.87.gtf
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/b37_ebg.rds, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt
+    jobid: 1
+
+[Wed Mar 27 12:44:25 2019]
+Finished job 1.
+1 of 2 steps (50%) done
+
+[Wed Mar 27 12:44:25 2019]
+localrule all_counts:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/b37_ebg.rds
+    jobid: 0
+
+[Wed Mar 27 12:44:25 2019]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-27T124307.136187.snakemake.log

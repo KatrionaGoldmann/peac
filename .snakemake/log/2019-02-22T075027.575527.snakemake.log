@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	star_index
+	1
+
+[Fri Feb 22 07:50:27 2019]
+rule star_index:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.dna.primary_assembly.fa, /home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.87.gtf
+    jobid: 0
+
+[Fri Feb 22 09:08:22 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-02-22T075027.575527.snakemake.log

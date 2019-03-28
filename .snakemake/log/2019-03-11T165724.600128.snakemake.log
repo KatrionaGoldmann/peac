@@ -1,0 +1,186 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	707	Deseq2_inputs
+	1	all_genotype
+	708
+
+[Mon Mar 11 16:57:57 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000273254.rds
+    jobid: 743
+    wildcards: gene=ENSG00000273254
+
+[Mon Mar 11 16:58:00 2019]
+Finished job 743.
+1 of 708 steps (0.14%) done
+
+[Mon Mar 11 16:58:00 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000198434.rds
+    jobid: 213
+    wildcards: gene=ENSG00000198434
+
+[Mon Mar 11 16:58:02 2019]
+Finished job 213.
+2 of 708 steps (0.28%) done
+
+[Mon Mar 11 16:58:02 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000237841.rds
+    jobid: 600
+    wildcards: gene=ENSG00000237841
+
+[Mon Mar 11 16:58:04 2019]
+Finished job 600.
+3 of 708 steps (0.42%) done
+
+[Mon Mar 11 16:58:04 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000224924.rds
+    jobid: 352
+    wildcards: gene=ENSG00000224924
+
+[Mon Mar 11 16:58:07 2019]
+Finished job 352.
+4 of 708 steps (0.56%) done
+
+[Mon Mar 11 16:58:07 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000234509.rds
+    jobid: 543
+    wildcards: gene=ENSG00000234509
+
+[Mon Mar 11 16:58:10 2019]
+Finished job 543.
+5 of 708 steps (0.71%) done
+
+[Mon Mar 11 16:58:10 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000232855.rds
+    jobid: 505
+    wildcards: gene=ENSG00000232855
+
+[Mon Mar 11 16:58:13 2019]
+Finished job 505.
+6 of 708 steps (0.85%) done
+
+[Mon Mar 11 16:58:13 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238581.rds
+    jobid: 613
+    wildcards: gene=ENSG00000238581
+
+[Mon Mar 11 16:58:15 2019]
+Finished job 613.
+7 of 708 steps (0.99%) done
+
+[Mon Mar 11 16:58:15 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000230379.rds
+    jobid: 456
+    wildcards: gene=ENSG00000230379
+
+[Mon Mar 11 16:58:18 2019]
+Finished job 456.
+8 of 708 steps (1%) done
+
+[Mon Mar 11 16:58:18 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231136.rds
+    jobid: 470
+    wildcards: gene=ENSG00000231136
+
+[Mon Mar 11 16:58:20 2019]
+Finished job 470.
+9 of 708 steps (1%) done
+
+[Mon Mar 11 16:58:20 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000185272.rds
+    jobid: 178
+    wildcards: gene=ENSG00000185272
+
+[Mon Mar 11 16:58:23 2019]
+Finished job 178.
+10 of 708 steps (1%) done
+
+[Mon Mar 11 16:58:23 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000188155.rds
+    jobid: 201
+    wildcards: gene=ENSG00000188155
+
+[Mon Mar 11 16:58:26 2019]
+Finished job 201.
+11 of 708 steps (2%) done
+
+[Mon Mar 11 16:58:26 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000238556.rds
+    jobid: 612
+    wildcards: gene=ENSG00000238556
+
+[Mon Mar 11 16:58:28 2019]
+Finished job 612.
+12 of 708 steps (2%) done
+
+[Mon Mar 11 16:58:28 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000231713.rds
+    jobid: 479
+    wildcards: gene=ENSG00000231713
+
+[Mon Mar 11 16:58:30 2019]
+Finished job 479.
+13 of 708 steps (2%) done
+
+[Mon Mar 11 16:58:30 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000241837.rds
+    jobid: 629
+    wildcards: gene=ENSG00000241837
+
+[Mon Mar 11 16:58:33 2019]
+Finished job 629.
+14 of 708 steps (2%) done
+
+[Mon Mar 11 16:58:33 2019]
+rule Deseq2_inputs:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt, /home/kgoldmann/NAS/GCPEAC/Kevin/PEAC-eQTL/KevinAnalysis/ApocritaHPC/PEAC/imputed_vcf/PEAC_1000G_Phase3_Oct14_chr21.vcf.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252771.rds
+    jobid: 662
+    wildcards: gene=ENSG00000252771
+
+[Mon Mar 11 16:58:35 2019]
+Error in rule Deseq2_inputs:
+    jobid: 662
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252771.rds
+
+RuleException:
+CalledProcessError in line 416 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+Command ' set -euo pipefail;  Rscript --vanilla /home/kgoldmann/Documents/Git/peac/.snakemake/scripts/tmp4h_eygfv.deseq2.in.R ' returned non-zero exit status 1.
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 416, in __rule_Deseq2_inputs
+  File "/usr/lib/python3.6/concurrent/futures/thread.py", line 56, in run
+Removing output files of failed job Deseq2_inputs since they might be corrupted:
+/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/inputs/ENSG00000252771.rds
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-11T165724.600128.snakemake.log

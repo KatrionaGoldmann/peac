@@ -1,0 +1,12 @@
+TypeError in line 46 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+cannot do slice indexing on <class 'pandas.core.indexes.base.Index'> with these indexers [1] of <class 'int'>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 144, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 46, in read_samples
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1500, in __getitem__
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1867, in _getitem_axis
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexing.py", line 1533, in _get_slice_axis
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 4672, in slice_indexer
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 4877, in slice_locs
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 4797, in get_slice_bound
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 4749, in _maybe_cast_slice_bound
+  File "/home/kgoldmann/.local/lib/python3.6/site-packages/pandas/core/indexes/base.py", line 3066, in _invalid_indexer

@@ -1,0 +1,24 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	Deseq2_inputs
+	22	HW_filter
+	1	all_genotype
+	22	extract_snp_ids
+	22	intersect_PEAC_RP
+	22	intersect_RP_PEAC
+	90
+
+[Mon Mar 18 09:38:45 2019]
+rule HW_filter:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_chr2.txt, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA_all.vcf.gz.tbi
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz, /home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_chr2_4PCA.vcf.gz.tbi
+    jobid: 34
+    wildcards: chrom=2
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-18T093613.609004.snakemake.log

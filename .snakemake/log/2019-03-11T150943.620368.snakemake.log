@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 235 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+KeyError: '21'
+Wildcards:
+chrom=21

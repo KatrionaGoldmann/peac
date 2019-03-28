@@ -1,0 +1,3 @@
+NameError in line 398 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+name 'attempt' is not defined
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 398, in <module>

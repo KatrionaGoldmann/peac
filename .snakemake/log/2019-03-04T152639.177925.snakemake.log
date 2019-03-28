@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 180 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+IndexError: list index out of range
+Wildcards:
+

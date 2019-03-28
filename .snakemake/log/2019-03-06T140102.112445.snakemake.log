@@ -1,0 +1,4 @@
+Building DAG of jobs...
+File path /home/kgoldmann/Documents/PEAC_eqtl/Data/RP//ALL.chr22.integrated_phase1_v3.20101123.snps_indels_svs.genotypes.vcf.gz contains double '/'. This is likely unintended. It can also lead to inconsistent results of the file-matching approach used by Snakemake.
+Nothing to be done.
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-06T140102.112445.snakemake.log

@@ -6,7 +6,6 @@
 ## shell.prefix("module load samtools-1.4-gcc-5.4.0-derfxbk; ")
 #shell.prefix("source ~/.bashrc; ")
 import pandas as pd
-configfile: "config.yaml"
 
 def read_samples():
     """
@@ -101,13 +100,13 @@ rule all_counts:
     """ Get the gene counts """
     input:
         # star index
-        #config['indices'],
+        config['indices'],
         # star
-        #expand(config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
+        expand(config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
         # exon_by_gene
-        #config['ebg']
+        config['ebg']
         # total_gene_counts
-        expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
+        #expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
 
 
 rule all_genotype:

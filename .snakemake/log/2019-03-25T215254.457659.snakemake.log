@@ -1,0 +1,21 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_counts
+	106	star
+	107
+
+[Mon Mar 25 21:52:54 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24297983_L16_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Single/SAM24297983/Aligned.sortedByCoord.out.bam
+    log: logs/Single/SAM24297983.log
+    jobid: 119
+    wildcards: read=Single, sample=SAM24297983
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-25T215254.457659.snakemake.log

@@ -1,0 +1,3 @@
+NameError in line 176 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+name 'tet' is not defined
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 176, in <module>

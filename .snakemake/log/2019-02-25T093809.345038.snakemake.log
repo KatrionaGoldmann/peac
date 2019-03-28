@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 138 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+AttributeError: 'Wildcards' object has no attribute 'sample'
+Wildcards:
+

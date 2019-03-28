@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	star
+	1
+
+[Fri Mar  1 13:25:24 2019]
+rule star:
+    input: /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12092_SAM9103802_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12093_SAM9103803_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12094_SAM9103804_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12095_SAM9103805_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12096_SAM9103806_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12097_SAM9103807_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12098_SAM9103808_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12099_SAM9103809_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12100_SAM9103810_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12101_SAM9103811_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12102_SAM9103812_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12103_SAM9103813_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12104_SAM9103814_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12105_SAM9103815_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12106_SAM9103816_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12107_SAM9103817_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12108_SAM9103818_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12109_SAM9103819_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12110_SAM9103820_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12111_SAM9103821_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12112_SAM9103822_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12113_SAM9103823_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12114_SAM9103824_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12115_SAM9103825_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12116_SAM9103826_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12117_SAM9103827_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12118_SAM9103828_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12119_SAM9103829_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12120_SAM9103830_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12121_SAM9103832_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12122_SAM9103833_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12123_SAM9103834_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12124_SAM9103835_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12125_SAM9103836_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12126_SAM9103837_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12127_SAM9103838_R1.fastq.gz, /home/kgoldmann/Documents/PEAC_eqtl/Data/FASTQ/LIB12128_SAM9103839_R1.fastq.gz
+    jobid: 0
+
+[Sat Mar  2 03:56:53 2019]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /home/kgoldmann/Documents/Git/peac/.snakemake/log/2019-03-01T132524.557876.snakemake.log

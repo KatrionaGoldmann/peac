@@ -1,0 +1,168 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_counts
+	106	star
+	107
+
+[Mon Mar 25 22:04:20 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24297983_L16_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Single/SAM24297983/Aligned.sortedByCoord.out.bam
+    log: logs/Single/SAM24297983.log
+    jobid: 119
+    wildcards: read=Single, sample=SAM24297983
+
+Job failed, going on with independent jobs.
+
+[Mon Mar 25 22:04:58 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24297976_L6_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24297976/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24297976.log
+    jobid: 115
+    wildcards: read=Paired, sample=SAM24297976
+
+Job failed, going on with independent jobs.
+
+[Mon Mar 25 22:05:16 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12104_SAM9103814_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103814/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103814.log
+    jobid: 18
+    wildcards: read=Paired, sample=SAM9103814
+
+Job failed, going on with independent jobs.
+
+[Mon Mar 25 22:05:26 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298024_L7_D703_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298024/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298024.log
+    jobid: 53
+    wildcards: read=Paired, sample=SAM24298024
+
+[Mon Mar 25 22:05:36 2019]
+Finished job 53.
+1 of 107 steps (0.93%) done
+
+[Mon Mar 25 22:05:36 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298047_L5_D711_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298047/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298047.log
+    jobid: 78
+    wildcards: read=Paired, sample=SAM24298047
+
+[Mon Mar 25 22:05:46 2019]
+Finished job 78.
+2 of 107 steps (2%) done
+
+[Mon Mar 25 22:05:46 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298098_L2_D701_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298098/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298098.log
+    jobid: 92
+    wildcards: read=Paired, sample=SAM24298098
+
+[Mon Mar 25 22:05:56 2019]
+Finished job 92.
+3 of 107 steps (3%) done
+
+[Mon Mar 25 22:05:56 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298042_L1_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298042/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298042.log
+    jobid: 72
+    wildcards: read=Paired, sample=SAM24298042
+
+[Mon Mar 25 22:06:06 2019]
+Finished job 72.
+4 of 107 steps (4%) done
+
+[Mon Mar 25 22:06:06 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298110_L2_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298110/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298110.log
+    jobid: 97
+    wildcards: read=Paired, sample=SAM24298110
+
+[Mon Mar 25 22:06:16 2019]
+Finished job 97.
+5 of 107 steps (5%) done
+
+[Mon Mar 25 22:06:16 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298032_L6_D708_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298032/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298032.log
+    jobid: 62
+    wildcards: read=Paired, sample=SAM24298032
+
+[Mon Mar 25 22:06:26 2019]
+Finished job 62.
+6 of 107 steps (6%) done
+
+[Mon Mar 25 22:06:26 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12118_SAM9103828_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103828/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103828.log
+    jobid: 32
+    wildcards: read=Paired, sample=SAM9103828
+
+[Mon Mar 25 22:06:36 2019]
+Finished job 32.
+7 of 107 steps (7%) done
+
+[Mon Mar 25 22:06:36 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298091_L4_D703_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298091/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298091.log
+    jobid: 88
+    wildcards: read=Paired, sample=SAM24298091
+
+[Mon Mar 25 22:06:46 2019]
+Finished job 88.
+8 of 107 steps (7%) done
+
+[Mon Mar 25 22:06:46 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298061_L3_D712_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298061/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298061.log
+    jobid: 61
+    wildcards: read=Paired, sample=SAM24298061
+
+[Mon Mar 25 22:06:56 2019]
+Finished job 61.
+9 of 107 steps (8%) done
+
+[Mon Mar 25 22:06:56 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298135_L1_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298135/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298135.log
+    jobid: 109
+    wildcards: read=Paired, sample=SAM24298135
+
+[Mon Mar 25 22:07:06 2019]
+Finished job 109.
+10 of 107 steps (9%) done
+
+[Mon Mar 25 22:07:06 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch3/SAM24298029_L3_D703_1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM24298029/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM24298029.log
+    jobid: 57
+    wildcards: read=Paired, sample=SAM24298029
+

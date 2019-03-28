@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all_counts
+	120	star
+	121
+
+[Mon Mar 25 22:09:01 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12092_SAM9103802_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103802/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103802.log
+    jobid: 10
+    wildcards: read=Paired, sample=SAM9103802
+
+[Mon Mar 25 22:30:49 2019]
+Finished job 10.
+1 of 121 steps (0.83%) done
+
+[Mon Mar 25 22:30:49 2019]
+rule star:
+    input: /mnt/volume1/PEAC_Raw/GenentechBatch1/LIB12097_SAM9103807_R1.fastq.gz
+    output: /home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/Paired/SAM9103807/Aligned.sortedByCoord.out.bam
+    log: logs/Paired/SAM9103807.log
+    jobid: 15
+    wildcards: read=Paired, sample=SAM9103807
+

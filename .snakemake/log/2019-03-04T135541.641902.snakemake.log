@@ -1,0 +1,5 @@
+Building DAG of jobs...
+InputFunctionException in line 256 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+TypeError: must be str, not dict_keys
+Wildcards:
+

@@ -1,0 +1,4 @@
+AttributeError in line 20 of /home/kgoldmann/Documents/Git/peac/Snakefile:
+type object 'DataFrame' has no attribute 'read_csv'
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 143, in <module>
+  File "/home/kgoldmann/Documents/Git/peac/Snakefile", line 20, in read_samples
