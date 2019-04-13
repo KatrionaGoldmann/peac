@@ -17,7 +17,7 @@ library(VariantAnnotation)
 
 
 ```{r, echo=FALSE}
-fl = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/", full.names = TRUE)
+fl = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA", full.names = TRUE)
 fl = fl[grepl("_4PCA_all.vcf.gz", fl)]
 fl = fl[! grepl("tbi", fl)]
 ```
@@ -27,7 +27,7 @@ fl = fl[! grepl("tbi", fl)]
 # See here file:///home/katrionagoldmann/Downloads/Lab12%20(1).html
 ```{r}
 HW_test = function(file){
-  chr = gsub("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA//PEAC_|_4PCA_all.vcf.gz", "", file)
+  chr = gsub("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_|_4PCA_all.vcf.gz", "", file)
   print(chr)
   vcf = readVcf(file)
   res <- genotypeToSnpMatrix(vcf)
@@ -41,15 +41,19 @@ HW_test = function(file){
   cat(ncol(gt)-sum(HWEuse),"SNPs will be removed due to high HWE.\n") 
   cat(sum(HWEuse),"SNPs will be kept.\n") 
   out2 = out[HWEuse, ]
+  out.vals = rbind(out.vals, c(chr, sum(HWEuse), ncol(gt)-sum(HWEuse)))
   write.table(rownames(out2), file=paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/HW_keep_", chr, ".txt"), sep=",", quote=FALSE, col.names = FALSE, row.names = FALSE)
 }
 ```
 
 
-```{r}
+```{r, eval=FALSE}
 set.seed(1)
+out.vals =data.frame("chr"=c(), "snps kept"=c(), "snps removed"=c())
 fin = lapply(fl, function(x) HW_test(x))
 ````
-
-
+Overall we have: 
+```{r}
+out.vals
+```
 

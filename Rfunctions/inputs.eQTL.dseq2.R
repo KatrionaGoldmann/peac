@@ -1,8 +1,4 @@
 source('/home/kgoldmann/Documents/Git/peac/Rfunctions/real.data.R')
-
-##library(devtools)
-
-##install_github("chr1swallace/GUESSFM", ref="groups")
 library(GUESSFM)
 
 
@@ -51,7 +47,7 @@ in.deseq2 <- function(gene, chr, snps=5*10^5,counts.f,gene.coord,vcf, nhets=5,ta
   ## Extract inputs for gene
   
   ## get counts 
-  counts.g <- fread(cmd=paste("grep -e V1 -e ",gene,counts.f), header=TRUE)
+  counts.g <- fread(cmd=paste("grep -e gene_id -e ",gene,counts.f), header=TRUE)
   if(nrow(counts.g)==0) {
     reason = "Gene id is not found in count matrix"
     write.table(data.frame(gene, reason), "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/deseq2/Error_output.txt", sep = ",", col.names = T, row.names=F, append = T)
@@ -149,3 +145,9 @@ in.deseq2 <- function(gene, chr, snps=5*10^5,counts.f,gene.coord,vcf, nhets=5,ta
   saveRDS(l, paste0(out, "/",gene,".rds"))
           
 }
+
+
+
+
+
+

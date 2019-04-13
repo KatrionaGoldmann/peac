@@ -8,8 +8,6 @@ out.file <- snakemake@output[[1]]
 
 lib.size.file <-  snakemake@output[[2]]
 
-#in.files = paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", output.df$SampleID..QMUL.or.Genentech., ".txt", sep="")
-
 ##filter <- as.numeric(snakemake@params[['filter']])
 
 filter =0
@@ -17,14 +15,12 @@ filter =0
 ## process inputs
 lcounts <- lapply(in.files, fread)
 
-df <- data.frame(rep(NA, 57905))
-for (i in lcounts){
-  df = cbind(df, i)
+# Fix the colnames
+for(x in 1:length(lcounts)){
+  colnames(lcounts[[x]]) = c("gene_id", gsub(".txt", "", gsub(".*/|", "", in.files[x])))
 }
-df = df[, 2:ncol(df)]
-rownames(df) = df$V1
-df = df[, c("V1", colnames(df)[grepl("SAM", colnames(df))])]
-counts=data.table(df)
+
+counts <- Reduce(function(...) merge(..., by="gene_id"), lcounts)
 
 lib_size= log(colSums(as.matrix(counts[,2:ncol(counts),with=F])))
 
@@ -38,4 +34,3 @@ counts <- counts[which(rowSums(counts[, 2:ncol(counts), with=F])>filter),]
 write.table(counts, out.file, row.names=F)
 
 saveRDS(lib_size, lib.size.file)
-

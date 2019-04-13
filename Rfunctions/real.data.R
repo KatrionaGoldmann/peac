@@ -1383,6 +1383,13 @@ prop_het <- function(f.ase, rp.f,gene){
 #' @return data table with GT and ASE, unless !is.null(excluded), returns list with first element data table with GT and ASE and second element a data table with exluded snps.
 #' vcf_w2()
 
+# st=cis_window[["start"]]
+# end=cis_window[["end"]]
+# f.arg='"%CHROM %POS %ID %REF %ALT[ %GT]\\n"'
+# exclude="yes"
+# samples=NULL
+# qc=NULL
+
 vcf_w2 <- function(vcf,chr=NULL, st=NULL, end=NULL, samples=NULL, f.arg=NULL, qc=NULL, exclude=NULL) {
   
   body <-cl_bcfq(vcf, chr, st, end ,samples,f.arg, part="body")

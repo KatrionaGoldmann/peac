@@ -78,19 +78,19 @@ def vcf(path):
     VcfDic = dict(zip(chr, VcfFiles))
     return(VcfDic)
 
-def vcf2(path):
-    """ Creates dictionary with keys chromosome name and values vcf full name.
-    argument is the path to a file containing full names to vcf/bcf files
-    """
-    dict = pd.Series.from_csv(path, header=0).to_dict()
-    return(dict)
+# def vcf2(path):
+#     """ Creates dictionary with keys chromosome name and values vcf full name.
+#     argument is the path to a file containing full names to vcf/bcf files
+#     """
+#     dict = pd.Series.from_csv(path, header=0).to_dict()
+#     return(dict)
 
 def gene_chrom(File=config['output_dir'] + "/gene_coord.txt", sep=" "):
     """ Makes a dictionary with keys gene and values chromosome from a file with first col gene_id and second col chrom (1 to 22) """
     data=pd.read_csv(File, sep=sep)
     ## select chrom 1:22
-    data=data[data.chrom.isin([str(x) for x in range(21,22)])]
-    ids = vcf2("/home/kgoldmann/Documents/PEAC_eqtl/Data/vcf_list2.txt").keys()
+    data=data[data.chrom.isin([str(x) for x in range(4,23)])]
+    ids = vcf2(config['geno_vcf2']).keys()
     data=data[data.gene_id.isin([str(x) for x in ids])]
     keys=list(data['gene_id'])
     values=[str(x) for x in data['chrom']]
@@ -101,9 +101,19 @@ rule all_counts:
     """ Get the gene counts """
     input:
         # star index
-        config['indices'],
+        #config['indices'],
         # star
-        expand(config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()])
+        #expand("/mnt/volume1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
+        # exon_by_gene
+        #config['ebg'],
+        #config['output_dir'] + "/gene_coord.txt",
+        # total_gene_counts
+        #expand(config['output_dir'] + "/RNA_counts/{sample}.txt", sample=read_samples().keys())
+        # group_gene_counts
+        #config['output_dir'] + "/RNA_counts/groups/Genentech.txt",
+        #config['output_dir'] + "/RNA_counts/groups/Genentech_lib_size.rds"
+
+
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
@@ -111,40 +121,23 @@ rule all_genotype:
         # vcf_pca files
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # HW filter
+        # HW filter
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # ref_panel_alt files
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        # ref_panel_alt files
+        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
+        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
         # # intersect_RP_PEAC files
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
+        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
         # # intersect_PEAC_RP files
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # extract_snp_ids files
-        expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        # extract_snp_ids files
+        #expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=1:23),
         # # Deseq2_inputs files
         #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() )
-        # #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
+        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
 
-
-#         #expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
-#         # expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt" , group=group_samples().keys() ) ,
-#         # expand(config['output_dir'] + "/RNA_counts/groups/{group}_lib_size.rds" , group=group_samples().keys() )
-#         #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-
-#         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-#         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() )
-#         #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-#         # expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys()),
-#         #expand(config['output_dir'] + "/eqtl/neg_binom_gt/{group}_chr{chrom}.txt", group=group_samples().keys() , chrom=vcf(config["geno_vcf"]).keys() )
-#         # expand(config['output_dir'] + "/matqtl/output/{pcs}.{peerBSex}.txt",
-#         #        pcs=["pcs" + str(x) for x in range(1,int(config['N factors'])+1)],
-#         #        peerBSex=["peerCqn" + str(x) for x in range(1,int(config['N factors'])+1)] + ["covSexBatch"])
-#         #expand(config['output_dir'] + "/matqtl/output/pcs0.{peerBSex}.txt",
-#         #       peerBSex=["peerCqn" + str(x) for x in range(1,int(config['N factors'])+1)] + ["covSexBatch"])
-#         #
 rule star_index:
     """Create index for alignment using STAR"""
     input:
@@ -168,7 +161,7 @@ rule star:
         lambda wildcards: read_samples()[wildcards.sample][7]
         #lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()
     output:
-        config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam"
+        "/mnt/volume1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam"
     params:
         index=config['indices'],
         read="zcat"
@@ -209,15 +202,15 @@ rule total_gene_counts:
     """ Calculate total gene counts from RNA-seq BAM files"""
     input:
         config['ebg'] ,
-        lambda wildcards: [item[12] for item in read_samples().values()]
+        #lambda wildcards: [item[12] for item in read_samples().values()]
+        lambda wildcards: "/mnt/volume1/STAR/" + read_samples()[wildcards.sample][3] + "/" + wildcards.sample+ "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: config['output_dir'] + "/STAR/2/" + read_samples().keys() + "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: [item[13] for item in read_samples().values()]
     params:
        mode="Union",
        ignore_strand="TRUE"
-    #output:
-        #config['output_dir'] + "/RNA_counts/{sample}.txt"
-    #    expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
+    output:
+         config['output_dir'] + "/RNA_counts/{sample}.txt"
     script:
         #print([item[12] for item in read_samples().values()]) #[item[7] for item in read_samples().values()])
         "Rscripts/total_gene_counts.R"
@@ -236,13 +229,24 @@ rule group_gene_counts:
 
 
 rule vcf_pca:
-    """ From vcf input per chromosome removes alleles A/T, T/A, C/G or G/C to avoid switching issues when performing PCA. Because PEAC files for chr1-9 are labelled 01 t0 09"""
+    """ From vcf input per chromosome removes alleles A/T, T/A, C/G or G/C to avoid switching issues when performing PCA.
+    Because PEAC files for chr1-9 are labelled 01 to 09 need to use vcf() to read in the correct file
+    """
     input:
         lambda wildcards: vcf(config["geno_vcf"])[wildcards.chrom]
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz" ,
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi"
     run:
+        # # In PEAC the chr vals are 01 - 09 so need to change this
+        # for x in wildcards.chrom:
+        #    if int(x) <=9 :
+        #        inp = vcf(config["geno_vcf"])[x]
+        #        tmp = config['output_dir'] + "/DNA/PEAC_chr" + x + "_4PCA_all.vcf.gz"
+        #        shell("bcftools view {inp} | awk '{{gsub(/^0/,\"\"); print}}' | sed 's/##contig=<ID=0/##contig=<ID=/' | bgzip -c {tmp}  "
+        #              "mv {tmp} {inp} ; "
+        #              "tabix -p vcf {inp} "
+        #        )
         shell(
             "bcftools view {input} -e '"' REF = "A" & ALT = "T" '"'  -Ou | "
             "bcftools view -e  '"'REF = "T" & ALT = "A" '"' -Ou | "
@@ -282,7 +286,6 @@ rule ref_panel_alt:
         config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf" ,
         config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi"
     shell:
-        "bcftools view {input[0]} -Ob -o {output[0]}; "
         "head=$(bcftools view -h {input[0]} | wc -l) ; "
         "hm1=$(($head-1)) ; "
         "awk -v head=$head -v hm1=$hm1 "
@@ -293,7 +296,9 @@ rule ref_panel_alt:
         "tabix {output[0]} "
 
 rule intersect_RP_PEAC:
-    """ Extracts and write records from input[0] shared by both input[0] and input[1] using exact allele match. In this case we extract from the reference panel the variants that are present in the PEAC data"""
+    """ Extracts and write records from input[0] shared by both input[0] and input[1] using exact allele match.
+    In this case we extract from the reference panel the variants that are present in the PEAC data
+    """
     input:
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr" + wildcards.chrom + "_alt_added.bcf" ,
         lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA.vcf.gz",
@@ -302,13 +307,13 @@ rule intersect_RP_PEAC:
     output:
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz",
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi"
-
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output[0]} ; "
          "tabix {output[0]} "
 
 rule intersect_PEAC_RP:
-    """ Extracts and write records from input[0] shared by both input[0] and input[1] using exact allele match. Same as above but in reverse order, I just want to make suere files are compatible even if PEAC was imputed with this reference panel, though I dont know if the files used were the same. """
+    """ Extracts and write records from input[0] shared by both input[0] and input[1] using exact allele match.
+    Same as above but in reverse order, I just want to make suere files are compatible even if PEAC was imputed with this reference panel, though I dont know if the files used were the same. """
     input:
         lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA.vcf.gz",
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr" + wildcards.chrom + "_sub.vcf.gz" ,
@@ -420,24 +425,24 @@ rule PCs_PEER:
 # #         "Rscripts/matqtl2.R"
 # #
 # #
-# rule Deseq2_inputs:
-#     """ Prepares inputs for running eQTL using Deseq2. Saves an R list with 2 elements: 1) data table with counts for gene; 2) data table with sample genotypes coded as 0,1,2 and NA plus columns SNP information. Also saves inputs into "out" directory. Saves file to match tags to SNPs, when tag option is chosen."""
-#     input:
-#         counts=expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt", group=["Genentech"]),
-#         genecoord=config['output_dir'] + "/gene_coord.txt",
-#         vcf= lambda wildcards: vcf2(config["geno_vcf2"])[wildcards.gene]
-#     params:
-#         chrom=lambda wildcards: gene_chrom()[wildcards.gene],
-#         snps=5*10^-5,
-#         nhets=5,
-#         tag=0.9,
-#         missing=5,
-#         out=config['output_dir'] + "/deseq2/inputs"
-#     log: "logs/abc.log"
-#     output:
-#         in_deseq=config['output_dir'] + "/deseq2/inputs/{gene}.rds"
-#     script:
-#         "Rscripts/deseq2.in.R"
+rule Deseq2_inputs:
+    """ Prepares inputs for running eQTL using Deseq2. Saves an R list with 2 elements: 1) data table with counts for gene; 2) data table with sample genotypes coded as 0,1,2 and NA plus columns SNP information. Also saves inputs into "out" directory. Saves file to match tags to SNPs, when tag option is chosen."""
+    input:
+        counts=expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt", group=["Genentech"]),
+        genecoord=config['output_dir'] + "/gene_coord.txt",
+        vcf= lambda wildcards: vcf2(config["geno_vcf2"])[wildcards.gene]
+    params:
+        chrom=lambda wildcards: gene_chrom()[wildcards.gene],
+        snps=5*10^-5,
+        nhets=5,
+        tag=0.9,
+        missing=5,
+        out=config['output_dir'] + "/deseq2/inputs"
+    log: "logs/DESeq_{gene}.log"
+    output:
+        in_deseq=config['output_dir'] + "/deseq2/inputs/{gene}.rds"
+    script:
+        "Rscripts/deseq2.in.R"
 
 
 # #
