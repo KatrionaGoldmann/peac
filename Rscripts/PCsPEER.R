@@ -43,7 +43,7 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     ## select samples with expression data and make sure both datasets are in the same order
     expr <- fread(counts)
     matExp <- as.matrix(expr[, 2:ncol(expr)])
-    rownames(matExp) <- expr$V1
+    rownames(matExp) <- expr$gene_id
     meta$Batch = "GenentechBatch1"
     meta$Gender = meta$GENDER
     

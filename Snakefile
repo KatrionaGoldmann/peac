@@ -10,7 +10,7 @@ configfile: "config.yaml"
 
 def read_samples():
     """
-    Function to get names and fastq paths from a sample file specified
+    Function to get names and fastq paths from     threads: 2a sample file specified
     in the configuration.
     It works for single or paired sequencing with any number of files per sample. Input file is expected to have ID column followed by as many columns as needed to accommodate all fastq files required, use NA for samples with less files.
     For emedlab I have the following order:
@@ -79,12 +79,12 @@ def vcf(path):
     VcfDic = dict(zip(chr, VcfFiles))
     return(VcfDic)
 
-# def vcf2(path):
-#     """ Creates dictionary with keys chromosome name and values vcf full name.
-#     argument is the path to a file containing full names to vcf/bcf files
-#     """
-#     dict = pd.Series.from_csv(path, header=0).to_dict()
-#     return(dict)
+def vcf2(path):
+    """ Creates dictionary with keys chromosome name and values vcf full name.
+    argument is the path to a file containing full names to vcf/bcf files
+    """
+    dict = pd.Series.from_csv(path, header=0).to_dict()
+    return(dict)
 
 def gene_chrom(File=config['output_dir'] + "/gene_coord.txt", sep=" "):
     """ Makes a dictionary with keys gene and values chromosome from a file with first col gene_id and second col chrom (1 to 22) """
@@ -131,12 +131,20 @@ rule all_genotype:
         # intersect_RP_PEAC files
         expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
         expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
-        # # intersect_PEAC_RP files
-        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        # extract_snp_ids files
-        #expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=1:23),
-        # # Deseq2_inputs files
-        #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() )
+        # intersect_PEAC_RP files
+        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        #extract_snp_ids files
+        expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        # The gds files
+	    config['output_dir'] + "/DNA/PEAC_PCA.gds",
+        config['output_dir'] + "/DNA/RP_PCA.gds",
+	    # RP_PEAC PCAs
+        config['output_dir'] + "/DNA/RP_pcs.rds",
+        config['output_dir'] + "/DNA/RP_loads.rds",
+        # PEER factors
+        config['output_dir'] + "/matqtl/inputs/snp_location.txt",
+	    # Deseq2_inputs files
+        #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() ),
         #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
 
 rule star_index:
@@ -278,7 +286,9 @@ rule HW_filter:
 rule ref_panel_alt:
     """ Giving a bcf file for the reference panel add ALT allele, missing in current format.
     step 1 counts the number of line in bcf header (head variable).
-    step 2 from legend file create array with keys line number and values ALT; excluding header (NR>1) from legend file. Then I add the ALT to the bcf but I need to exclude the header of the bcf file. I get the number of lines in "head". Then I start filling at FNR>head and the first ALT is in FNR-head+1.
+    step 2 from legend file create array with keys line number and values ALT; excluding header (NR>1) from legend file.
+           Then I add the ALT to the bcf but I need to exclude the header of the bcf file.
+           I get the number of lines in "head". Then I start filling at FNR>head and the first ALT is in FNR-head+1.
     step 3 indexes the bcf file. I am not matching by position and reference as I had entries with same position and reference but different ALT with results in errors. I assume the legend file and bcf are in the same order, which is true, the bcf is transformed from the legend/hap/sample."""
     input:
          lambda wildcards: vcf(config["ref_bcf"])[wildcards.chrom],
@@ -292,7 +302,7 @@ rule ref_panel_alt:
         "awk -v head=$head -v hm1=$hm1 "
         " 'FNR==NR{{ if(NR>1) a[NR]=$4;next}}{{if(FNR > head) "
         " $5=a[((FNR - hm1)) ]}}1'  OFS='\t' "
-        " <(gzip -dc {input[1]}) <(bcftools view  {input[0]}) "
+        " <(gzip -dc {input[1]}) <(bcftools view -m2 -M2 -v snps {input[0]}) "
         " | bcftools view -Ob -o {output[0]}; "
         "tabix {output[0]} "
 
@@ -342,12 +352,10 @@ rule vcf_gds:
         expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["geno_vcf"]).keys())
     params:
         method="biallelic.only",
-        ##prefix=config['output_dir'] + "/DNA/"
-
+        #prefix=config['output_dir'] + "/DNA/"
     output:
         peac=config['output_dir'] + "/DNA/PEAC_PCA.gds",
         rp=config['output_dir'] + "/DNA/RP_PCA.gds"
-    threads: 2
     script:
         "Rscripts/vcf_PCA2gds.R"
 
