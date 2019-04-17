@@ -90,7 +90,7 @@ def gene_chrom(File=config['output_dir'] + "/gene_coord.txt", sep=" "):
     """ Makes a dictionary with keys gene and values chromosome from a file with first col gene_id and second col chrom (1 to 22) """
     data=pd.read_csv(File, sep=sep)
     ## select chrom 1:22
-    data=data[data.chrom.isin([str(x) for x in range(4,23)])]
+    data=data[data.chrom.isin([str(x) for x in range(10,23)])]
     ids = vcf2(config['geno_vcf2']).keys()
     data=data[data.gene_id.isin([str(x) for x in ids])]
     keys=list(data['gene_id'])
@@ -144,7 +144,7 @@ rule all_genotype:
         # PEER factors
         config['output_dir'] + "/matqtl/inputs/snp_location.txt",
 	    # Deseq2_inputs files
-        #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() ),
+        expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() ),
         #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
 
 rule star_index:
