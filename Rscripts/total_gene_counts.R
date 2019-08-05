@@ -12,17 +12,19 @@ register(MulticoreParam(16))
 
 # get args from snakemake
 ebg <-  snakemake@input[[1]]
-in.files = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/STAR/2", recursive = TRUE, full.names = TRUE) #snakemake@input[[2]]
-in.files = in.files[grepl("Aligned.sortedByCoord.out.bam", in.files)]
+#ebg = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/b37_ebg.rds"
+in.files = snakemake@input[[2]]
+#in.files = list.files("/media/d1/STAR/Paired", recursive = TRUE, full.names = TRUE) 
+#in.files = in.files[grepl("Aligned.sortedByCoord.out.bam", in.files)]
 #out.files = snakemake@output
-mode = snakemake@params[['mode']]
-ignore.strand = as.logical(snakemake@params[['ignore_strand']])
+mode = snakemake@params[['mode']] # "Union"
+ignore.strand = as.logical(snakemake@params[['ignore_strand']]) # TRUE
 
 ebg <- readRDS(ebg)
 
-for(input in in.files){
+fun.runner = function(input){
   print(input)
-  output = paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", sapply(strsplit(input, "/"), '[[', 9), ".txt", sep="")
+  output = paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", sapply(strsplit(input, "/"), '[[', 6), ".txt", sep="")
   path <-  dirname(input)
   bam.name <- basename(input)
   
@@ -37,10 +39,13 @@ for(input in in.files){
   se <- summarizeOverlaps(features=ebg, reads=paste(path, bam.name, sep="/"), mode=mode, ignore.strand=ignore.strand)
   
   counts = assay(se)
-  colnames(counts) = sapply(strsplit(input, '/'), '[[', 9)
+  colnames(counts) = sapply(strsplit(input, '/'), '[[', 6)
   #counts <- counts_sample_sub(ebg,path,bam.name, mode,singleEnd, ignore.strand)
   
   #names(counts)[2:ncol(counts)] <- sample
   
   write.table(counts, file=output, row.names=T)
 }
+
+set.seed( 123, kind = "L'Ecuyer-CMRG" )
+mclapply(in.files, fun.runner(x), mc.cores=16)
