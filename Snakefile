@@ -76,6 +76,7 @@ def vcf(path):
     VcfFiles = open(path).read().splitlines()
     chr = [x.split("chr")[1].split(".")[0] for x in VcfFiles]
     VcfDic = dict(zip(chr, VcfFiles))
+    print(VcfDic)
     return(VcfDic)
 
 def vcf2(path):
@@ -103,9 +104,9 @@ rule all_counts:
         # star index
         #config['indices'],
         # star
-        #expand(config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
+        #expand("/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
         # exon_by_gene
-        #config['ebg']
+        #config['ebg'],
         # total_gene_counts
         expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
 
@@ -113,22 +114,22 @@ rule all_counts:
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
     input:
-        # vcf_pca files
+        # # vcf_pca files
         expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # HW filter
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # ref_panel_alt files
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
-        # # intersect_RP_PEAC files
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
-        # # intersect_PEAC_RP files
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # extract_snp_ids files
-        expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        # # # HW filter
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        # # # ref_panel_alt files
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        # # # intersect_RP_PEAC files
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
+        # # # intersect_PEAC_RP files
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        # # # extract_snp_ids files
+        # expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
         # # Deseq2_inputs files
         #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() )
         # #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
@@ -170,10 +171,10 @@ rule star_index:
 rule star:
     """ Map paired or sigle end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
     input:
-        lambda wildcards: read_samples()[wildcards.sample][7]
+        lambda wildcards: read_samples()[wildcards.sample][-1]
         #lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()
     output:
-        config['output_dir'] + "/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam"
+        "/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam"
     params:
         index=config['indices'],
         read="zcat"
@@ -215,7 +216,7 @@ rule total_gene_counts:
     input:
         config['ebg'] ,
         #lambda wildcards: [item[12] for item in read_samples().values()]
-        lambda wildcards: config['output_dir'] + "/STAR/" + read_samples()[wildcards.sample][2] + "/" + wildcards.sample+ "/Aligned.sortedByCoord.out.bam"
+        lambda wildcards: "/media/d1/STAR/Paired/" + wildcards.sample+ "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: config['output_dir'] + "/STAR/2/" + read_samples().keys() + "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: [item[13] for item in read_samples().values()]
     params:
@@ -225,7 +226,7 @@ rule total_gene_counts:
         config['output_dir'] + "/RNA_counts/{sample}.txt"
     script:
         #print([item[12] for item in read_samples().values()]) #[item[7] for item in read_samples().values()])
-        "Rscripts/total_gene_counts.R"
+        "Rscripts/total_gene_counts2.R"
 
 rule group_gene_counts:
     """ Group total gene counts by tissue, timepoint, diagnosis and batch and make matrix with log(library size)"""

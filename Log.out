@@ -1,0 +1,560 @@
+STAR version=2.7.1a
+STAR compilation time,server,dir=Mon 29 Jul 10:15:49 BST 2019 :/home/kgoldmann/Applications/STAR/source
+##### DEFAULT parameters:
+versionGenome                     2.7.1a
+parametersFiles                   -   
+sysShell                          -
+runMode                           alignReads
+runThreadN                        1
+runDirPerm                        User_RWX
+runRNGseed                        777
+genomeDir                         ./GenomeDir/
+genomeLoad                        NoSharedMemory
+genomeFastaFiles                  -   
+genomeChainFiles                  -   
+genomeSAindexNbases               14
+genomeChrBinNbits                 18
+genomeSAsparseD                   1
+genomeSuffixLengthMax             18446744073709551615
+genomeFileSizes                   0   
+genomeConsensusFile               -
+readFilesType                     Fastx   
+readFilesIn                       Read1   Read2   
+readFilesPrefix                   -
+readFilesCommand                  -   
+readMatesLengthsIn                NotEqual
+readMapNumber                     18446744073709551615
+readNameSeparator                 /   
+inputBAMfile                      -
+bamRemoveDuplicatesType           -
+bamRemoveDuplicatesMate2basesN    0
+limitGenomeGenerateRAM            31000000000
+limitIObufferSize                 150000000
+limitOutSAMoneReadBytes           100000
+limitOutSJcollapsed               1000000
+limitOutSJoneRead                 1000
+limitBAMsortRAM                   0
+limitSjdbInsertNsj                1000000
+limitNreadsSoft                   18446744073709551615
+outFileNamePrefix                 ./
+outTmpDir                         -
+outTmpKeep                        None
+outStd                            Log
+outReadsUnmapped                  None
+outQSconversionAdd                0
+outMultimapperOrder               Old_2.4
+outSAMtype                        SAM   
+outSAMmode                        Full
+outSAMstrandField                 None
+outSAMattributes                  Standard   
+outSAMunmapped                    None   
+outSAMorder                       Paired
+outSAMprimaryFlag                 OneBestScore
+outSAMreadID                      Standard
+outSAMmapqUnique                  255
+outSAMflagOR                      0
+outSAMflagAND                     65535
+outSAMattrRGline                  -   
+outSAMheaderHD                    -   
+outSAMheaderPG                    -   
+outSAMheaderCommentFile           -
+outBAMcompression                 1
+outBAMsortingThreadN              0
+outBAMsortingBinsN                50
+outSAMfilter                      None   
+outSAMmultNmax                    18446744073709551615
+outSAMattrIHstart                 1
+outSAMtlen                        1
+outSJfilterReads                  All
+outSJfilterCountUniqueMin         3   1   1   1   
+outSJfilterCountTotalMin          3   1   1   1   
+outSJfilterOverhangMin            30   12   12   12   
+outSJfilterDistToOtherSJmin       10   0   5   10   
+outSJfilterIntronMaxVsReadN       50000   100000   200000   
+outWigType                        None   
+outWigStrand                      Stranded   
+outWigReferencesPrefix            -
+outWigNorm                        RPM   
+outFilterType                     Normal
+outFilterMultimapNmax             10
+outFilterMultimapScoreRange       1
+outFilterScoreMin                 0
+outFilterScoreMinOverLread        0.66
+outFilterMatchNmin                0
+outFilterMatchNminOverLread       0.66
+outFilterMismatchNmax             10
+outFilterMismatchNoverLmax        0.3
+outFilterMismatchNoverReadLmax    1
+outFilterIntronMotifs             None
+outFilterIntronStrands            RemoveInconsistentStrands
+clip5pNbases                      0   
+clip3pNbases                      0   
+clip3pAfterAdapterNbases          0   
+clip3pAdapterSeq                  -   
+clip3pAdapterMMp                  0.1   
+winBinNbits                       16
+winAnchorDistNbins                9
+winFlankNbins                     4
+winAnchorMultimapNmax             50
+winReadCoverageRelativeMin        0.5
+winReadCoverageBasesMin           0
+scoreGap                          0
+scoreGapNoncan                    -8
+scoreGapGCAG                      -4
+scoreGapATAC                      -8
+scoreStitchSJshift                1
+scoreGenomicLengthLog2scale       -0.25
+scoreDelBase                      -2
+scoreDelOpen                      -2
+scoreInsOpen                      -2
+scoreInsBase                      -2
+seedSearchLmax                    0
+seedSearchStartLmax               50
+seedSearchStartLmaxOverLread      1
+seedPerReadNmax                   1000
+seedPerWindowNmax                 50
+seedNoneLociPerWindow             10
+seedMultimapNmax                  10000
+seedSplitMin                      12
+alignIntronMin                    21
+alignIntronMax                    0
+alignMatesGapMax                  0
+alignTranscriptsPerReadNmax       10000
+alignSJoverhangMin                5
+alignSJDBoverhangMin              3
+alignSJstitchMismatchNmax         0   -1   0   0   
+alignSplicedMateMapLmin           0
+alignSplicedMateMapLminOverLmate    0.66
+alignWindowsPerReadNmax           10000
+alignTranscriptsPerWindowNmax     100
+alignEndsType                     Local
+alignSoftClipAtReferenceEnds      Yes
+alignEndsProtrude                 0   ConcordantPair   
+alignInsertionFlush               None
+peOverlapNbasesMin                0
+peOverlapMMp                      0.01
+chimSegmentMin                    0
+chimScoreMin                      0
+chimScoreDropMax                  20
+chimScoreSeparation               10
+chimScoreJunctionNonGTAG          -1
+chimMainSegmentMultNmax           10
+chimJunctionOverhangMin           20
+chimOutType                       Junctions   
+chimFilter                        banGenomicN   
+chimSegmentReadGapMax             0
+chimMultimapNmax                  0
+chimMultimapScoreRange            1
+chimNonchimScoreDropMin           20
+chimOutJunctionFormat             0   
+sjdbFileChrStartEnd               -   
+sjdbGTFfile                       -
+sjdbGTFchrPrefix                  -
+sjdbGTFfeatureExon                exon
+sjdbGTFtagExonParentTranscript    transcript_id
+sjdbGTFtagExonParentGene          gene_id
+sjdbGTFtagExonParentGeneName      gene_name   
+sjdbGTFtagExonParentGeneType      gene_type   gene_biotype   
+sjdbOverhang                      100
+sjdbScore                         2
+sjdbInsertSave                    Basic
+varVCFfile                        -
+waspOutputMode                    None
+quantMode                         -   
+quantTranscriptomeBAMcompression    1
+quantTranscriptomeBan             IndelSoftclipSingleend
+twopass1readsN                    18446744073709551615
+twopassMode                       None
+soloType                          None
+soloCBstart                       1
+soloUMIstart                      17
+soloCBlen                         16
+soloUMIlen                        10
+soloBarcodeReadLength             1
+soloCBwhitelist                   -
+soloStrand                        Forward
+soloOutFileNames                  Solo.out/   genes.tsv   barcodes.tsv   matrix.mtx   matrixSJ.mtx   matrixGeneFull.mtx   
+soloFeatures                      Gene   
+soloUMIdedup                      1MM_All   
+##### Command Line:
+/home/kgoldmann/Applications/STAR/source/STAR --runThreadN 16 --runMode genomeGenerate --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf --sjdbOverhang 100
+##### Initial USER parameters from Command Line:
+###### All USER parameters from Command Line:
+runThreadN                    16     ~RE-DEFINED
+runMode                       genomeGenerate     ~RE-DEFINED
+genomeDir                     /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices     ~RE-DEFINED
+genomeFastaFiles              /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa        ~RE-DEFINED
+sjdbGTFfile                   /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf     ~RE-DEFINED
+sjdbOverhang                  100     ~RE-DEFINED
+##### Finished reading parameters from all sources
+
+##### Final user re-defined parameters-----------------:
+runMode                           genomeGenerate
+runThreadN                        16
+genomeDir                         /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+genomeFastaFiles                  /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa   
+sjdbGTFfile                       /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf
+sjdbOverhang                      100
+
+-------------------------------
+##### Final effective command line:
+/home/kgoldmann/Applications/STAR/source/STAR   --runMode genomeGenerate   --runThreadN 16   --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices   --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa      --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf   --sjdbOverhang 100
+
+##### Final parameters after user input--------------------------------:
+versionGenome                     2.7.1a
+parametersFiles                   -   
+sysShell                          -
+runMode                           genomeGenerate
+runThreadN                        16
+runDirPerm                        User_RWX
+runRNGseed                        777
+genomeDir                         /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+genomeLoad                        NoSharedMemory
+genomeFastaFiles                  /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa   
+genomeChainFiles                  -   
+genomeSAindexNbases               14
+genomeChrBinNbits                 18
+genomeSAsparseD                   1
+genomeSuffixLengthMax             18446744073709551615
+genomeFileSizes                   0   
+genomeConsensusFile               -
+readFilesType                     Fastx   
+readFilesIn                       Read1   Read2   
+readFilesPrefix                   -
+readFilesCommand                  -   
+readMatesLengthsIn                NotEqual
+readMapNumber                     18446744073709551615
+readNameSeparator                 /   
+inputBAMfile                      -
+bamRemoveDuplicatesType           -
+bamRemoveDuplicatesMate2basesN    0
+limitGenomeGenerateRAM            31000000000
+limitIObufferSize                 150000000
+limitOutSAMoneReadBytes           100000
+limitOutSJcollapsed               1000000
+limitOutSJoneRead                 1000
+limitBAMsortRAM                   0
+limitSjdbInsertNsj                1000000
+limitNreadsSoft                   18446744073709551615
+outFileNamePrefix                 ./
+outTmpDir                         -
+outTmpKeep                        None
+outStd                            Log
+outReadsUnmapped                  None
+outQSconversionAdd                0
+outMultimapperOrder               Old_2.4
+outSAMtype                        SAM   
+outSAMmode                        Full
+outSAMstrandField                 None
+outSAMattributes                  Standard   
+outSAMunmapped                    None   
+outSAMorder                       Paired
+outSAMprimaryFlag                 OneBestScore
+outSAMreadID                      Standard
+outSAMmapqUnique                  255
+outSAMflagOR                      0
+outSAMflagAND                     65535
+outSAMattrRGline                  -   
+outSAMheaderHD                    -   
+outSAMheaderPG                    -   
+outSAMheaderCommentFile           -
+outBAMcompression                 1
+outBAMsortingThreadN              0
+outBAMsortingBinsN                50
+outSAMfilter                      None   
+outSAMmultNmax                    18446744073709551615
+outSAMattrIHstart                 1
+outSAMtlen                        1
+outSJfilterReads                  All
+outSJfilterCountUniqueMin         3   1   1   1   
+outSJfilterCountTotalMin          3   1   1   1   
+outSJfilterOverhangMin            30   12   12   12   
+outSJfilterDistToOtherSJmin       10   0   5   10   
+outSJfilterIntronMaxVsReadN       50000   100000   200000   
+outWigType                        None   
+outWigStrand                      Stranded   
+outWigReferencesPrefix            -
+outWigNorm                        RPM   
+outFilterType                     Normal
+outFilterMultimapNmax             10
+outFilterMultimapScoreRange       1
+outFilterScoreMin                 0
+outFilterScoreMinOverLread        0.66
+outFilterMatchNmin                0
+outFilterMatchNminOverLread       0.66
+outFilterMismatchNmax             10
+outFilterMismatchNoverLmax        0.3
+outFilterMismatchNoverReadLmax    1
+outFilterIntronMotifs             None
+outFilterIntronStrands            RemoveInconsistentStrands
+clip5pNbases                      0   
+clip3pNbases                      0   
+clip3pAfterAdapterNbases          0   
+clip3pAdapterSeq                  -   
+clip3pAdapterMMp                  0.1   
+winBinNbits                       16
+winAnchorDistNbins                9
+winFlankNbins                     4
+winAnchorMultimapNmax             50
+winReadCoverageRelativeMin        0.5
+winReadCoverageBasesMin           0
+scoreGap                          0
+scoreGapNoncan                    -8
+scoreGapGCAG                      -4
+scoreGapATAC                      -8
+scoreStitchSJshift                1
+scoreGenomicLengthLog2scale       -0.25
+scoreDelBase                      -2
+scoreDelOpen                      -2
+scoreInsOpen                      -2
+scoreInsBase                      -2
+seedSearchLmax                    0
+seedSearchStartLmax               50
+seedSearchStartLmaxOverLread      1
+seedPerReadNmax                   1000
+seedPerWindowNmax                 50
+seedNoneLociPerWindow             10
+seedMultimapNmax                  10000
+seedSplitMin                      12
+alignIntronMin                    21
+alignIntronMax                    0
+alignMatesGapMax                  0
+alignTranscriptsPerReadNmax       10000
+alignSJoverhangMin                5
+alignSJDBoverhangMin              3
+alignSJstitchMismatchNmax         0   -1   0   0   
+alignSplicedMateMapLmin           0
+alignSplicedMateMapLminOverLmate    0.66
+alignWindowsPerReadNmax           10000
+alignTranscriptsPerWindowNmax     100
+alignEndsType                     Local
+alignSoftClipAtReferenceEnds      Yes
+alignEndsProtrude                 0   ConcordantPair   
+alignInsertionFlush               None
+peOverlapNbasesMin                0
+peOverlapMMp                      0.01
+chimSegmentMin                    0
+chimScoreMin                      0
+chimScoreDropMax                  20
+chimScoreSeparation               10
+chimScoreJunctionNonGTAG          -1
+chimMainSegmentMultNmax           10
+chimJunctionOverhangMin           20
+chimOutType                       Junctions   
+chimFilter                        banGenomicN   
+chimSegmentReadGapMax             0
+chimMultimapNmax                  0
+chimMultimapScoreRange            1
+chimNonchimScoreDropMin           20
+chimOutJunctionFormat             0   
+sjdbFileChrStartEnd               -   
+sjdbGTFfile                       /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf
+sjdbGTFchrPrefix                  -
+sjdbGTFfeatureExon                exon
+sjdbGTFtagExonParentTranscript    transcript_id
+sjdbGTFtagExonParentGene          gene_id
+sjdbGTFtagExonParentGeneName      gene_name   
+sjdbGTFtagExonParentGeneType      gene_type   gene_biotype   
+sjdbOverhang                      100
+sjdbScore                         2
+sjdbInsertSave                    Basic
+varVCFfile                        -
+waspOutputMode                    None
+quantMode                         -   
+quantTranscriptomeBAMcompression    1
+quantTranscriptomeBan             IndelSoftclipSingleend
+twopass1readsN                    18446744073709551615
+twopassMode                       None
+soloType                          None
+soloCBstart                       1
+soloUMIstart                      17
+soloCBlen                         16
+soloUMIlen                        10
+soloBarcodeReadLength             1
+soloCBwhitelist                   -
+soloStrand                        Forward
+soloOutFileNames                  Solo.out/   genes.tsv   barcodes.tsv   matrix.mtx   matrixSJ.mtx   matrixGeneFull.mtx   
+soloFeatures                      Gene   
+soloUMIdedup                      1MM_All   
+----------------------------------------
+
+Finished loading and checking parameters
+Jul 29 13:02:57 ... starting to generate Genome files
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 0  "1" chrStart: 0
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 1  "10" chrStart: 249298944
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 2  "11" chrStart: 385089536
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 3  "12" chrStart: 520355840
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 4  "13" chrStart: 654311424
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 5  "14" chrStart: 769654784
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 6  "15" chrStart: 877133824
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 7  "16" chrStart: 979894272
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 8  "17" chrStart: 1070333952
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 9  "18" chrStart: 1151598592
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 10  "19" chrStart: 1229717504
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 11  "2" chrStart: 1288962048
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 12  "20" chrStart: 1532231680
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 13  "21" chrStart: 1595408384
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 14  "22" chrStart: 1643642880
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 15  "3" chrStart: 1695023104
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 16  "4" chrStart: 1893203968
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 17  "5" chrStart: 2084569088
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 18  "6" chrStart: 2265710592
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 19  "7" chrStart: 2436890624
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 20  "8" chrStart: 2596274176
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 21  "9" chrStart: 2742812672
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 22  "MT" chrStart: 2884108288
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 23  "X" chrStart: 2884370432
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 24  "Y" chrStart: 3039821824
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 25  "GL000192.1" chrStart: 3099328512
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 26  "GL000225.1" chrStart: 3100114944
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 27  "GL000194.1" chrStart: 3100377088
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 28  "GL000193.1" chrStart: 3100639232
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 29  "GL000200.1" chrStart: 3100901376
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 30  "GL000222.1" chrStart: 3101163520
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 31  "GL000212.1" chrStart: 3101425664
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 32  "GL000195.1" chrStart: 3101687808
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 33  "GL000223.1" chrStart: 3101949952
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 34  "GL000224.1" chrStart: 3102212096
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 35  "GL000219.1" chrStart: 3102474240
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 36  "GL000205.1" chrStart: 3102736384
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 37  "GL000215.1" chrStart: 3102998528
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 38  "GL000216.1" chrStart: 3103260672
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 39  "GL000217.1" chrStart: 3103522816
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 40  "GL000199.1" chrStart: 3103784960
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 41  "GL000211.1" chrStart: 3104047104
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 42  "GL000213.1" chrStart: 3104309248
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 43  "GL000220.1" chrStart: 3104571392
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 44  "GL000218.1" chrStart: 3104833536
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 45  "GL000209.1" chrStart: 3105095680
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 46  "GL000221.1" chrStart: 3105357824
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 47  "GL000214.1" chrStart: 3105619968
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 48  "GL000228.1" chrStart: 3105882112
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 49  "GL000227.1" chrStart: 3106144256
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 50  "GL000191.1" chrStart: 3106406400
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 51  "GL000208.1" chrStart: 3106668544
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 52  "GL000198.1" chrStart: 3106930688
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 53  "GL000204.1" chrStart: 3107192832
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 54  "GL000233.1" chrStart: 3107454976
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 55  "GL000237.1" chrStart: 3107717120
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 56  "GL000230.1" chrStart: 3107979264
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 57  "GL000242.1" chrStart: 3108241408
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 58  "GL000243.1" chrStart: 3108503552
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 59  "GL000241.1" chrStart: 3108765696
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 60  "GL000236.1" chrStart: 3109027840
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 61  "GL000240.1" chrStart: 3109289984
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 62  "GL000206.1" chrStart: 3109552128
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 63  "GL000232.1" chrStart: 3109814272
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 64  "GL000234.1" chrStart: 3110076416
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 65  "GL000202.1" chrStart: 3110338560
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 66  "GL000238.1" chrStart: 3110600704
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 67  "GL000244.1" chrStart: 3110862848
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 68  "GL000248.1" chrStart: 3111124992
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 69  "GL000196.1" chrStart: 3111387136
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 70  "GL000249.1" chrStart: 3111649280
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 71  "GL000246.1" chrStart: 3111911424
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 72  "GL000203.1" chrStart: 3112173568
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 73  "GL000197.1" chrStart: 3112435712
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 74  "GL000245.1" chrStart: 3112697856
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 75  "GL000247.1" chrStart: 3112960000
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 76  "GL000201.1" chrStart: 3113222144
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 77  "GL000235.1" chrStart: 3113484288
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 78  "GL000239.1" chrStart: 3113746432
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 79  "GL000210.1" chrStart: 3114008576
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 80  "GL000231.1" chrStart: 3114270720
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 81  "GL000229.1" chrStart: 3114532864
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 82  "GL000226.1" chrStart: 3114795008
+/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 83  "GL000207.1" chrStart: 3115057152
+Estimated genome size=3316319296   3115319296   201000000
+GstrandBit=32
+Number of SA indices: 5729570440
+Jul 29 13:03:37 ... starting to sort Suffix Array. This may take a long time...
+Number of chunks: 56;   chunks size limit: 928850296 bytes
+Jul 29 13:03:48 ... sorting Suffix Array chunks and saving them to disk...
+Writing 589232424 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_1 ; empty space on disk = 461961183232 bytes ... done
+Writing 709671192 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_0 ; empty space on disk = 461371949056 bytes ... done
+Writing 704784464 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_13 ; empty space on disk = 460662276096 bytes ... done
+Writing 754457528 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_4 ; empty space on disk = 459957489664 bytes ... done
+Writing 762308056 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_7 ; empty space on disk = 459203031040 bytes ... done
+Writing 787010712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_8 ; empty space on disk = 458440720384 bytes ... done
+Writing 902943416 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_3 ; empty space on disk = 457653686272 bytes ... done
+Writing 840972152 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_12 ; empty space on disk = 456750739456 bytes ... done
+Writing 916837392 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_2 ; empty space on disk = 455909765120 bytes ... done
+Writing 869565448 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_5 ; empty space on disk = 454992924672 bytes ... done
+Writing 864362664 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_6 ; empty space on disk = 454123356160 bytes ... done
+Writing 821748840 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_14 ; empty space on disk = 453258989568 bytes ...Writing 882162712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_11 ; empty space on disk = 452999028736 bytes ... done
+ done
+Writing 876661832 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_9 ; empty space on disk = 451555065856 bytes ... done
+Writing 873717184 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_10 ; empty space on disk = 450678390784 bytes ... done
+Writing 925395744 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_15 ; empty space on disk = 449804660736 bytes ... done
+Writing 795739456 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_16 ; empty space on disk = 448879251456 bytes ... done
+Writing 792316520 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_17 ; empty space on disk = 448083509248 bytes ... done
+Writing 691021856 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_25 ; empty space on disk = 447291187200 bytes ... done
+Writing 808685040 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_19 ; empty space on disk = 446600155136 bytes ... done
+Writing 878093224 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_20 ; empty space on disk = 445791469568 bytes ... done
+Writing 841385088 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_23 ; empty space on disk = 444913373184 bytes ... done
+Writing 881602960 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_21 ; empty space on disk = 444071985152 bytes ... done
+Writing 904131664 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_18 ; empty space on disk = 443190374400 bytes ... done
+Writing 907127848 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_22 ; empty space on disk = 442286235648 bytes ... done
+Writing 871753952 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_27 ; empty space on disk = 441379090432 bytes ...Writing 857710400 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_28 ; empty space on disk = 440789889024 bytes ... done
+ done
+Writing 926545112 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_24 ; empty space on disk = 439649624064 bytes ... done
+Writing 879674552 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_26 ; empty space on disk = 438723076096 bytes ... done
+Writing 914733352 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_30 ; empty space on disk = 437843398656 bytes ... done
+Writing 908998912 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_29 ; empty space on disk = 436928643072 bytes ... done
+Writing 926170208 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_31 ; empty space on disk = 436019642368 bytes ... done
+Writing 726237104 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_32 ; empty space on disk = 435093454848 bytes ... done
+Writing 890547712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_33 ; empty space on disk = 434367213568 bytes ... done
+Writing 603071712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_41 ; empty space on disk = 433476665344 bytes ... done
+Writing 789432664 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_39 ; empty space on disk = 432873586688 bytes ... done
+Writing 767532144 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_38 ; empty space on disk = 432084152320 bytes ... done
+Writing 764110768 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_40 ; empty space on disk = 431316619264 bytes ... done
+Writing 901780528 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_36 ; empty space on disk = 430552506368 bytes ... done
+Writing 831375832 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_34 ; empty space on disk = 429650722816 bytes ... done
+Writing 769298384 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_42 ; empty space on disk = 428819337216 bytes ...Writing 800893488 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_44 ; empty space on disk = 428595392512 bytes ... done
+ done
+Writing 909833968 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_35 ; empty space on disk = 427249131520 bytes ... done
+Writing 908074824 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_37 ; empty space on disk = 426339295232 bytes ... done
+Writing 857788888 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_45 ; empty space on disk = 425431207936 bytes ...Writing 841874496 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_47 ; empty space on disk = 425380982784 bytes ... done
+ done
+Writing 923490576 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_43 ; empty space on disk = 423731531776 bytes ... done
+Writing 837377952 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_46 ; empty space on disk = 422808039424 bytes ... done
+Writing 822575272 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_48 ; empty space on disk = 421970653184 bytes ... done
+Writing 333180320 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_54 ; empty space on disk = 421148065792 bytes ... done
+Writing 841768008 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_49 ; empty space on disk = 420814884864 bytes ... done
+Writing 648187912 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_50 ; empty space on disk = 419973115904 bytes ... done
+Writing 709672768 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_55 ; empty space on disk = 419324919808 bytes ... done
+Writing 718610336 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_53 ; empty space on disk = 418615246848 bytes ... done
+Writing 868375672 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_52 ; empty space on disk = 417896632320 bytes ... done
+Writing 903950288 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_51 ; empty space on disk = 417028251648 bytes ... done
+Jul 29 13:13:38 ... loading chunks from disk, packing SA...
+Jul 29 13:14:24 ... finished generating suffix array
+Jul 29 13:14:24 ... generating Suffix Array index
+Jul 29 13:17:25 ... completed Suffix Array index
+Jul 29 13:17:25 ..... processing annotations GTF
+Processing pGe.sjdbGTFfile=/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf, found:
+		196501 transcripts
+		1195764 exons (non-collapsed)
+		344569 collapsed junctions
+Jul 29 13:17:33 ..... finished GTF processing
+Jul 29 13:17:33   Loaded database junctions from the GTF file: /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf: 344569 total junctions
+
+Jul 29 13:17:33   Finished preparing junctions
+Jul 29 13:17:33 ..... inserting junctions into the genome indices
+Jul 29 13:18:08   Finished SA search: number of new junctions=344496, old junctions=0
+Jul 29 13:18:42   Finished sorting SA indicesL nInd=137798232
+Genome size with junctions=3184562992  3115319296   69243696
+GstrandBit1=32   GstrandBit=32
+Jul 29 13:19:31   Finished inserting junction indices
+Jul 29 13:19:49   Finished SAi
+Jul 29 13:19:49 ..... finished inserting junctions into genome
+Jul 29 13:19:49 ... writing Genome to disk ...
+Writing 3184562992 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/Genome ; empty space on disk = 461858840576 bytes ... done
+SA size in bytes: 24202895775
+Jul 29 13:19:51 ... writing Suffix Array to disk ...
+Writing 24202895775 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA ; empty space on disk = 458674274304 bytes ... done
+Jul 29 13:20:20 ... writing SAindex to disk
+Writing 8 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SAindex ; empty space on disk = 434471366656 bytes ... done
+Writing 120 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SAindex ; empty space on disk = 434471366656 bytes ... done
+Writing 1565873491 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SAindex ; empty space on disk = 434471366656 bytes ... done
+Jul 29 13:20:24 ..... finished successfully
+DONE: Genome generation, EXITING

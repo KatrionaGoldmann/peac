@@ -14,18 +14,20 @@
     ##"py2" : "PATH=$HOME/anaconda2/bin:$PATH; python ",
 
     # directory containing scripts
-    "scripts_dir" : "/home/kgoldmann/Documents/Git/peac/",
+    "scripts_dir" : "/home/kgoldmann/Documents/peac/",
 
     # directory to write all output data files to
     "output_dir" :  "/home/kgoldmann/Documents/PEAC_eqtl/Outputs",
 
     # path to STAR
-    "STAR" : "/home/kgoldmann/Applications/STAR-2.7.0d/source/STAR",
+    "STAR" : "/home/kgoldmann/Applications/STAR/source/STAR",
 
     # path to file to make STAR indices
-    "ref_fasta" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.dna.primary_assembly.fa",
+    # ftp://ftp.ensembl.org/pub/grch37/current/fasta/homo_sapiens/dna/Homo_sapiens.GRCh37.dna.primary_assembly.fa.gz
+    "ref_fasta" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa",
 
-    "ref_gtf" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Homo_sapiens.GRCh37.87.gtf",
+    # ftp://ftp.ensembl.org/pub/grch37/current/gtf/homo_sapiens/Homo_sapiens.GRCh37.87.gtf.gz
+    "ref_gtf" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf",
     "indices" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices",
 
     # path to save file for exon by gene rds object to use for counting reads, or path to file if already made.
@@ -39,7 +41,7 @@
     # sample file containing sample names and paths to fastq files
     "sample_file" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/RA.csv",
 
-    "samples": "/home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz",
+    #"samples": "/home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz",
 
     # sample file with metadata for peac study
     "sample_meta": "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/PEAC_eth.txt",
@@ -49,10 +51,12 @@
     "geno_vcf2" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/vcf_list2.txt",
 
     # file containing names and paths to reference panel bcf.gz
+    # ftp://ftp.1000genomes.ebi.ac.uk/vol1/ftp/release/20130502/supporting/bcf_files/
     "ref_bcf" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/RP/refPanel_list.txt",
 
     # file containing names and paths to reference panel legend.gz
-    "ref_legend" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/RP/refPanel_leg_list.txt",
+    # https://mathgen.stats.ox.ac.uk/impute/ALL_1000G_phase1integrated_v3_annotated_legends.tgz
+    "ref_legend" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/refPanel_leg_list.txt",
 
     # total number of PCs and PEER factors to use in Matrixqtl
     "N factors" : 10
