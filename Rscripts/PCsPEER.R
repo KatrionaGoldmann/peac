@@ -199,7 +199,7 @@ pcs.peer(gds=snakemake@input[['peacGds']],
          )
 
 # counts="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt"
-# meta="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/PEAC_eth.txt"
+# meta="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt"
 # gds='/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds'
 # snpL= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_loads.rds"
 # gene.coord="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt"

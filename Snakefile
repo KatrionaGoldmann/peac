@@ -76,7 +76,6 @@ def vcf(path):
     VcfFiles = open(path).read().splitlines()
     chr = [x.split("chr")[1].split(".")[0] for x in VcfFiles]
     VcfDic = dict(zip(chr, VcfFiles))
-    print(VcfDic)
     return(VcfDic)
 
 def vcf2(path):
@@ -102,40 +101,56 @@ rule all_counts:
     """ Get the gene counts """
     input:
         # star index
-        #config['indices'],
+        config['indices'],
         # star
-        #expand("/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
+        expand("/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
         # exon_by_gene
-        #config['ebg'],
+        config['ebg'],
         # total_gene_counts
-        expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys())
+        expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys()),
+        #group_gene_counts
+        #config['output_dir'] + "/RNA_counts/groups/Genentech.txt",
 
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
     input:
         # # vcf_pca files
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        # # # HW filter
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["geno_vcf"]).keys()),
+        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        #
+        ### # # HW filter
+        ### expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
+        #
+        ### expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        #
         # # # ref_panel_alt files
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
+        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        #
         # # # intersect_RP_PEAC files
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
+        #
         # # # intersect_PEAC_RP files
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        #
         # # # extract_snp_ids files
-        # expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        #
+        #vcf_gds
+        expand(config['output_dir'] + "/DNA/PEAC_PCA.gds"),
+        expand(config['output_dir'] + "/DNA/RP_PCA.gds"),
+        #
+        #RP_PCA
+        config['output_dir'] + "/DNA/RP_pcs.rds",
+        config['output_dir'] + "/DNA/RP_loads.rds",
+        #PCs_PEER
+        # snpLoc=config['output_dir'] + "/matqtl/inputs/snp_location.txt",
         # # Deseq2_inputs files
         #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() )
         # #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
-
-
-#         #expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
+        ##expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
 #         # expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt" , group=group_samples().keys() ) ,
 #         # expand(config['output_dir'] + "/RNA_counts/groups/{group}_lib_size.rds" , group=group_samples().keys() )
 #         #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
@@ -302,13 +317,12 @@ rule intersect_RP_PEAC:
     """ Extracts and write records from input[0] shared by both input[0] and input[1] using exact allele match. In this case we extract from the reference panel the variants that are present in the PEAC data"""
     input:
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr" + wildcards.chrom + "_alt_added.bcf" ,
-        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA.vcf.gz",
+        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA_all.vcf.gz",
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr" + wildcards.chrom + "_alt_added.bcf.csi",
-        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA.vcf.gz.tbi"
+        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA_all.vcf.gz.tbi"
     output:
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz",
         config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi"
-
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output[0]} ; "
          "tabix {output[0]} "
@@ -316,13 +330,12 @@ rule intersect_RP_PEAC:
 rule intersect_PEAC_RP:
     """ Extracts and write records from input[0] shared by both input[0] and input[1] using exact allele match. Same as above but in reverse order, I just want to make suere files are compatible even if PEAC was imputed with this reference panel, though I dont know if the files used were the same. """
     input:
-        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA.vcf.gz",
+        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA_all.vcf.gz",
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr" + wildcards.chrom + "_sub.vcf.gz" ,
-        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA.vcf.gz.tbi",
+        lambda wildcards: config['output_dir'] + "/DNA/PEAC_chr" + wildcards.chrom + "_4PCA_all.vcf.gz.tbi",
         lambda wildcards: config['output_dir'] + "/DNA/RP_chr"+ wildcards.chrom + "_sub.vcf.gz.tbi"
     output:
         config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz"
-
     shell:
          "bcftools isec -n=2 -w1 {input[0]} {input[1]} -Oz -o {output} "
 
@@ -343,7 +356,6 @@ rule vcf_gds:
     params:
         method="biallelic.only",
         ##prefix=config['output_dir'] + "/DNA/"
-
     output:
         peac=config['output_dir'] + "/DNA/PEAC_PCA.gds",
         rp=config['output_dir'] + "/DNA/RP_PCA.gds"
