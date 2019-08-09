@@ -27,37 +27,36 @@ library(cqn)
 pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord, out) {
 
     ## get meta data file to relate ids and covariates:
-    meta <- fread(meta)
+    meta <- read.table(meta.in)
     
     ## get genotypes
-    sampgds <- snpgdsOpen(gds)
+    sampgds <- snpgdsOpen(gds.in)
                       
     ## get eigenvectors
-    snpL <- readRDS(snpL)  
+    snpL <- readRDS(snpL.in)  
     SL <- snpgdsPCASampLoading(snpL, sampgds)  
     ev <- data.table(sample.id = SL$sample.id)
-    for(i in 1:n){
-        ev[ , paste0("EV",i) := SL$eigenvect[,i] ]
-    }
+    for(i in 1:n){ ev[ , paste0("EV",i) := SL$eigenvect[,i] ]  }
 
     ## select samples with expression data and make sure both datasets are in the same order
-    expr <- fread(counts)
-    matExp <- as.matrix(expr[, 2:ncol(expr)])
-    rownames(matExp) <- expr$V1
+    expr <- read.table(counts)
+    matExp <- as.matrix(expr)
+    matExp = matExp[, colnames(matExp) != "SAM24298029"]
+    
     meta$Batch = "GenentechBatch1"
-    meta$Gender = meta$GENDER
+    colnames(meta) = c("GenentechID", "HostpitalNumber", "Ethnicity", "Gender", "Sample.final", "Batch")
     
     
-    vcf_in <- meta[GenentechID %in% colnames(matExp), .(GenentechID, Sample.final, Batch, Gender)]
+    vcf_in <- meta[meta$GenentechID %in% colnames(matExp), c("GenentechID", "Sample.final", "Batch", "Gender")]
 
     ## select and order ev 
-    ev  <- ev[sample.id %in% vcf_in$Sample.final, ]
-    ev <- ev[order(match(sample.id, vcf_in$Sample.final))]
-
     vcf_in = vcf_in[vcf_in$Sample.final %in% ev$sample.id, ]
+    vcf_in = vcf_in[vcf_in$GenentechID %in% colnames(matExp), ]
+    ev  <- ev[ev$sample.id %in% vcf_in$Sample.final, ]
+    vcf_in = vcf_in[match(ev$sample.id, vcf_in$Sample.final), ]
     
     ## order matExp as in vcf_in
-    matExp <- matExp[, vcf_in$GenentechID]
+    matExp <- matExp[, as.character(vcf_in$GenentechID)]
     
     ## for eqtl only use genes in chrom 1-22
     ## get gene coordinates and subset
@@ -119,7 +118,8 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     }
 
     ## Same with pcs and batch and sex, add pcs 1:10
-    Bsex <- vcf_in[,  .(Batch, Gender)]
+    Bsex <- vcf_in[,  c("Batch", "Gender")]
+    Bsex = data.table(Bsex)
     ## recode as numeric
     Bsex[Gender == "M", Gender:="0"][Gender == "F", Gender:="1"]
     b <- unique(Bsex$Batch)
@@ -199,9 +199,9 @@ pcs.peer(gds=snakemake@input[['peacGds']],
          )
 
 # counts="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt"
-# meta="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt"
-# gds='/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds'
-# snpL= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_loads.rds"
+# meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt"
+# gds.in='/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds'
+# snpL.in= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_loads.rds"
 # gene.coord="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt"
 # ld=0.5
 # eaf=0.05
@@ -209,10 +209,10 @@ pcs.peer(gds=snakemake@input[['peacGds']],
 # prefix=c("pcs", "peerCqn")
 # 
 # 
-# out = list(covs=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/", rep(1:10, 10), ".", rep(1:10, each=10), ".txt", sep=""),
+# out = list(covs=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
 #            geneLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/gene_location.txt",
 #            expressionCqn="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/gene_expression_cqn.txt",
-#            covfix=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/", 1:10, ".covSexBatch.txt", sep=""),
+#            covfix=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
 #            geno="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/genotype.txt",
 #            snpLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/snp_location.txt")
 

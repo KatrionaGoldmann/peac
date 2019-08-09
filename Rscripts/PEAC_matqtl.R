@@ -17,8 +17,11 @@ gene_location_file_name = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/in
 
 # Covariates file name
 # Set to character() for no covariates
-covariates_file_name = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/{pcs}.{peerBSex}.txt"
-
+covariates_file_name = character() #"/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/{pcs}.{peerBSex}.txt"
+covariates_mat =  read.table(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/PCA4.PEER4.txt"))
+rownames(covariates_mat) = covariates_mat[, 1]
+covariates_mat = covariates_mat[paste0("PEER", 1:4), 2:ncol(covariates_mat)]
+covariates_mat = as.matrix(covariates_mat)
 
 # Output file name
 output_file_name_cis = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/Output.txt"
@@ -56,15 +59,15 @@ gene$fileSliceSize = 2000;      # read file in slices of 2,000 rows
 gene$LoadFile(expression_file_name);
 
 ## Load covariates
-
 cvrt = SlicedData$new();
 cvrt$fileDelimiter = " ";      # the TAB character
 cvrt$fileOmitCharacters = "NA"; # denote missing values;
 cvrt$fileSkipRows = 0;          # one row of column labels
 cvrt$fileSkipColumns = 1;       # one column of row labels
 if(length(covariates_file_name)>0) {
-cvrt$LoadFile(covariates_file_name);
-}
+    #cvrt$CreateFromMatrix(mat)
+    cvrt$LoadFile(covariates_file_name);
+} else{cvrt$CreateFromMatrix(covariates_mat)}
 
 ## Run the analysis
 snpspos = read.table(snps_location_file_name, header = TRUE, stringsAsFactors = FALSE);

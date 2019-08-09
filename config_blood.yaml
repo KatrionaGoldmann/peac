@@ -17,7 +17,7 @@
     "scripts_dir" : "/home/kgoldmann/Documents/peac/",
 
     # directory to write all output data files to
-    "output_dir" :  "/home/kgoldmann/Documents/PEAC_eqtl/Outputs",
+    "output_dir" :  "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood",
 
     # path to STAR
     "STAR" : "/home/kgoldmann/Applications/STAR/source/STAR",
@@ -37,7 +37,7 @@
     "filter" : 100,
 
     # sample file containing sample names and paths to fastq files
-    "sample_file" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/RA.csv",
+    "sample_file" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/RA_blood.csv",
 
     #"samples": "/home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz",
 

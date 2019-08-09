@@ -6,7 +6,7 @@
 ## shell.prefix("module load samtools-1.4-gcc-5.4.0-derfxbk; ")
 #shell.prefix("source ~/.bashrc; ")
 import pandas as pd
-configfile: "config.yaml"
+configfile: "config_blood.yaml"
 
 def read_samples():
     """
@@ -105,51 +105,50 @@ rule all_counts:
         # star
         expand("/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
         # exon_by_gene
-        config['ebg'],
+        #config['ebg'],
         # total_gene_counts
-        expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys()),
-        #group_gene_counts
+        #expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys()),
+        #group_gene_counts - actually run this isn the data curation file, its easier
         #config['output_dir'] + "/RNA_counts/groups/Genentech.txt",
 
 
 rule all_genotype:
     """ To run the pipeline - creates all final output files"""
     input:
-        # # vcf_pca files
-        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["geno_vcf"]).keys()),
-        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        #
-        ### # # HW filter
-        ### expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        #
-        ### expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
-        #
+        # # # vcf_pca files
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["geno_vcf"]).keys()),
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        # #
+        # # # HW filter
+        # # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
+        # # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        # #
         # # # ref_panel_alt files
-        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
-        #expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
-        #
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        # #
         # # # intersect_RP_PEAC files
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
-        #
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
+        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
+        # # #
         # # # intersect_PEAC_RP files
-        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
-        #
+        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        # # #
         # # # extract_snp_ids files
-        expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
-        #
-        #vcf_gds
-        expand(config['output_dir'] + "/DNA/PEAC_PCA.gds"),
-        expand(config['output_dir'] + "/DNA/RP_PCA.gds"),
-        #
-        #RP_PCA
-        config['output_dir'] + "/DNA/RP_pcs.rds",
-        config['output_dir'] + "/DNA/RP_loads.rds",
-        #PCs_PEER
-        # snpLoc=config['output_dir'] + "/matqtl/inputs/snp_location.txt",
+        # expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        # # #
+        # # # vcf_gds
+        # expand(config['output_dir'] + "/DNA/PEAC_PCA.gds"),
+        # expand(config['output_dir'] + "/DNA/RP_PCA.gds"),
+        # # #
+        # # # RP_PCA
+        # config['output_dir'] + "/DNA/RP_pcs.rds",
+        # config['output_dir'] + "/DNA/RP_loads.rds",
+        # # PCs_PEER
+        config['output_dir'] + "/matqtl/inputs/snp_location.txt",
         # # Deseq2_inputs files
         #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() )
-        # #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
+        #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
         ##expand(config['output_dir'] + "/STAR/2/{sample}/Aligned.sortedByCoord.out.bam" , sample=read_samples().keys())
 #         # expand(config['output_dir'] + "/RNA_counts/groups/{group}.txt" , group=group_samples().keys() ) ,
 #         # expand(config['output_dir'] + "/RNA_counts/groups/{group}_lib_size.rds" , group=group_samples().keys() )
@@ -166,6 +165,7 @@ rule all_genotype:
 #         #expand(config['output_dir'] + "/matqtl/output/pcs0.{peerBSex}.txt",
 #         #       peerBSex=["peerCqn" + str(x) for x in range(1,int(config['N factors'])+1)] + ["covSexBatch"])
 #         #
+
 rule star_index:
     """Create index for alignment using STAR"""
     input:
@@ -392,10 +392,10 @@ rule PCs_PEER:
         Nfactors=config['N factors'],
         prefix=["pcs", "peerCqn"]
     output:
-        covars=expand(config['output_dir'] + "/matqtl/inputs/{pcs}.{peer}.txt",
+        covars=expand(config['output_dir'] + "/matqtl/inputs/PCA{pcs}.PEER{peer}.txt",
                       pcs=["pcs" + str(x) for x in range(1,int(config['N factors'])+1)],
             peer=["peerCqn" + str(x) for x in range(1,int(config['N factors'])+1)]),
-        covfix=expand(config['output_dir'] + "/matqtl/inputs/{pcs}.covSexBatch.txt",
+        covfix=expand(config['output_dir'] + "/matqtl/inputs/PCA{pcs}.covSexBatch.txt",
                      pcs=["pcs" + str(x) for x in range(1,int(config['N factors'])+1)]),
         geno=config['output_dir'] + "/matqtl/inputs/genotype.txt",
         expressionCqn=config['output_dir'] + "/matqtl/inputs/gene_expression_cqn.txt",
