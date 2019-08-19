@@ -8,7 +8,10 @@ out.file <- snakemake@output[[1]]
 
 lib.size.file <-  snakemake@output[[2]]
 
-#in.files = paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", output.df$SampleID..QMUL.or.Genentech., ".txt", sep="")
+
+#samps=list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/", pattern=".txt")
+#in.files = paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/", samps, sep="")
+#out.file = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/Genentech.txt"
 
 ##filter <- as.numeric(snakemake@params[['filter']])
 
@@ -36,6 +39,5 @@ counts <- counts[which(rowSums(counts[, 2:ncol(counts), with=F])>filter),]
 ## save files
 
 write.table(counts, out.file, row.names=F)
-
 saveRDS(lib_size, lib.size.file)
 

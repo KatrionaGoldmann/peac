@@ -5,31 +5,15 @@ library(peer)
 library(DESeq2)
 library(biomaRt)
 library(cqn)
+library(biomaRt)
 
-#' Compute PCs from peac samples by projecting into the reference panel and computes PEER factors based on DESeq2 variance stabilization or cqn with GC correction. Prepare inputs for MatQTL
-#
-#' @param gds gds file name with genotype for samples
-#' @param snpL rds object with matrix with SNP loadings to project samples
-#' @param n number of eigenvectors and PEER to extract, defaults to 10
-#' @param ld ld cut-off to thin genotype matrix
-#' @param eaf cut-off to thin genotype matrix
-#' @param counts file with count data per gene, output from rule group_gene_counts, first column gene id, then samples
-#' @param metadata path to file to peac metadata to relate vcf_id with fasq files id (sample names in expression data)
-#' @param prefix, character vector with wildcards for covs from snakemake rule PCs_PEER
-#' @param gene.coord file with gene name, chrom, start and end
-#' @param out named list with output files in this order; file with all required pcs ; file with all required PEER factors by variance stailization; file with all required PEER factors by cqn; covs N files with increasing number of PCs (1 to n), M files with increasing number of PEER factors for cqn; file with genotypes as required by matrixqtl. Snps are filtered by ld and maf to reduce number of tests; expression matrix for cqn; file with gene id, start and end position as required by matrixqtl; file with snp id, chromosome and position. Names as in snakefile rule PCs_PEER
-#' 
-#' @keywords extract snps gene
-#' @export
-#' @return saves multiple files: 1) eigen vectors for samples, 
-#' pcs.peer()
-
-pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord, out) {
+pcs.peer <- function(gds.in,snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, gene.coord, out) {
 
     ## get meta data file to relate ids and covariates:
     meta <- read.table(meta.in)
     
     ## get genotypes
+    #    snpgdsClose(sampgds)
     sampgds <- snpgdsOpen(gds.in)
                       
     ## get eigenvectors
@@ -37,17 +21,19 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     SL <- snpgdsPCASampLoading(snpL, sampgds)  
     ev <- data.table(sample.id = SL$sample.id)
     for(i in 1:n){ ev[ , paste0("EV",i) := SL$eigenvect[,i] ]  }
+    # if blood convert to the genentech id
+    # if (nrow(meta) < 50) ev$sample.id = meta$GenentechID[match(ev$sample.id, meta$Sample.final)]
 
     ## select samples with expression data and make sure both datasets are in the same order
-    expr <- read.table(counts)
+    expr <- read.table(counts, header = T)
     matExp <- as.matrix(expr)
-    matExp = matExp[, colnames(matExp) != "SAM24298029"]
+    # remove columns all NA
+    matExp = matExp[, colSums(is.na(matExp)) < nrow(matExp)]
     
-    meta$Batch = "GenentechBatch1"
+    #meta$Batch = "GenentechBatch1"
     colnames(meta) = c("GenentechID", "HostpitalNumber", "Ethnicity", "Gender", "Sample.final", "Batch")
     
-    
-    vcf_in <- meta[meta$GenentechID %in% colnames(matExp), c("GenentechID", "Sample.final", "Batch", "Gender")]
+    vcf_in <- meta[meta$GenentechID %in% colnames(matExp) | meta$Sample.final %in% colnames(matExp), c("GenentechID", "Sample.final", "Batch", "Gender")]
 
     ## select and order ev 
     vcf_in = vcf_in[vcf_in$Sample.final %in% ev$sample.id, ]
@@ -65,8 +51,14 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
 
     matExp <- matExp[rownames(matExp) %in% gene.c$gene_id, ]
 
+    ensembl = useEnsembl(biomart="ensembl", dataset="hsapiens_gene_ensembl", GRCh = 37)
+    chr_genes <- getBM(attributes=c('ensembl_gene_id', 'hgnc_symbol','chromosome_name','start_position','end_position'), filters =
+                            'ensembl_gene_id', values =unique(gene.c$gene_id), mart = ensembl)
+    gene.c$symbol = chr_genes$hgnc_symbol[match(gene.c$gene_id, chr_genes$ensembl_gene_id)]
+    
+    
     ## save gene.c as for matrixqtl gene_location file
-    setcolorder(gene.c, c("gene_id", "chrom", "start", "end"))
+    setcolorder(gene.c, c("gene_id", "chrom", "start", "end", "symbol"))
     write.table(gene.c, row.names=F, file=out[['geneLoc']])
                 
     ## get cqn normalised expression and  peer factors    
@@ -104,7 +96,9 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     rownames(factors) <- colnames(rpkm.peac)
 
     ## need to transpose ev and factors and then cbind and save
-    ev <- t(ev[,2:ncol(ev)])
+    ev=data.frame(ev)
+    rownames(ev) = ev[, 1]
+    ev <- t(ev[,colnames(ev) != "sample.id"])
     factors <- t(factors)
     
     ## I need to save output covars as in rule: 1 pcs with 1:10 peer factors, then 2 pcs with peer 1:10, etc, rows covariate name, cols samples
@@ -113,7 +107,7 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
         for(j in 1:nrow(factors)){
             indx= indx + 1 ## to count files 1:100
             tmp <- data.table(rbind(ev[1:i, ,drop=F], factors[1:j, , drop=F]), keep.rownames=T)
-            write.table(tmp, row.names=F, col.names=F, file=out[['covs']][indx])
+            write.table(tmp, row.names=T, col.names=T, file=out[['covs']][indx])
         }
     }
 
@@ -134,7 +128,7 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     
     for( i in 1:nrow(ev)){
         tmp <- data.table(rbind(ev[1:i,, drop=F], mBsex), keep.rownames=T)
-        write.table(tmp, row.names=F, col.names=F, file=out[['covfix']][i])
+        write.table(tmp, row.names=T, col.names=T, file=out[['covfix']][i])
 
     }
           
@@ -150,6 +144,7 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     ## from 1:N
     
     sampId <- read.gdsn(index.gdsn(sampgds, "sample.id"))
+    rs <- readex.gdsn(index.gdsn(sampgds, "snp.rs.id"),sel=SNPprune)
     chrom <- readex.gdsn(index.gdsn(sampgds, "snp.chromosome"),sel=SNPprune)
     pos <- readex.gdsn(index.gdsn(sampgds, "snp.position"), sel=SNPprune)
     allele <- readex.gdsn(index.gdsn(sampgds, "snp.allele"), sel=SNPprune)
@@ -159,6 +154,9 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
     rownames(gmat) <- sampId
     colnames(gmat) <- paste(chrom, pos,ref,alt,sep=":")
 
+    
+   
+    
     ## SNPrelate/gds counts the number of "A" alleles, need to change 2 to 0 and 0 to 2
     g <- copy(gmat)
     g[gmat==2] <- 0
@@ -166,55 +164,66 @@ pcs.peer <- function(gds,snpL, n=10,  ld, eaf, counts, meta, prefix, gene.coord,
 
     ## transpose g, select samples and order as vcf_in and save
     g <- t(g)
-    g <- g[, vcf_in$Sample.final]
-    write.table(g, file=out[['geno']], quote=F)
+    g <- g[, colnames(ev)]
+    
+    write.table(g, file=out[['geno']], col.names=T, row.names=T, quote=F)
 
     ## make snp location file as per matrixqtl
-    snpDT <- data.table(snp=rownames(g), chr=chrom, pos=pos)
-    write.table(snpDT, row.names=F, file=out[['snpLoc']])
+    snpDT <- data.table(snp=rownames(g), chr=chrom, pos=pos, rs=rs)
+    snpDT$rs.id = gsub("\\:.*", "", snpDT$rs)
+    write.table(snpDT, row.names=F, col.names=T, file=out[['snpLoc']], quote=F)
        
     snpgdsClose(sampgds)
     
 }
 
+###################
+# Synovium
+###################
 
-out=list(covs=snakemake@output[['covars']],
-         geneLoc=snakemake@output[['geneLoc']],
-         expressionCqn=snakemake@output[['expressionCqn']],
-         covfix=snakemake@output[['covfix']],
-         geno=snakemake@output[['geno']],
-         snpLoc=snakemake@output[['snpLoc']]
-         )
+counts="/media/d1/Syn_out_KG/RNA_counts/groups/Genentech.txt"
+meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_syn.txt"
+gds.in='/media/d1/Syn_out_KG/DNA/PEAC_PCA.gds'
+snpL.in= "/media/d1/Syn_out_KG/DNA/RP_loads.rds"
+gene.coord="/media/d1/Syn_out_KG/gene_coord.txt"
+ld=0.5
+eaf=0.05
+n=10
+prefix=c("pcs", "peerCqn")
 
-pcs.peer(gds=snakemake@input[['peacGds']], 
-         snpL=snakemake@input[['Loads']],
-         n=snakemake@params[['Nfactors']],
-         ld= snakemake@params[['ld']],
-         eaf=snakemake@params[['maf']],
-         counts=snakemake@input[['expr']],
-         meta=snakemake@input[['peacdata']],
-         prefix=snakemake@params[['prefix']],
-         gene.coord=snakemake@input[['gene_coord']],
-         out=out
-         )
+out = list(covs=paste("/media/d1/Syn_out_KG/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
+           geneLoc="/media/d1/Syn_out_KG/matqtl/inputs/gene_location.txt",
+           expressionCqn="/media/d1/Syn_out_KG/matqtl/inputs/gene_expression_cqn.txt",
+           covfix=paste("/media/d1/Syn_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
+           geno="/media/d1/Syn_out_KG/matqtl/inputs/genotype.txt",
+           snpLoc="/media/d1/Syn_out_KG/matqtl/inputs/snp_location.txt")
 
-# counts="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt"
-# meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt"
-# gds.in='/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/PEAC_PCA.gds'
-# snpL.in= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/DNA/RP_loads.rds"
-# gene.coord="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/gene_coord.txt"
-# ld=0.5
-# eaf=0.05
-# n=10
-# prefix=c("pcs", "peerCqn")
-# 
-# 
-# out = list(covs=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
-#            geneLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/gene_location.txt",
-#            expressionCqn="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/gene_expression_cqn.txt",
-#            covfix=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
-#            geno="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/genotype.txt",
-#            snpLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs/matqtl/inputs/snp_location.txt")
+pcs.peer(gds.in, snpL.in, n=n,  ld=ld, eaf=eaf, counts=counts, meta.in=meta.in, prefix="", gene.coord=gene.coord, out=out)
+
+###################
+# Blood
+###################
+
+bld.counts="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/Genentech.txt"
+bld.meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt"
+bld.gds.in='/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/DNA/PEAC_PCA.gds'
+bld.snpL.in= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/DNA/RP_loads.rds"
+bld.gene.coord="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/gene_coord.txt"
+bld.ld=0.5
+bld.eaf=0.05
+bld.n=10
+bld.prefix=c("pcs", "peerCqn")
+
+bld.out = list(covs=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
+           geneLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_location.txt",
+           expressionCqn="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_expression_cqn.txt",
+           covfix=paste("/media/d1/Syn_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
+           geno="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/genotype.txt",
+           snpLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/snp_location.txt")
+
+
+pcs.peer(gds.in = bld.gds.in, snpL.in=bld.snpL.in, n=bld.n,  ld=bld.ld, eaf=bld.eaf, counts=bld.counts, 
+         meta.in=bld.meta.in, prefix="", gene.coord=bld.gene.coord, out=bld.out)
 
 
 

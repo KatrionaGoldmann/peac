@@ -101,14 +101,15 @@ rule all_counts:
     """ Get the gene counts """
     input:
         # star index
-        config['indices'],
+        #config['indices'],
         # star
         expand("/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
         # exon_by_gene
-        #config['ebg'],
+        config['ebg'],
+        config['output_dir'] + "/gene_coord.txt",
         # total_gene_counts
-        #expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys()),
-        #group_gene_counts - actually run this isn the data curation file, its easier
+        expand(config['output_dir'] + "/RNA_counts/{sample}.txt" , sample=read_samples().keys()),
+        #group_gene_counts - actually run this in the data curation file, its easier
         #config['output_dir'] + "/RNA_counts/groups/Genentech.txt",
 
 
@@ -116,36 +117,36 @@ rule all_genotype:
     """ To run the pipeline - creates all final output files"""
     input:
         # # # vcf_pca files
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["geno_vcf"]).keys()),
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
+        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz", chrom=vcf(config["geno_vcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA_all.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
         # #
         # # # HW filter
         # # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
         # # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_4PCA.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys() ),
         # #
         # # # ref_panel_alt files
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf", chrom=vcf(config["ref_bcf"]).keys() ),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_alt_added.bcf.csi", chrom=vcf(config["ref_bcf"]).keys()),
         # #
         # # # intersect_RP_PEAC files
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
-        # expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/DNA/RP_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys()),
         # # #
         # # # intersect_PEAC_RP files
-        # expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
+        expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz", chrom=vcf(config["ref_bcf"]).keys() ),
         # # #
         # # # extract_snp_ids files
-        # expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
+        expand(config['output_dir'] + "/snp_coords/chr{chrom}.txt", chrom=vcf(config["ref_bcf"]).keys()),
         # # #
         # # # vcf_gds
-        # expand(config['output_dir'] + "/DNA/PEAC_PCA.gds"),
-        # expand(config['output_dir'] + "/DNA/RP_PCA.gds"),
+        expand(config['output_dir'] + "/DNA/PEAC_PCA.gds"),
+        expand(config['output_dir'] + "/DNA/RP_PCA.gds"),
         # # #
         # # # RP_PCA
-        # config['output_dir'] + "/DNA/RP_pcs.rds",
-        # config['output_dir'] + "/DNA/RP_loads.rds",
+        config['output_dir'] + "/DNA/RP_pcs.rds",
+        config['output_dir'] + "/DNA/RP_loads.rds",
         # # PCs_PEER
-        config['output_dir'] + "/matqtl/inputs/snp_location.txt",
+        #config['output_dir'] + "/matqtl/inputs/snp_location.txt",
         # # Deseq2_inputs files
         #expand(config['output_dir'] + "/deseq2/inputs/{gene}.rds", gene=gene_chrom().keys() )
         #expand(config['output_dir'] + "/DNA/PEAC_chr{chrom}_sub.vcf.gz.tbi", chrom=vcf(config["ref_bcf"]).keys())
@@ -231,7 +232,7 @@ rule total_gene_counts:
     input:
         config['ebg'] ,
         #lambda wildcards: [item[12] for item in read_samples().values()]
-        lambda wildcards: "/media/d1/STAR/Paired/" + wildcards.sample+ "/Aligned.sortedByCoord.out.bam"
+        lambda wildcards: "/media/d1/STAR/Paired/" + wildcards.sample + "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: config['output_dir'] + "/STAR/2/" + read_samples().keys() + "/Aligned.sortedByCoord.out.bam"
         #lambda wildcards: [item[13] for item in read_samples().values()]
     params:

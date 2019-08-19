@@ -177,12 +177,12 @@ soloOutFileNames                  Solo.out/   genes.tsv   barcodes.tsv   matrix.
 soloFeatures                      Gene   
 soloUMIdedup                      1MM_All   
 ##### Command Line:
-/home/kgoldmann/Applications/STAR/source/STAR --runThreadN 16 --runMode genomeGenerate --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf --sjdbOverhang 100
+/home/kgoldmann/Applications/STAR/source/STAR --runThreadN 1 --runMode genomeGenerate --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf --sjdbOverhang 100
 ##### Initial USER parameters from Command Line:
 ###### All USER parameters from Command Line:
-runThreadN                    16     ~RE-DEFINED
+runThreadN                    1     ~RE-DEFINED
 runMode                       genomeGenerate     ~RE-DEFINED
-genomeDir                     /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices     ~RE-DEFINED
+genomeDir                     /home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices     ~RE-DEFINED
 genomeFastaFiles              /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa        ~RE-DEFINED
 sjdbGTFfile                   /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf     ~RE-DEFINED
 sjdbOverhang                  100     ~RE-DEFINED
@@ -190,25 +190,25 @@ sjdbOverhang                  100     ~RE-DEFINED
 
 ##### Final user re-defined parameters-----------------:
 runMode                           genomeGenerate
-runThreadN                        16
-genomeDir                         /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+runThreadN                        1
+genomeDir                         /home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices
 genomeFastaFiles                  /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa   
 sjdbGTFfile                       /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf
 sjdbOverhang                      100
 
 -------------------------------
 ##### Final effective command line:
-/home/kgoldmann/Applications/STAR/source/STAR   --runMode genomeGenerate   --runThreadN 16   --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices   --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa      --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf   --sjdbOverhang 100
+/home/kgoldmann/Applications/STAR/source/STAR   --runMode genomeGenerate   --runThreadN 1   --genomeDir /home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices   --genomeFastaFiles /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa      --sjdbGTFfile /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf   --sjdbOverhang 100
 
 ##### Final parameters after user input--------------------------------:
 versionGenome                     2.7.1a
 parametersFiles                   -   
 sysShell                          -
 runMode                           genomeGenerate
-runThreadN                        16
+runThreadN                        1
 runDirPerm                        User_RWX
 runRNGseed                        777
-genomeDir                         /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices
+genomeDir                         /home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices
 genomeLoad                        NoSharedMemory
 genomeFastaFiles                  /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa   
 genomeChainFiles                  -   
@@ -379,7 +379,7 @@ soloUMIdedup                      1MM_All
 ----------------------------------------
 
 Finished loading and checking parameters
-Jul 29 13:02:57 ... starting to generate Genome files
+Aug 09 16:23:45 ... starting to generate Genome files
 /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 0  "1" chrStart: 0
 /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 1  "10" chrStart: 249298944
 /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 2  "11" chrStart: 385089536
@@ -464,97 +464,8 @@ Jul 29 13:02:57 ... starting to generate Genome files
 /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 81  "GL000229.1" chrStart: 3114532864
 /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 82  "GL000226.1" chrStart: 3114795008
 /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.dna.primary_assembly.fa : chr # 83  "GL000207.1" chrStart: 3115057152
-Estimated genome size=3316319296   3115319296   201000000
-GstrandBit=32
-Number of SA indices: 5729570440
-Jul 29 13:03:37 ... starting to sort Suffix Array. This may take a long time...
-Number of chunks: 56;   chunks size limit: 928850296 bytes
-Jul 29 13:03:48 ... sorting Suffix Array chunks and saving them to disk...
-Writing 589232424 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_1 ; empty space on disk = 461961183232 bytes ... done
-Writing 709671192 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_0 ; empty space on disk = 461371949056 bytes ... done
-Writing 704784464 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_13 ; empty space on disk = 460662276096 bytes ... done
-Writing 754457528 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_4 ; empty space on disk = 459957489664 bytes ... done
-Writing 762308056 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_7 ; empty space on disk = 459203031040 bytes ... done
-Writing 787010712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_8 ; empty space on disk = 458440720384 bytes ... done
-Writing 902943416 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_3 ; empty space on disk = 457653686272 bytes ... done
-Writing 840972152 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_12 ; empty space on disk = 456750739456 bytes ... done
-Writing 916837392 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_2 ; empty space on disk = 455909765120 bytes ... done
-Writing 869565448 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_5 ; empty space on disk = 454992924672 bytes ... done
-Writing 864362664 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_6 ; empty space on disk = 454123356160 bytes ... done
-Writing 821748840 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_14 ; empty space on disk = 453258989568 bytes ...Writing 882162712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_11 ; empty space on disk = 452999028736 bytes ... done
- done
-Writing 876661832 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_9 ; empty space on disk = 451555065856 bytes ... done
-Writing 873717184 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_10 ; empty space on disk = 450678390784 bytes ... done
-Writing 925395744 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_15 ; empty space on disk = 449804660736 bytes ... done
-Writing 795739456 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_16 ; empty space on disk = 448879251456 bytes ... done
-Writing 792316520 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_17 ; empty space on disk = 448083509248 bytes ... done
-Writing 691021856 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_25 ; empty space on disk = 447291187200 bytes ... done
-Writing 808685040 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_19 ; empty space on disk = 446600155136 bytes ... done
-Writing 878093224 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_20 ; empty space on disk = 445791469568 bytes ... done
-Writing 841385088 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_23 ; empty space on disk = 444913373184 bytes ... done
-Writing 881602960 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_21 ; empty space on disk = 444071985152 bytes ... done
-Writing 904131664 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_18 ; empty space on disk = 443190374400 bytes ... done
-Writing 907127848 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_22 ; empty space on disk = 442286235648 bytes ... done
-Writing 871753952 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_27 ; empty space on disk = 441379090432 bytes ...Writing 857710400 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_28 ; empty space on disk = 440789889024 bytes ... done
- done
-Writing 926545112 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_24 ; empty space on disk = 439649624064 bytes ... done
-Writing 879674552 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_26 ; empty space on disk = 438723076096 bytes ... done
-Writing 914733352 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_30 ; empty space on disk = 437843398656 bytes ... done
-Writing 908998912 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_29 ; empty space on disk = 436928643072 bytes ... done
-Writing 926170208 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_31 ; empty space on disk = 436019642368 bytes ... done
-Writing 726237104 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_32 ; empty space on disk = 435093454848 bytes ... done
-Writing 890547712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_33 ; empty space on disk = 434367213568 bytes ... done
-Writing 603071712 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_41 ; empty space on disk = 433476665344 bytes ... done
-Writing 789432664 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_39 ; empty space on disk = 432873586688 bytes ... done
-Writing 767532144 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_38 ; empty space on disk = 432084152320 bytes ... done
-Writing 764110768 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_40 ; empty space on disk = 431316619264 bytes ... done
-Writing 901780528 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_36 ; empty space on disk = 430552506368 bytes ... done
-Writing 831375832 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_34 ; empty space on disk = 429650722816 bytes ... done
-Writing 769298384 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_42 ; empty space on disk = 428819337216 bytes ...Writing 800893488 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_44 ; empty space on disk = 428595392512 bytes ... done
- done
-Writing 909833968 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_35 ; empty space on disk = 427249131520 bytes ... done
-Writing 908074824 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_37 ; empty space on disk = 426339295232 bytes ... done
-Writing 857788888 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_45 ; empty space on disk = 425431207936 bytes ...Writing 841874496 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_47 ; empty space on disk = 425380982784 bytes ... done
- done
-Writing 923490576 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_43 ; empty space on disk = 423731531776 bytes ... done
-Writing 837377952 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_46 ; empty space on disk = 422808039424 bytes ... done
-Writing 822575272 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_48 ; empty space on disk = 421970653184 bytes ... done
-Writing 333180320 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_54 ; empty space on disk = 421148065792 bytes ... done
-Writing 841768008 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_49 ; empty space on disk = 420814884864 bytes ... done
-Writing 648187912 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_50 ; empty space on disk = 419973115904 bytes ... done
-Writing 709672768 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_55 ; empty space on disk = 419324919808 bytes ... done
-Writing 718610336 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_53 ; empty space on disk = 418615246848 bytes ... done
-Writing 868375672 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_52 ; empty space on disk = 417896632320 bytes ... done
-Writing 903950288 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA_51 ; empty space on disk = 417028251648 bytes ... done
-Jul 29 13:13:38 ... loading chunks from disk, packing SA...
-Jul 29 13:14:24 ... finished generating suffix array
-Jul 29 13:14:24 ... generating Suffix Array index
-Jul 29 13:17:25 ... completed Suffix Array index
-Jul 29 13:17:25 ..... processing annotations GTF
-Processing pGe.sjdbGTFfile=/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf, found:
-		196501 transcripts
-		1195764 exons (non-collapsed)
-		344569 collapsed junctions
-Jul 29 13:17:33 ..... finished GTF processing
-Jul 29 13:17:33   Loaded database junctions from the GTF file: /home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf: 344569 total junctions
 
-Jul 29 13:17:33   Finished preparing junctions
-Jul 29 13:17:33 ..... inserting junctions into the genome indices
-Jul 29 13:18:08   Finished SA search: number of new junctions=344496, old junctions=0
-Jul 29 13:18:42   Finished sorting SA indicesL nInd=137798232
-Genome size with junctions=3184562992  3115319296   69243696
-GstrandBit1=32   GstrandBit=32
-Jul 29 13:19:31   Finished inserting junction indices
-Jul 29 13:19:49   Finished SAi
-Jul 29 13:19:49 ..... finished inserting junctions into genome
-Jul 29 13:19:49 ... writing Genome to disk ...
-Writing 3184562992 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/Genome ; empty space on disk = 461858840576 bytes ... done
-SA size in bytes: 24202895775
-Jul 29 13:19:51 ... writing Suffix Array to disk ...
-Writing 24202895775 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SA ; empty space on disk = 458674274304 bytes ... done
-Jul 29 13:20:20 ... writing SAindex to disk
-Writing 8 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SAindex ; empty space on disk = 434471366656 bytes ... done
-Writing 120 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SAindex ; empty space on disk = 434471366656 bytes ... done
-Writing 1565873491 bytes into /home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices/SAindex ; empty space on disk = 434471366656 bytes ... done
-Jul 29 13:20:24 ..... finished successfully
-DONE: Genome generation, EXITING
+Genome_genomeGenerate.cpp:217:genomeGenerate: exiting because of *OUTPUT FILE* error: could not create output file /home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices/chrName.txt
+SOLUTION: check that the path exists and you have write permission for this file. Also check ulimit -n and increase it to allow more open files.
+
+Aug 09 16:24:30 ...... FATAL ERROR, exiting

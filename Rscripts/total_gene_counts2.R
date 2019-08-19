@@ -5,14 +5,14 @@ require(BiocParallel, quietly=TRUE)
 
 #source('/Functions/various.R')
 
-# ebg = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/b37_ebg.rds"
+# ebg = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/b37_ebg.rds"
 # mode="Union"
 # ignore.strand=TRUE
 
 # get args from snakemake
 ebg <-  snakemake@input[[1]]
 in.files = snakemake@input[[2]] # in.files = "/media/d1/STAR/Paired/SAM24297981/Aligned.sortedByCoord.out.bam"
-out.files = snakemake@output # out.files = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/SAM24297981.txt"
+out.files = snakemake@output # out.files = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/SAM24297981.txt"
 mode = snakemake@params[['mode']] 
 ignore.strand = as.logical(snakemake@params[['ignore_strand']]) 
 

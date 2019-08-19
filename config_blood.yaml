@@ -28,10 +28,10 @@
 
     # ftp://ftp.ensembl.org/pub/grch37/current/gtf/homo_sapiens/Homo_sapiens.GRCh37.87.gtf.gz
     "ref_gtf" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf",
-    "indices" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices",
+    "indices" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/indices",
 
     # path to save file for exon by gene rds object to use for counting reads, or path to file if already made.
-    "ebg" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/b37_ebg.rds",
+    "ebg" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/b37_ebg.rds",
 
     # filter read cut-off for total gene counts
     "filter" : 100,
@@ -42,7 +42,7 @@
     #"samples": "/home/kgoldmann/NAS/RNASEQ/PEAC_RawData/SAM9103822_R1.fastq.gz",
 
     # sample file with metadata for peac study
-    "sample_meta" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/PEAC_eth.txt",
+    "sample_meta" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/PEAC_eth.txt",
 
     # file containing names and paths to vcf with genotype info file (exclude index)
     "geno_vcf" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/vcf_list.txt",

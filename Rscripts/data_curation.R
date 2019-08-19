@@ -64,18 +64,18 @@ write.table(ann, "/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/refPanel_le
 
 
 # Create the Genentech file
-temp = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", pattern=".txt")
+temp = list.files("/media/d1/Syn_out_KG/RNA_counts/", pattern=".txt")
 samps = gsub(".txt", "", temp)
 
 #/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/QMUL2008043.txt
-df= read.table(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", samps[1], ".txt"))
+df= read.table(paste0("/media/d1/Syn_out_KG/RNA_counts/", samps[1], ".txt"))
 for(i in samps[2:length(samps)]){
-  tt = read.table(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/", i, ".txt"))
+  tt = read.table(paste0("/media/d1/Syn_out_KG/RNA_counts/RNA_counts/", i, ".txt"))
 
   df = cbind(df, tt[match(rownames(df), rownames(tt)), ])
   colnames(df)[ncol(df)] = i
 }
-dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/")
+dir.create("/media/d1/Syn_out_KG/RNA_counts/groups/")
 write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt", row.names=T, col.names=T, quote = F)
 
 # Create the sample_meta file
@@ -90,9 +90,9 @@ df$Gender[is.na(df$Gender)] = m1$GENDER[match(df$SampleID..QMUL.ID.only.[is.na(d
 df$Ethnicity = m1$Ethnicity[match(df$SampleID..QMUL.ID.only., m1$SampleID)]
 
 
-df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only." )]
-colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id")
-write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt", row.names=T, col.names=T)
+df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only.", "Batch" )]
+colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")
+write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_syn.txt", row.names=T, col.names=T)
 
 # 94 for GenentechID Peac_data
 # 104 for SampleID Peac_data
@@ -145,7 +145,7 @@ meta.use.peac$SampleID..QMUL.ID.only. = gsub("b", "", meta.use.peac$SampleID..QM
 write.table(meta.use.peac, "/home/kgoldmann/Documents/PEAC_eqtl/Data/RA_blood.csv", col.names = F, row.names = F, quote=F, sep=",")
 
 # Create the Genentech file
-temp = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/")
+temp = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/", pattern=".txt")
 samps = gsub(".txt", "", temp)
 
 #/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood_Blood/RNA_counts/QMUL2008043.txt
@@ -157,9 +157,9 @@ for(i in samps[2:length(samps)]){
   #   rownames(df)[-length(rownames(tt)[! rownames(tt) %in% rownames(df)])] = rownames(tt)[! rownames(tt) %in% rownames(df)]
   # }
   df = cbind(df, tt[match(rownames(df), rownames(tt)), ])
-  colnames(df)[-1] = i
+  colnames(df)[ncol(df)] = i
 }
-dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/")
+dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/", showWarnings = F)
 write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/Genentech.txt")
 
 # Create the sample_meta file
@@ -174,9 +174,9 @@ df$Gender[is.na(df$Gender)] = m1$GENDER[match(df$SampleID..QMUL.ID.only.[is.na(d
 df$Ethnicity = m1$Ethnicity[match(df$SampleID..QMUL.ID.only., m1$SampleID)]
 
 
-df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only." )]
-colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id")
-write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt", row.names=F, col.names=F)
+df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only.", "Batch" )]
+colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")
+write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt", row.names=F, col.names=F)
 
 # 94 for GenentechID Peac_data
 # 104 for SampleID Peac_data
