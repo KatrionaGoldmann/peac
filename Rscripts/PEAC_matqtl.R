@@ -89,10 +89,10 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
   #gene = fread(cmd=paste("head", expression_file_name))
   
   # Covariate matrix
-  if (nrow(covariates_mat) != 0){
-    covariates_mat = cv.df[cv.names, ]
-    covariates_mat = as.matrix(covariates_mat)
-    covariates_mat = t(apply(covariates_mat, 1, as.numeric))
+  if (nrow(cv.df) != 0){
+    cv.df = cv.df[cv.names, ]
+    cv.df = as.matrix(cv.df)
+    cv.df = t(apply(cv.df, 1, as.numeric))
   }
   
   
@@ -143,11 +143,11 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
   gene$LoadFile(expression_file_name);
   
   ## Load covariates
-  write.table(covariates_mat, "/home/kgoldmann/Documents/tmp_cv.txt")
+  #write.table(cv.df, "/home/kgoldmann/Documents/tmp_cv.txt")
   print("## Covariate organiser")
-  if(nrow(covariates_mat) != 0) {
+  if(nrow(cv.df) != 0) {
     cvrt = SlicedData$new();
-    cvrt$CreateFromMatrix(covariates_mat)
+    cvrt$CreateFromMatrix(cv.df)
   } else{
     cvrt = SlicedData$new()
     cvrt$fileDelimiter = " ";      # the TAB character
@@ -181,104 +181,106 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
   out$pos = as.numeric(as.character(unlist(lapply(out$snps, function(x) unlist(lapply(strsplit(as.character(x), split=":"), "[[", 2))))))
   
   print("## Output")
-  write.table(paste(c(tissue, ":,", paste(covars.info, collapse=", "), ", , p<", pvOutputThreshold_cis, "\n\n"), collapse=" "), 
-              row.names=F, file=output_file_name_cis, col.names=F, append=F)
-  suppressWarnings(write.table(out[out$pvalue < 0.02, ], row.names=F, file=output_file_name_cis, append=T, sep=","))
-  
-  # Do a local explorer
-  if(length(rs.plotter) > 0){
-    central.snp = rs.plotter
-  } else{central.snp = out$rs.id[out$pvalue == min(out$pvalue, na.rm=T)]}
-  window = 1e6
-  
-  all.snps = out[out$pos <= unique(out$pos[out$rs.id == central.snp]) + window & 
-                   out$pos >= unique(out$pos[out$rs.id == central.snp]) - window & 
-                   out$chr == unique(out$chr[out$rs.id == central.snp]), ]
-  all.snps$pvalue = as.numeric(as.character(all.snps$pvalue))
-  
-  # Calc the LD values
-  temp = fread(cmd=paste0("grep -e ", paste0(all.snps$snps, collapse=" -e "), " ",  SNP_file_name))
-  temp = data.frame(temp)
-  rownames(temp) = temp[,1]
-  temp = temp[, 2:ncol(temp)]
-  all.snps$ld = NA
-  for(i in 1:nrow(all.snps)){
-    c = cor(as.numeric(temp[as.character(all.snps$snps[i]), ]), 
-            as.numeric(temp[unique(as.character(out$snps[out$rs.id == central.snp])), ]), 
-            use="complete.obs")
-    all.snps$ld[i] = c
-  }
-  
-  le = ggplot(all.snps, aes(x=pos, y=-log10(pvalue), color=ld)) + 
-    geom_point() + xlab("") + 
-    theme_classic() +
-    geom_text_repel(data=all.snps[-log10(all.snps$pvalue) > 8, ], color="black",
-                    aes(x=pos, y=-log10(pvalue), label=paste0(rs.id, " vs ", symbol))) + 
-    scale_color_gradientn(colours = rainbow(5))
-  
-  p0 = all.snps[! duplicated(all.snps$gene), ]
-  p0 = p0[p0$symbol != "", ]
-  p0 = p0[order(as.numeric(as.character(p0$g_start))), ]
-  
-  key = setNames(unique(p0$symbol), rep(1:(length(unique(p0$symbol))/2), 2))
-  
-  p1 = p0[, colnames(p0)[colnames(p0) != "g_end"]]
-  p2 = p0[, colnames(p0)[colnames(p0) != "g_start"]]
-  colnames(p1)[colnames(p1) == "g_start"] = colnames(p2)[colnames(p2) == "g_end"] = "position"
-  plot.df = rbind(p1, p2)
-  
-  plot.df$symbol = as.character(plot.df$symbol)
-  
-  labs = data.frame("gene"=unique(plot.df$symbol))
-  labs$xpos = NA
-  labs = labs[! grepl("ENSG", as.character(labs$gene)), ]
-  for(i in 1:nrow(labs)){
-    labs$xpos[i] = min(plot.df$position[plot.df$symbol == labs$gene[i]], na.rm=T) + (max(plot.df$position[plot.df$symbol == labs$gene[i]], na.rm=T) - min(plot.df$position[plot.df$symbol == labs$gene[i]], na.rm=T))/2
-  }
-  
-  labs = labs[order(as.numeric(as.character(labs$xpos))), ]
-  plot.df$y = as.numeric(as.character(names(key)[match(plot.df$symbol, key)]))
-  
-  plot.df = plot.df[! is.na(plot.df$position) & ! is.na(plot.df$y), ]
-  
-  genes = ggplot(plot.df, aes(x=position, y=y, group=symbol)) + 
-    geom_line(color="red", size=5) + 
-    annotate("text", x=as.numeric(as.character(labs$xpos)),
-             y=0.2+rep(1:(length(labs$xpos)/2), 3)[1:nrow(labs)], 
-             label=as.character(labs$gene)) + 
-    theme(panel.background=element_blank(), axis.line.x = element_line(color="black", size = 0.5), 
-          axis.text.y=element_blank(),axis.ticks.y=element_blank(),axis.title.y=element_blank())
-  
-  dims = c(min(plot.df$position, na.rm=T), max(plot.df$position, na.rm=T))
-  
-  f = list.files(gsub(paste0(tissue, "_", covars.info[1], "-", covars.info[length(covars.info)], ".csv"), "", 
-                      output_file_name_cis))
-  f = f[! grepl("manhattan", f) & grepl("pdf", f)]
-  
-  pdf(gsub(".csv", paste0("_", length(f) + 1, ".pdf"), output_file_name_cis))
-  print(ggarrange(le + xlim(dims), genes + xlim(dims), nrow=2, ncol=1, heights=c(1, 0.5), 
-                  align="v", legend="bottom", common.legend=T))
-  invisible(dev.off())
-  
-  # Create a manhattan plots
-  man.df = out[out$pvalue < 0.05, ]
-  man.df$POS = unlist(lapply(man.df$snps, function(x) unlist(lapply(strsplit(as.character(x), split=":"), "[[", 2))))
-  
-  man.df$chr = as.numeric(as.character(man.df$chr))
-  man.df$pos = as.numeric(as.character(man.df$pos))
-  man.df$pvalue = as.numeric(as.character(man.df$pvalue))
-  
-  colnames(man.df) = c("snps", "gene", "statistic", "P", "FDR", "beta",
-                       "SNP", "symbol", "g_start", "g_end", "CHR", "BP", "POS" )
-  
-  man.df$CHR = as.numeric(as.character(man.df$CHR))
+  fwrite(list(paste("#", tissue), paste("\n#", paste(covars.info, collapse=",")), 
+              paste("\n#", "p <", pvOutputThreshold_cis, "#")), 
+              row.names=F, file=output_file_name_cis, col.names=F, append=F, quote=F)
+  fwrite(out, file=output_file_name_cis, append=T, col.names = T)
   
   
-  mp = gg.manhattan(man.df, hlight=c(""), threshold=1e-6, col=mypalette, ylims=c(0,10), title=paste(c(tissue, ":", paste(covars.info, collapse=", ")), collapse=" "))
-  
-  pdf(gsub(".csv", "_manhattan.pdf", output_file_name_cis))
-  print(mp)
-  invisible(dev.off())
+  # # Do a local explorer
+  # if(length(rs.plotter) > 0){
+  #   central.snp = rs.plotter
+  # } else{central.snp = out$rs.id[out$pvalue == min(out$pvalue, na.rm=T)]}
+  # window = 1e6
+  # 
+  # all.snps = out[out$pos <= unique(out$pos[out$rs.id == central.snp]) + window & 
+  #                  out$pos >= unique(out$pos[out$rs.id == central.snp]) - window & 
+  #                  out$chr == unique(out$chr[out$rs.id == central.snp]), ]
+  # all.snps$pvalue = as.numeric(as.character(all.snps$pvalue))
+  # 
+  # # Calc the LD values
+  # temp = fread(cmd=paste0("grep -e ", paste0(all.snps$snps, collapse=" -e "), " ",  SNP_file_name))
+  # temp = data.frame(temp)
+  # rownames(temp) = temp[,1]
+  # temp = temp[, 2:ncol(temp)]
+  # all.snps$ld = NA
+  # for(i in 1:nrow(all.snps)){
+  #   c = cor(as.numeric(temp[as.character(all.snps$snps[i]), ]), 
+  #           as.numeric(temp[unique(as.character(out$snps[out$rs.id == central.snp])), ]), 
+  #           use="complete.obs")
+  #   all.snps$ld[i] = c
+  # }
+  # 
+  # le = ggplot(all.snps, aes(x=pos, y=-log10(pvalue), color=ld)) + 
+  #   geom_point() + xlab("") + 
+  #   theme_classic() +
+  #   geom_text_repel(data=all.snps[-log10(all.snps$pvalue) > 8, ], color="black",
+  #                   aes(x=pos, y=-log10(pvalue), label=paste0(rs.id, " vs ", symbol))) + 
+  #   scale_color_gradientn(colours = rainbow(5))
+  # 
+  # p0 = all.snps[! duplicated(all.snps$gene), ]
+  # p0 = p0[p0$symbol != "", ]
+  # p0 = p0[order(as.numeric(as.character(p0$g_start))), ]
+  # 
+  # key = setNames(unique(p0$symbol), rep(1:(length(unique(p0$symbol))/2), 2))
+  # 
+  # p1 = p0[, colnames(p0)[colnames(p0) != "g_end"]]
+  # p2 = p0[, colnames(p0)[colnames(p0) != "g_start"]]
+  # colnames(p1)[colnames(p1) == "g_start"] = colnames(p2)[colnames(p2) == "g_end"] = "position"
+  # plot.df = rbind(p1, p2)
+  # 
+  # plot.df$symbol = as.character(plot.df$symbol)
+  # 
+  # labs = data.frame("gene"=unique(plot.df$symbol))
+  # labs$xpos = NA
+  # labs = labs[! grepl("ENSG", as.character(labs$gene)), ]
+  # for(i in 1:nrow(labs)){
+  #   labs$xpos[i] = min(plot.df$position[plot.df$symbol == labs$gene[i]], na.rm=T) + (max(plot.df$position[plot.df$symbol == labs$gene[i]], na.rm=T) - min(plot.df$position[plot.df$symbol == labs$gene[i]], na.rm=T))/2
+  # }
+  # 
+  # labs = labs[order(as.numeric(as.character(labs$xpos))), ]
+  # plot.df$y = as.numeric(as.character(names(key)[match(plot.df$symbol, key)]))
+  # 
+  # plot.df = plot.df[! is.na(plot.df$position) & ! is.na(plot.df$y), ]
+  # 
+  # genes = ggplot(plot.df, aes(x=position, y=y, group=symbol)) + 
+  #   geom_line(color="red", size=5) + 
+  #   annotate("text", x=as.numeric(as.character(labs$xpos)),
+  #            y=0.2+rep(1:(length(labs$xpos)/2), 3)[1:nrow(labs)], 
+  #            label=as.character(labs$gene)) + 
+  #   theme(panel.background=element_blank(), axis.line.x = element_line(color="black", size = 0.5), 
+  #         axis.text.y=element_blank(),axis.ticks.y=element_blank(),axis.title.y=element_blank())
+  # 
+  # dims = c(min(plot.df$position, na.rm=T), max(plot.df$position, na.rm=T))
+  # 
+  # f = list.files(gsub(paste0(tissue, "_", covars.info[1], "-", covars.info[length(covars.info)], ".csv"), "", 
+  #                     output_file_name_cis))
+  # f = f[! grepl("manhattan", f) & grepl("pdf", f)]
+  # 
+  # pdf(gsub(".csv", paste0("_", length(f) + 1, ".pdf"), output_file_name_cis))
+  # print(ggarrange(le + xlim(dims), genes + xlim(dims), nrow=2, ncol=1, heights=c(1, 0.5), 
+  #                 align="v", legend="bottom", common.legend=T))
+  # invisible(dev.off())
+  # 
+  # # Create a manhattan plots
+  # man.df = out[out$pvalue < 0.05, ]
+  # man.df$POS = unlist(lapply(man.df$snps, function(x) unlist(lapply(strsplit(as.character(x), split=":"), "[[", 2))))
+  # 
+  # man.df$chr = as.numeric(as.character(man.df$chr))
+  # man.df$pos = as.numeric(as.character(man.df$pos))
+  # man.df$pvalue = as.numeric(as.character(man.df$pvalue))
+  # 
+  # colnames(man.df) = c("snps", "gene", "statistic", "P", "FDR", "beta",
+  #                      "SNP", "symbol", "g_start", "g_end", "CHR", "BP", "POS" )
+  # 
+  # man.df$CHR = as.numeric(as.character(man.df$CHR))
+  # 
+  # 
+  # mp = gg.manhattan(man.df, hlight=c(""), threshold=1e-6, col=mypalette, ylims=c(0,10), title=paste(c(tissue, ":", paste(covars.info, collapse=", ")), collapse=" "))
+  # 
+  # pdf(gsub(".csv", "_locuszoom.pdf", output_file_name_cis))
+  # print(mp)
+  # invisible(dev.off())
   
 }
 
@@ -301,17 +303,14 @@ mypalette <- c("#E2709A", "#CB4577", "#BD215B", "#970F42", "#75002B")
 sig = 5e-8 # significant threshold line
 sugg = 1e-6
 
-opts = list(#c(paste0("EV", 1:4), paste0("PEER", 1:4), "Gender", "Ethnicity"), 
-  c("none"),
-  c(paste0("EV", 1:4), paste0("PEER", 1:4)),
-  paste0("EV", 1:4),
-  paste0("PEER", 1:4))
+opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4), paste0("PEER", 1:4))
 
-for(i in 1:length(opts)){
+for(i in 1:2){
   cv = as.character(opts[[i]])
-  print(paste("###", cv))
-  if (cv == "none") covariates_mat = matrix(ncol = ncol(covariates_mat), nrow=0)
-  output.creater(cv.df=covariates_mat, results.dir="/media/d1/Syn_out_KG/", tissue="Synovium", 
+  print(c("###", cv))
+  cm = covariates_mat
+  if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)
+  output.creater(cv.df=cm, results.dir="/media/d1/Syn_out_KG/", tissue="Synovium", 
                  cv.names=cv, rs.plotter=c())
   
 }
@@ -333,16 +332,13 @@ covariates_mat[c("Ethnicity", "Gender"),] = apply(covariates_mat[c("Ethnicity", 
 covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
 dimnames(covariates_mat2) = dimnames(covariates_mat)
 
-opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4), "Gender", "Ethnicity"), 
-            c("none"),
-            c(paste0("EV", 1:4), paste0("PEER", 1:4)),
-            paste0("EV", 1:4), 
-            paste0("PEER", 1:4))
+opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4), paste0("PEER", 1:4))
 for(i in 1:length(opts)){
   cv = as.character(opts[[i]])
-  print(paste("###", cv))
-  if (cv == "none") covariates_mat = matrix(ncol = ncol(covariates_mat), nrow=0, dimnames=list(c(), colnames(covariates_mat)))
-  output.creater(cv.df=covariates_mat, results.dir="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/", 
+  print(c("###", cv))
+  cm = covariates_mat
+  if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)  
+  output.creater(cv.df=cm, results.dir="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/", 
                  tissue="Blood", cv.names=cv, rs.plotter=c())
   
 }
