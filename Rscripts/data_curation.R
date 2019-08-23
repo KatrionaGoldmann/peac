@@ -70,13 +70,13 @@ samps = gsub(".txt", "", temp)
 #/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/QMUL2008043.txt
 df= read.table(paste0("/media/d1/Syn_out_KG/RNA_counts/", samps[1], ".txt"))
 for(i in samps[2:length(samps)]){
-  tt = read.table(paste0("/media/d1/Syn_out_KG/RNA_counts/RNA_counts/", i, ".txt"))
+  tt = read.table(paste0("/media/d1/Syn_out_KG/RNA_counts/", i, ".txt"))
 
   df = cbind(df, tt[match(rownames(df), rownames(tt)), ])
   colnames(df)[ncol(df)] = i
 }
 dir.create("/media/d1/Syn_out_KG/RNA_counts/groups/")
-write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/RNA_counts/groups/Genentech.txt", row.names=T, col.names=T, quote = F)
+write.table(df, "/media/d1/Syn_out_KG/RNA_counts/groups/Genentech.txt", row.names=T, col.names=T, quote = F)
 
 # Create the sample_meta file
 df = meta.use.peac[, 1:4]
@@ -176,7 +176,7 @@ df$Ethnicity = m1$Ethnicity[match(df$SampleID..QMUL.ID.only., m1$SampleID)]
 
 df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only.", "Batch" )]
 colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")
-write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt", row.names=F, col.names=F)
+write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt", row.names=T, col.names=T)
 
 # 94 for GenentechID Peac_data
 # 104 for SampleID Peac_data
