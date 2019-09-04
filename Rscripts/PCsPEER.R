@@ -7,7 +7,7 @@ library(biomaRt)
 library(cqn)
 library(biomaRt)
 
-pcs.peer <- function(gds.in,snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, gene.coord, out) {
+pcs.peer <- function(gds.in, snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, gene.coord, out) {
 
     ## get meta data file to relate ids and covariates:
     meta <- read.table(meta.in)
@@ -181,22 +181,22 @@ pcs.peer <- function(gds.in,snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, ge
 # Synovium
 ###################
 
-counts="/media/d1/Syn_out_KG/RNA_counts/groups/Genentech.txt"
+counts="/media/d1/KG_Outputs/Syn_out_KG/RNA_counts/groups/Genentech.txt"
 meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_syn.txt"
-gds.in='/media/d1/Syn_out_KG/DNA/PEAC_PCA.gds'
-snpL.in= "/media/d1/Syn_out_KG/DNA/RP_loads.rds"
-gene.coord="/media/d1/Syn_out_KG/gene_coord.txt"
-ld=0.5
-eaf=0.05
+gds.in='/media/d1/KG_Outputs/Syn_out_KG/DNA/PEAC_PCA.gds'
+snpL.in= "/media/d1/KG_Outputs/Syn_out_KG/DNA/RP_loads.rds"
+gene.coord="/media/d1/KG_Outputs/Syn_out_KG/gene_coord.txt"
+ld=1 # dont use a snp threshold
+eaf=NaN # dont set a threshold 0.05
 n=10
 prefix=c("pcs", "peerCqn")
 
-out = list(covs=paste("/media/d1/Syn_out_KG/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
-           geneLoc="/media/d1/Syn_out_KG/matqtl/inputs/gene_location.txt",
-           expressionCqn="/media/d1/Syn_out_KG/matqtl/inputs/gene_expression_cqn.txt",
-           covfix=paste("/media/d1/Syn_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
-           geno="/media/d1/Syn_out_KG/matqtl/inputs/genotype.txt",
-           snpLoc="/media/d1/Syn_out_KG/matqtl/inputs/snp_location.txt")
+out = list(covs=paste("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
+           geneLoc="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/gene_location.txt",
+           expressionCqn="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/gene_expression_cqn.txt",
+           covfix=paste("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
+           geno="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/genotype.txt",
+           snpLoc="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/snp_location.txt")
 
 pcs.peer(gds.in, snpL.in, n=n,  ld=ld, eaf=eaf, counts=counts, meta.in=meta.in, prefix="", gene.coord=gene.coord, out=out)
 
@@ -209,15 +209,15 @@ bld.meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt"
 bld.gds.in='/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/DNA/PEAC_PCA.gds'
 bld.snpL.in= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/DNA/RP_loads.rds"
 bld.gene.coord="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/gene_coord.txt"
-bld.ld=0.5
-bld.eaf=0.05
+bld.ld=1
+bld.eaf=NaN
 bld.n=10
 bld.prefix=c("pcs", "peerCqn")
 
 bld.out = list(covs=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
            geneLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_location.txt",
            expressionCqn="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_expression_cqn.txt",
-           covfix=paste("/media/d1/Syn_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
+           covfix=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
            geno="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/genotype.txt",
            snpLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/snp_location.txt")
 

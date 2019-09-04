@@ -90,13 +90,34 @@ df.m = cbind(mp[, c( "Gender", "Batch")],
              m[, c("Ethnicity", "Pathotype", "Age", "CCP", "Inflammatory.score", "CRP", "ESR", "Tender", 
                    "Swollen", "VAS","DAS28.ESR", "DAS28.CRP")])
 
-syn = covar_drivers(pca = t(covariates_mat), clin = df.m, alpha = 0.05)
+syn = covar_drivers(pca = t(covariates_mat), clin = df.m, alpha = 0.01)
 ss = tableGrob(syn$df[syn$df$Association > -log10(0.05), ])
 
 pdf("/home/kgoldmann/Documents/PEAC_eqtl/Results/drivers_syn_all.pdf", height=10)
 syn$plot
 print(grid.arrange(ss))
 dev.off()
+
+# Lets investigate this further
+plot.list = list()
+for(i in which(syn$df$Significant == T)){
+  ev = as.character(syn$df$PC[i])
+  var = as.character(syn$df$Feature[i])
+  df = data.frame(e = as.numeric(covariates_mat[ev, ]), m = df.m[, var])
+  if(class(df$m) == "factor"){
+    p2 = ggplot(df, aes(x=m, y=e, color=m, fill=m)) + geom_boxplot(alpha=0.3, outlier.shape=NA) + geom_jitter(width=0.25) + labs(x=var, y=ev) + theme_classic() + theme(legend.position = "none")
+  } else{
+    p2 = ggplot(df, aes(x=m, y=e)) + geom_point() + labs(x=var, y=ev) + theme_classic()
+  }
+  plot.list[[length(plot.list)+1]] = p2
+}
+length(plot.list)
+
+pdf("/home/kgoldmann/Documents/PEAC_eqtl/Results/drivers_syn_closer.pdf", onefile = T)
+ggarrange(plotlist = plot.list, nrow=2, ncol=2)
+dev.off()
+#
+
 
 ##############
 # Blood

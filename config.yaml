@@ -17,7 +17,7 @@
     "scripts_dir" : "/home/kgoldmann/Documents/peac/",
 
     # directory to write all output data files to
-    "output_dir" :  "/home/kgoldmann/Documents/PEAC_eqtl/Outputs",
+    "output_dir" :  "/media/d1/Syn_out_KG/",
 
     # path to STAR
     "STAR" : "/home/kgoldmann/Applications/STAR/source/STAR",

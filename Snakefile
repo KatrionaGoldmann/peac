@@ -6,7 +6,7 @@
 ## shell.prefix("module load samtools-1.4-gcc-5.4.0-derfxbk; ")
 #shell.prefix("source ~/.bashrc; ")
 import pandas as pd
-configfile: "config_blood.yaml"
+configfile: "config.yaml"
 
 def read_samples():
     """
@@ -143,8 +143,8 @@ rule all_genotype:
         expand(config['output_dir'] + "/DNA/RP_PCA.gds"),
         # # #
         # # # RP_PCA
-        config['output_dir'] + "/DNA/RP_pcs.rds",
-        config['output_dir'] + "/DNA/RP_loads.rds",
+        #config['output_dir'] + "/DNA/RP_pcs.rds",
+        #config['output_dir'] + "/DNA/RP_loads.rds",
         # # PCs_PEER
         #config['output_dir'] + "/matqtl/inputs/snp_location.txt",
         # # Deseq2_inputs files
@@ -388,7 +388,7 @@ rule PCs_PEER:
         Loads=config['output_dir'] + "/DNA/RP_loads.rds",
         gene_coord=config['output_dir'] + "/gene_coord.txt"
     params:
-        ld=0.5,
+        ld=0.01,
         maf=0.05,
         Nfactors=config['N factors'],
         prefix=["pcs", "peerCqn"]

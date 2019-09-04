@@ -9,70 +9,6 @@ library(ggpubr)
 #' http://www.bios.unc.edu/research/genomic_software/Matrix_eQTL/runit.html
 #' calling Matrix_eQTL main function
 
-gg.manhattan <- function(df, threshold, hlight, col, ylims, title){
-  # format df
-  df.tmp <- df %>% 
-    
-    # Compute chromosome size
-    group_by(CHR) %>% 
-    summarise(chr_len=max(BP)) %>% 
-    
-    # Calculate cumulative position of each chromosome
-    mutate(tot=cumsum(chr_len)-chr_len) %>%
-    select(-chr_len) %>%
-    
-    # Add this info to the initial dataset
-    left_join(df, ., by=c("CHR"="CHR")) %>%
-    
-    # Add a cumulative position of each SNP
-    arrange(CHR, BP) %>%
-    mutate( BPcum=BP+tot) %>%
-    
-    # Add highlight and annotation information
-    mutate( is_highlight=ifelse(SNP %in% hlight, "yes", "no")) %>%
-    mutate( is_annotate=ifelse(P < threshold, "yes", "no"))
-  
-  # get chromosome center positions for x-axis
-  axisdf <- df.tmp %>% group_by(CHR) %>% summarize(center=( max(BPcum) + min(BPcum) ) / 2 )
-  
-  ggplot(df.tmp, aes(x=BPcum, y=-log10(P))) +
-    # Show all points
-    geom_point(aes(color=as.factor(CHR)), alpha=0.8, size=2) +
-    scale_color_manual(values = rep(col, 22 )) +
-    
-    # custom X axis:
-    scale_x_continuous( label = axisdf$CHR, breaks= axisdf$center ) +
-    scale_y_continuous(expand = c(0, 0), limits = ylims) + # expand=c(0,0)removes space between plot area and x axis 
-    
-    # add plot and axis titles
-    ggtitle(paste0(title)) +
-    labs(x = "Chromosome") +
-    
-    # add genome-wide sig and sugg lines
-    geom_hline(yintercept = -log10(sig)) +
-    geom_hline(yintercept = -log10(sugg), linetype="dashed") +
-    
-    # Add highlighted points
-    #geom_point(data=subset(df.tmp, is_highlight=="yes"), color="orange", size=2) +
-    
-    # Add label using ggrepel to avoid overlapping
-    #geom_label_repel(data=df.tmp[df.tmp$is_annotate=="yes",], aes(label=as.factor(SNP), alpha=0.7), size=5, force=1.3) +
-    
-    # Custom the theme:
-    theme_bw(base_size = 22) +
-    theme( 
-      plot.title = element_text(hjust = 0.5, size=14),
-      legend.position="none",
-      panel.border = element_blank(),
-      axis.title.x = element_text(size=12),
-      axis.title.y = element_text(size=12),
-      axis.text.x = element_text(size=10),
-      axis.text.y = element_text(size=10),
-      panel.grid.major.x = element_blank(),
-      panel.grid.minor.x = element_blank()
-    )
-}
-
 dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Results", showWarnings = F)
 
 output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
@@ -192,7 +128,7 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
 # Synovium
 ###############
 # Covariates file name
-covariates_mat =  read.table(paste0("/media/d1/Syn_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
+covariates_mat =  read.table(paste0("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
 rownames(covariates_mat) = covariates_mat[, "rn"]
 covariates_mat = as.matrix(covariates_mat[, colnames(covariates_mat) != "rn"]) 
 
@@ -203,20 +139,14 @@ covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
 dimnames(covariates_mat2) = dimnames(covariates_mat)
 covariates_mat = rbind(covariates_mat2, "none"=1)
 
-mypalette <- c("#E2709A", "#CB4577", "#BD215B", "#970F42", "#75002B")
-sig = 5e-8 # significant threshold line
-sugg = 1e-6
-
 opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4), paste0("PEER", 1:4))
 
-for(i in 1:2){
+for(i in 1:1){
   cv = as.character(opts[[i]])
   print(c("###", cv))
   cm = covariates_mat
   if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)
-  output.creater(cv.df=cm, results.dir="/media/d1/Syn_out_KG/", tissue="Synovium", 
-                 cv.names=cv, rs.plotter=c())
-  
+  output.creater(cv.df=cm, results.dir="/media/d1/KG_Outputs/Syn_out_KG/", tissue="Synovium", cv.names=cv, rs.plotter=c())
 }
 
 
@@ -237,14 +167,12 @@ covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
 dimnames(covariates_mat2) = dimnames(covariates_mat)
 
 opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4), paste0("PEER", 1:4))
-for(i in 1:length(opts)){
+for(i in 1:1){
   cv = as.character(opts[[i]])
   print(c("###", cv))
   cm = covariates_mat
   if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)  
-  output.creater(cv.df=cm, results.dir="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/", 
-                 tissue="Blood", cv.names=cv, rs.plotter=c())
-  
+  output.creater(cv.df=cm, results.dir="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/", tissue="Blood", cv.names=cv, rs.plotter=c())
 }
 
 
