@@ -52,13 +52,21 @@ pcs.peer <- function(gds.in, snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, g
     matExp <- matExp[rownames(matExp) %in% gene.c$gene_id, ]
 
     ensembl = useEnsembl(biomart="ensembl", dataset="hsapiens_gene_ensembl", GRCh = 37)
-    chr_genes <- getBM(attributes=c('ensembl_gene_id', 'hgnc_symbol','chromosome_name','start_position','end_position'), filters =
-                            'ensembl_gene_id', values =unique(gene.c$gene_id), mart = ensembl)
+    chr_genes <- getBM(attributes=c('ensembl_gene_id', 'hgnc_symbol','chromosome_name','start_position','end_position', 
+                                    'description', "clone_based_ensembl_gene", "clone_based_vega_gene", 'external_gene_name' ), 
+                       filters = 'ensembl_gene_id', values =unique(gene.c$gene_id), mart = ensembl)
+    chr_genes$hgnc_symbol[chr_genes$hgnc_symbol == ""] = chr_genes$external_gene_name[chr_genes$hgnc_symbol == ""]
+    chr_genes$hgnc_symbol[is.na(chr_genes$hgnc_symbol)] = ""
+    chr_genes$hgnc_symbol[chr_genes$hgnc_symbol == ""] = chr_genes$clone_based_vega_gene[chr_genes$hgnc_symbol == ""]
+    chr_genes$hgnc_symbol[is.na(chr_genes$hgnc_symbol)] = ""
+    chr_genes$hgnc_symbol[chr_genes$hgnc_symbol == ""] = chr_genes$clone_based_ensembl_gene[chr_genes$hgnc_symbol == ""]
+    chr_genes$hgnc_symbol[is.na(chr_genes$hgnc_symbol)] = ""
     gene.c$symbol = chr_genes$hgnc_symbol[match(gene.c$gene_id, chr_genes$ensembl_gene_id)]
+    gene.c$gene_description = chr_genes$description[match(gene.c$gene_id, chr_genes$ensembl_gene_id)]
     
     
     ## save gene.c as for matrixqtl gene_location file
-    setcolorder(gene.c, c("gene_id", "chrom", "start", "end", "symbol"))
+    setcolorder(gene.c, c("gene_id", "chrom", "start", "end", "symbol", "gene_description"))
     write.table(gene.c, row.names=F, file=out[['geneLoc']])
                 
     ## get cqn normalised expression and  peer factors    
@@ -181,45 +189,46 @@ pcs.peer <- function(gds.in, snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, g
 # Synovium
 ###################
 
-counts="/media/d1/KG_Outputs/Syn_out_KG/RNA_counts/groups/Genentech.txt"
-meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_syn.txt"
-gds.in='/media/d1/KG_Outputs/Syn_out_KG/DNA/PEAC_PCA.gds'
-snpL.in= "/media/d1/KG_Outputs/Syn_out_KG/DNA/RP_loads.rds"
-gene.coord="/media/d1/KG_Outputs/Syn_out_KG/gene_coord.txt"
-ld=1 # dont use a snp threshold
-eaf=NaN # dont set a threshold 0.05
-n=10
-prefix=c("pcs", "peerCqn")
+syn.counts="/media/d1/KG_Outputs/Syn_out_KG/RNA_counts/groups/Genentech.txt"
+syn.meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_syn.txt"
+syn.gds.in='/media/d1/KG_Outputs/Syn_out_KG/DNA/PEAC_PCA.gds'
+syn.snpL.in= "/media/d1/KG_Outputs/Syn_out_KG/DNA/RP_loads.rds"
+syn.gene.coord="/media/d1/KG_Outputs/Syn_out_KG/gene_coord.txt"
+syn.ld=1 # dont use a snp threshold
+syn.eaf=NaN # dont set a threshold 0.05
+syn.n=10
+syn.prefix=c("pcs", "peerCqn")
 
-out = list(covs=paste("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
+syn.out = list(covs=paste("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
            geneLoc="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/gene_location.txt",
            expressionCqn="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/gene_expression_cqn.txt",
            covfix=paste("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
            geno="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/genotype.txt",
            snpLoc="/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/snp_location.txt")
 
-pcs.peer(gds.in, snpL.in, n=n,  ld=ld, eaf=eaf, counts=counts, meta.in=meta.in, prefix="", gene.coord=gene.coord, out=out)
+pcs.peer(syn.gds.in, syn.snpL.in, n=syn.n, ld=syn.ld, eaf=syn.eaf, counts=syn.counts, meta.in=syn.meta.in, prefix="", 
+         gene.coord=syn.gene.coord, out=syn.out)
 
 ###################
 # Blood
 ###################
 
-bld.counts="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/Genentech.txt"
+bld.counts="/media/d1/KG_Outputs/Bld_out_KG/RNA_counts/groups/Genentech.txt"
 bld.meta.in="/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt"
-bld.gds.in='/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/DNA/PEAC_PCA.gds'
-bld.snpL.in= "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/DNA/RP_loads.rds"
-bld.gene.coord="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/gene_coord.txt"
+bld.gds.in='/media/d1/KG_Outputs/Bld_out_KG/DNA/PEAC_PCA.gds'
+bld.snpL.in= "/media/d1/KG_Outputs/Bld_out_KG/DNA/RP_loads.rds"
+bld.gene.coord="/media/d1/KG_Outputs/Bld_out_KG/gene_coord.txt"
 bld.ld=1
 bld.eaf=NaN
 bld.n=10
 bld.prefix=c("pcs", "peerCqn")
 
-bld.out = list(covs=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
-           geneLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_location.txt",
-           expressionCqn="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_expression_cqn.txt",
-           covfix=paste("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
-           geno="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/genotype.txt",
-           snpLoc="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/snp_location.txt")
+bld.out = list(covs=paste("/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/PCA", rep(1:10, 10), ".PEER", rep(1:10, each=10), ".txt", sep=""),
+           geneLoc="/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/gene_location.txt",
+           expressionCqn="/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/gene_expression_cqn.txt",
+           covfix=paste("/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/PCA", 1:10, ".covSexBatch.txt", sep=""),
+           geno="/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/genotype.txt",
+           snpLoc="/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/snp_location.txt")
 
 
 pcs.peer(gds.in = bld.gds.in, snpL.in=bld.snpL.in, n=bld.n,  ld=bld.ld, eaf=bld.eaf, counts=bld.counts, 

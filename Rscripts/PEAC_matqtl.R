@@ -4,6 +4,7 @@ library(ggplot2)
 library(dplyr)
 library(RColorBrewer)
 library(ggpubr)
+library(data.table)
 
 #' cis-eqtl analysis using Matrixeqtl
 #' http://www.bios.unc.edu/research/genomic_software/Matrix_eQTL/runit.html
@@ -31,26 +32,13 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
     cv.df = t(apply(cv.df, 1, as.numeric))
   }
   
-  
-  # df = data.frame("expression"=colnames(gene)[colnames(gene) != "V1"],
-  #                 "snps"=colnames(snps)[colnames(snps) != "V1"],
-  #                 "covars"=colnames(cv.df))
-  # 
-  # load("~/Documents/gcpeac/PEAC/PEAC main 081216.rdata")
-  # df$conv = gsub("b", "", metadata$SampleID..QMUL.ID.only.[match(df$expression, metadata$SampleID..QMUL.or.Genentech.)])
-  # # Sanity check!!
-  # if(all(identical(as.character(df$conv), as.character(df$covars)),
-  #     identical(as.character(df$snps), as.character(df$covars))) == FALSE) print("ERROR: check alignment")
-  
   # Output file name
   covars.info = cv.names
   dir.create(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue), showWarnings = F)
-  dir.create(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue, "/", covars.info[1], 
-                    "-", covars.info[length(covars.info)]), showWarnings = F)
+  abr = paste0(c("EV", gsub("EV", "", covars.info[grepl("EV", covars.info)]), "_", "PEER", gsub("PEER", "", covars.info[grepl("PEER", covars.info)])), collapse="")
+  dir.create(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue, "/", abr), showWarnings = F)
   output_file_name_cis = paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue, "/", 
-                                covars.info[1], "-", covars.info[length(covars.info)], "/", 
-                                tissue, "_", covars.info[1], "-", covars.info[length(covars.info)], 
-                                ".csv")
+                                abr, "/", tissue, "_", abr, ".csv")
   
   
   pvOutputThreshold_cis = 1 # Only associations significant at this level will be saved
@@ -67,6 +55,16 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
   snps$fileSkipColumns = 1;       # one column of row labels
   snps$fileSliceSize = 2000;      # read file in slices of 2,000 rows
   snps$LoadFile(SNP_file_name)
+  
+  # Calculate the MAF for each snp
+  maf.list = vector('list', length(snps))
+  for(sl in 1:length(snps)) {
+    if(sl %% 50 == 0) print(sl)
+    slice = snps[[sl]];
+    maf.list[[sl]] = rowMeans(slice,na.rm=TRUE)/2;
+    maf.list[[sl]] = pmin(maf.list[[sl]],1-maf.list[[sl]]);
+  }
+  maf = setNames(unlist(maf.list), unlist(snps$rowNameSlices))
   
   ## Load gene expression data
   print("## Gene organiser")
@@ -110,17 +108,23 @@ output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
   
   out <- me$cis$eqtls
   out$rs.id = snpspos$rs.id[match(out$snps, snpspos$snp)]
+  out$maf = maf[match(out$snps, names(maf))]
   out$symbol = genepos$symbol[match(out$gene, genepos$gene_id)]
   out$g_start = genepos$start[match(out$gene, genepos$gene_id)]
   out$g_end = genepos$end[match(out$gene, genepos$gene_id)]
   out$chr = gsub("\\:.*", "", out$snps)
   out$pos = as.numeric(as.character(unlist(lapply(out$snps, function(x) unlist(lapply(strsplit(as.character(x), split=":"), "[[", 2))))))
   
+  
+  
   print("## Output")
   fwrite(list(paste("#", tissue), paste("\n#", paste(covars.info, collapse=",")), 
               paste("\n#", "p <", pvOutputThreshold_cis, "#")), 
               row.names=F, file=output_file_name_cis, col.names=F, append=F, quote=F)
   fwrite(out, file=output_file_name_cis, append=T, col.names = T)
+  fwrite(out[out$pvalue < 1e-8, ], file=gsub(".csv", "_p_1e-8.csv", output_file_name_cis), append=T, col.names = T)
+  fwrite(out[out$FDR < 0.05, ], file=gsub(".csv", "_fdr_0.05.csv", output_file_name_cis), append=T, col.names = T)
+  fwrite(out[out$pvalue < 1e-5, ], file=gsub(".csv", "_supp_p_1e-5.csv", output_file_name_cis), append=T, col.names = T)
   
 }
 
@@ -139,9 +143,9 @@ covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
 dimnames(covariates_mat2) = dimnames(covariates_mat)
 covariates_mat = rbind(covariates_mat2, "none"=1)
 
-opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4), paste0("PEER", 1:4))
+opts = list(c(paste0("EV", 1:4), paste0("PEER", c(1, 3, 4))), c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4))
 
-for(i in 1:1){
+for(i in 1){
   cv = as.character(opts[[i]])
   print(c("###", cv))
   cm = covariates_mat
@@ -156,7 +160,7 @@ for(i in 1:1){
 # Blood
 ###############
 # Covariates file name
-covariates_mat =  read.table(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/PCA4.PEER4.txt"))
+covariates_mat =  read.table(paste0("/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
 rownames(covariates_mat) = covariates_mat[, "rn"]
 covariates_mat = as.matrix(covariates_mat[, colnames(covariates_mat) != "rn"]) 
 
@@ -172,7 +176,7 @@ for(i in 1:1){
   print(c("###", cv))
   cm = covariates_mat
   if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)  
-  output.creater(cv.df=cm, results.dir="/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/", tissue="Blood", cv.names=cv, rs.plotter=c())
+  output.creater(cv.df=cm, results.dir="/media/d1/KG_Outputs/Bld_out_KG/", tissue="Blood", cv.names=cv, rs.plotter=c())
 }
 
 

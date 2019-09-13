@@ -7,110 +7,57 @@ library(ggrepel)
 library(ggbio)
 library(ggpubr)
 library(EnsDb.Hsapiens.v75)
-
 data(genesymbol, package = "biovizBase")
 
-p.ideo <- Ideogram(genome = "hg19", aspect.ratio=1/50, fill="green", color="blue")
+# Load the script for locuszoom
+source("/home/kgoldmann/Documents/peac/Rfunctions/locuszoom.R")
 
-local_plotter = function(sym, chr=NULL, width=1e6, file=file.in, col = "symbol", SNP_file_name = SNP_file, 
-                         ld.calc=FALSE, genes.plot=c("CHURC1"), highlight.gene=F, g.start=NULL, g.end=NULL, exp=NULL, ...){
 
-  mat.df = data.frame(fread(cmd=paste0("grep -e ", sym, " -e statistic " , " ",  file)))
-  mat.df = mat.df[mat.df[, col] == sym, ]
-  
-  gene.centre = mat.df$g_start[1] + (mat.df$g_end[1] - mat.df$g_start[1])/2
-
-  # Calc the LD values
-  snp.id = mat.df$snps[which(-log10(mat.df$pvalue) == max(-log10(mat.df$pvalue), na.rm=T))[1]] # Top snp
-  ld.df = data.frame(fread(cmd=paste0("grep -e ", paste0(unique(mat.df$snps), collapse=" -e "), " ",  SNP_file_name)))
-  rownames(ld.df) = ld.df[,1]
-  ld.df = data.frame(ld.df[, 2:ncol(ld.df)])
-  top.snp = as.numeric(ld.df[snp.id, ]) #[mat.df$snps[which(-log10(mat.df$pvalue) == max(-log10(mat.df$pvalue), na.rm=T))], ])
-  
-  if(ld.calc == TRUE){
-    mat.df$ld = unlist(lapply(1:nrow(mat.df), function(x) {
-      print(x)
-      cor(as.numeric(  ld.df[rownames(ld.df) == mat.df$snps[x], ]), top.snp, use="complete.obs")^2
-    }))
-    mat.df$ld[is.na(mat.df$ld)] = 0
-  } else{mat.df$ld = 1}
-  
-  gene.exp = as.numeric(as.character(exp[which(exp$V1 == unique(mat.df$gene[mat.df$symbol == sym])), 2:ncol(exp)]))
-  
-  dat = data.frame(x =top.snp, y=gene.exp)
-  dat = dat[! is.na(dat$x), ]
-  factor.match = setNames(c(paste0(strsplit(snp.id, ":")[[1]][3], "/", strsplit(snp.id, ":")[[1]][3]), 
-                   paste0(strsplit(snp.id, ":")[[1]][3], "/", strsplit(snp.id, ":")[[1]][4]), 
-                   paste0(strsplit(snp.id, ":")[[1]][4], "/", strsplit(snp.id, ":")[[1]][4])), c(0, 1, 2))
-  dat$snps = factor(dat$x, labels=factor.match[match(levels(factor(dat$x)), names(factor.match))])
-  
-
-  table.count <- ggtexttable(data.frame(table(dat$snps)), theme = ttheme("mOrange"), rows=NULL, cols = c("Var", "Count"))
- 
-  snp.box = ggplot(dat, aes(x = snps, y=y, color=snps, fill=snps)) + 
-    geom_boxplot(alpha=0.3, outlier.shape=NA) + 
-    geom_jitter(width=0.25) + 
-    theme_classic() + 
-    theme(legend.position = "none") + 
-    labs(x=unique(mat.df$rs.id[mat.df$snps == snp.id]), y=sym)
-  
-  
-  le = ggplot(mat.df, aes(x=pos, y=-log10(pvalue), color=ld)) + 
-    geom_point() + xlab("") + 
-    theme_classic() +
-    geom_text_repel(data=mat.df[mat.df$snps == snp.id, ], color="black", aes(x=pos, y=-log10(pvalue), label=rs.id)) + 
-    scale_color_continuous(type = "viridis") + 
-    labs(color = expression(paste(r^{2}))) + 
-    theme(plot.title = element_text(hjust = 0.5), legend.position = "none") 
-  
-  if(highlight.gene == T){le = le + annotate("rect", xmin=g.start, xmax=g.end, ymin=-Inf, ymax=Inf, alpha=0.3, fill="salmon")}
-  
-  print("test1")
-  #retrieve information of the gene of interest (longest protein coding)
-  TX = transcripts(EnsDb.Hsapiens.v75, filter = ~ (symbol %in% genes.plot & seq_name == chr))# & tx_biotype == "protein_coding" & gene_biotype == "protein_coding"))
-  TX = data.frame(TX)
-  lengths = data.frame("symbol"=TX$symbol, "width"=TX$width, "length"=(TX$tx_cds_seq_end - TX$tx_cds_seq_start), "start"=TX$tx_cds_seq_start, "end"=TX$tx_cds_seq_end, "id"=TX$tx_id)
-  lengths = lengths[! is.na(lengths$width), ]
-  l = list()
-  for(i in unique(lengths$symbol)){
-    l[[i]] = lengths$id[as.numeric(as.character(lengths$width)) == max(lengths$width[lengths$symbol == i], na.rm=T)][1]
-  }
-  #   & tx_biotype == "protein_coding" & gene_biotype == "protein_coding"
-  p.txdb = autoplot(EnsDb.Hsapiens.v75, ~ (symbol %in% genes.plot & seq_name == chr & tx_id %in% unlist(l)), names.expr="gene_name", ...)
-  
- 
-  print("test2")
-  g.plot =  attr(p.txdb, 'ggplot') +  theme_classic() + theme(axis.line.y=element_blank())
-  if(highlight.gene == T){g.plot =g.plot + annotate("rect", xmin=g.start, xmax=g.end, ymin=-Inf, ymax=Inf, alpha=0.3, fill="salmon")}
-
-  plot.range = c(min(c(layer_scales(le)$x$range$range[1], layer_scales(g.plot)$x$range$range[1])), 
-                 max(c(layer_scales(le)$x$range$range[2], layer_scales(g.plot)$x$range$range[2])))
-
-  return(list("snps" = le + xlim(plot.range), "genes"=g.plot + xlim(plot.range), "bp"=snp.box, snp.range=layer_scales(le)$x$range$range, "table"=table.count))
-}
-
+covariates = "EV1-PEER1"
 
 # Synovium
 ############
-file.in = "/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/Synovium_EV1-PEER4.csv"
+file.in = paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/", covariates, "/Synovium_", covariates, ".csv")
 SNP_file = "/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/genotype.txt"
 gene.pos = "/media/d1/KG_Outputs/Syn_out_KG//matqtl/inputs/gene_location.txt"
 exp.in = fread("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/gene_expression_cqn.txt")
 window=1e6
 
+# Plot for only the significant genes
 all = fread(file.in, nrows=20000)
-all = all[all$symbol != ""]
+all = all[all$symbol != "" & all$pvalue < 1e-8]
 all$count = table(all$symbol)[match(all$symbol, names(table(all$symbol)))]
 all = all[rev(order(all$count)), ]
-common.genes = unique(all$symbol[all$count > 1])[1:20]
-top.genes = as.character(data.frame(fread(file.in, select="symbol", nrows=100))$symbol)
-top.genes = top.genes[top.genes != ""][1:20]
-all.genes = unique(c(common.genes, top.genes))
-all.genes = c(all.genes, "ERAP1")
 
-invisible(file.remove(list.files("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/locuszoom/", full.names = T)))
+# Output the information for each gene
+genes.info=data.frame("gene"=unique(all$symbol), "Ensembl"=unique(all$gene))
+genes.info$"sig.snps"= all$count[match(genes.info$gene, all$symbol)]
+genes.info$top.snp = NA
+genes.info$top.p = NA
+for(i in 1:nrow(genes.info)){
+  genes.info$top.snp[i] = all$rs.id[all$symbol == genes.info$gene[i]][1]
+  genes.info$top.p[i] = all$pvalue[all$symbol == genes.info$gene[i]][1]
+}
+genes.info = genes.info[order(genes.info$top.p), ]
+write.csv(genes.info, paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/", covariates, "/sig_genes.csv"), quote=F, row.names=F)
+
+
+common.genes = unique(all$symbol[all$count > 1])[1:50]
+top.genes = as.character(data.frame(fread(file.in, select="symbol", nrows=100))$symbol)
+top.genes = top.genes[top.genes != ""][1:50]
+all.genes = unique(c(common.genes, top.genes))
+all.genes = unique(c(all.genes[! is.na(all.genes)], c("ERAP1", "ERAP2")))
+
+load("/home/kgoldmann/Documents/gcpeac/Chris/PEAC_data/PEACmetadataV12.RData")
+m1 = metadata$baseline
+m1 = m1[match(colnames(exp.in)[2:ncol(exp.in)], m1$GenentechID), ]
+
+snp.cors = data.frame()
+
+invisible(file.remove(list.files(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/", covariates, "/locuszoom/"), full.names = T)))
 for(gene in all.genes){
   print(paste(gene, which(all.genes == gene), "/", length(all.genes)))
+  
   # check which genes.df within the plot neighbourhood for plotting
   genes.df = fread(gene.pos)
   gp = genes.df$start[genes.df$symbol == gene] + (genes.df$end[genes.df$symbol == gene] - genes.df$start[genes.df$symbol == gene])/2
@@ -121,40 +68,74 @@ for(gene in all.genes){
   
   genes.df = genes.df[genes.df$start >= gene.range[1] & genes.df$end <= gene.range[2] & genes.df$chrom == genes.df$chrom[genes.df$symbol == gene] & genes.df$symbol != "", ]
   genes.df=genes.df[order(genes.df$start), ]
-
+  
   plots=local_plotter(sym=gene, chr=chrom, width=window, file=file.in, col = "symbol", SNP_file_name = SNP_file, 
                       ld.calc=TRUE, genes.plot=genes.df$symbol, highlight.gene = T, g.start=g.start, g.end=g.end, 
-                      exp = exp.in)
-
-  p1 = ggarrange(plots$snps, plots$genes, nrow=2, ncol=1, align="v", legend="bottom", common.legend=T, heights = c(0.6, 0.4), widths=c(0.6, 0.4))#, nrow=2, heights=c(0.1, 0.9))
-  p2 = ggarrange(plots$bp, plots$table, nrow=3, ncol=1, heights=c(0.5, 0.3, 0.7))
-  p = ggarrange(p1, p2, nrow=1, ncol=2, widths=c(0.7, 0.3))
+                      exp = exp.in, meta=m1)
   
-  pdf(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/locuszoom/Synovium_", gene, ".pdf"), onefile=FALSE, width=10)
-  print(annotate_figure(p, top = paste("SNPs correlated with", gene)))
-   dev.off() 
 
-}  
+  
+  # Plot if snps comply with distribution rules
+  if(! "reason" %in% names(plots)){
+    snp.cors = rbind(snp.cors, plots$snp.corr)
+    
+    p1 = ggarrange(plots$snps, plots$genes, nrow=2, ncol=1, align="v", legend="bottom", common.legend=T, heights = c(0.6, 0.4), widths=c(0.6, 0.4))#, nrow=2, heights=c(0.1, 0.9))
+    p2 = ggarrange(plots$bp, plots$sp, nrow=2, ncol=1, heights=c(0.5, 1))
+    
+    p = ggarrange(p1, p2, nrow=1, ncol=2, widths=c(0.6, 0.4))
+    
+    pdf(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/", covariates, "/locuszoom/Synovium_", gene, ".pdf"), onefile=FALSE, width=10)
+    print(annotate_figure(p, top = paste("SNPs correlated with", gene)))
+    dev.off() 
+    
+    
+    
+  }
+}
 
-# sudo cp -r /home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/locuszoom/* /home/kgoldmann/Documents/gcpeac/Katriona/PEAC_analysis/PEAC_eQTL/Results/Synovium/EV1-PEER4/locuszoom/
+write.csv(snp.cors[snp.cors$Significant == T, ], paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/", covariates, "/snp_clin_corrs.csv"), quote=F, row.names = F)
+
+# sudo rm /home/kgoldmann/Documents/gcpeac/Katriona/PEAC_analysis/PEAC_eQTL/Results/Synovium/EV1-PEER1/locuszoom/*
+# sudo head -1000 /home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER1/Synovium_EV1-PEER1.csv > /home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER1/Synovium_EV1-PEER1_top1000.csv
+# sudo cp -r /home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER1/Synovium_EV1-PEER1_top1000.csv /home/kgoldmann/Documents/gcpeac/Katriona/PEAC_analysis/PEAC_eQTL/Results/Synovium/EV1-PEER1/Synovium_EV1-PEER1_top1000.csv
+
+
+
+
 
 # Blood
 ############
 file.in = "/home/kgoldmann/Documents/PEAC_eqtl/Results/Blood/EV1-PEER4/Blood_EV1-PEER4.csv"
 SNP_file = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/genotype.txt"
 gene.pos = "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_location.txt"
-dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Results/Blood/EV1-PEER4/locuszoom/", showWarnings = F)
+exp.in = fread("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/matqtl/inputs/gene_expression_cqn.txt")
+
 window=1e6
 
 all = fread(file.in, nrows=20000)
-all = all[all$symbol != ""]
+all = all[all$symbol != "" & all$pvalue < 1e-8]
 all$count = table(all$symbol)[match(all$symbol, names(table(all$symbol)))]
 all = all[rev(order(all$count)), ]
-common.genes = unique(all$symbol[all$count > 1])[1:20]
+
+# Output the information for each gene
+genes.info=data.frame("gene"=unique(all$symbol), "Ensembl"=unique(all$gene))
+genes.info$"sig.snps"= all$count[match(genes.info$gene, all$symbol)]
+genes.info$top.snp = NA
+genes.info$top.p = NA
+for(i in 1:nrow(genes.info)){
+  genes.info$top.snp[i] = all$rs.id[all$symbol == genes.info$gene[i]][1]
+  genes.info$top.p[i] = all$pvalue[all$symbol == genes.info$gene[i]][1]
+}
+genes.info = genes.info[order(genes.info$top.p), ]
+write.csv(genes.info, paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Blood/", covariates, "/sig_genes.csv"), quote=F, row.names=F)
+
+
+common.genes = unique(all$symbol[all$count > 1])[1:50]
 top.genes = as.character(data.frame(fread(file.in, select="symbol", nrows=100))$symbol)
-top.genes = top.genes[top.genes != ""][1:20]
+top.genes = top.genes[top.genes != ""][1:50]
 all.genes = unique(c(common.genes, top.genes))
-all.genes = c(all.genes, "ERAP1")
+all.genes = unique(c(all.genes[! is.na(all.genes)], c("ERAP1", "ERAP2")))
+
 
 for(gene in all.genes){
   print(paste(gene, which(all.genes == gene), "/", length(all.genes)))
@@ -181,5 +162,5 @@ for(gene in all.genes){
   dev.off()
 }
 
-# sudo cp -r /home/kgoldmann/Documents/PEAC_eqtl/Results/Blood/EV1-PEER4/locuszoom/* /home/kgoldmann/Documents/gcpeac/Katriona/PEAC_analysis/PEAC_eQTL/Results/Blood/locuszoom/
+# sudo cp -r /home/kgoldmann/Documents/PEAC_eqtl/Results/Blood/EV1-PEER4/locuszoom/* /home/kgoldmann/Documents/gcpeac/Katriona/PEAC_analysis/PEAC_eQTL/Results/Blood/EV1-PEER4/locuszoom/
 

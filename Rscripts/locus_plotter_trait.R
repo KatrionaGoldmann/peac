@@ -69,27 +69,22 @@ local_plotter_trait = function(sym, file=file.in, SNP_file_name = SNP_file, ld.c
 # Synovium
 ############
 file.in = "/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/Synovium_EV1-PEER4_fantom5mods.csv"
-SNP_file = "/media/d1/Syn_out_KG/matqtl/inputs/genotype.txt"
-exp.in = fread("/media/d1/Syn_out_KG/F5_expression.csv")
+SNP_file = "/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/genotype.txt"
+exp.in = fread("/media/d1/KG_Outputs/Syn_out_KG/F5_expression.csv")
 #window=1e6
 
-
 all = fread(file.in, nrows=20000)
-all.genes = unique(all$gene)
+all.mods = unique(all$gene)
 
 invisible(file.remove(list.files("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/locuszoom_trait/", full.names = T)))
-for(gene in all.genes){
-  print(paste(gene, which(all.genes == gene), "/", length(all.genes)))
-
-
-  plots=local_plotter_trait(sym=gene, file=file.in, SNP_file_name = SNP_file, ld.calc=FALSE,  exp = exp.in)
-  #p = ggarrange(attr(chr.plot, 'ggplot'), 
+for(mod in all.mods){
+  print(paste(mod, which(all.mods == mod), "/", length(all.mods)))
+  plots=local_plotter_trait(sym=mod, file=file.in, SNP_file_name = SNP_file, ld.calc=FALSE,  exp = exp.in)
   p1 = ggarrange(plots$snps, plots$bp, nrow=1, ncol=2, legend="none")
 
-  pdf(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/locuszoom_trait/Synovium_", gene, ".pdf"), onefile=FALSE, width=10)
-  print(annotate_figure(p1, top = paste("SNPs correlated with", gene)))
+  pdf(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/Synovium/EV1-PEER4/locuszoom_trait/Synovium_", mod, ".pdf"), onefile=FALSE, width=10)
+  print(annotate_figure(p1, top = paste("SNPs correlated with", mod)))
   dev.off() 
-
 }  
 
 
