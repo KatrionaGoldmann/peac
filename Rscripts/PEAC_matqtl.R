@@ -1,10 +1,4 @@
-library(MatrixEQTL)
-library(ggrepel)
-library(ggplot2)
-library(dplyr)
-library(RColorBrewer)
-library(ggpubr)
-library(data.table)
+
 
 #' cis-eqtl analysis using Matrixeqtl
 #' http://www.bios.unc.edu/research/genomic_software/Matrix_eQTL/runit.html
@@ -12,190 +6,52 @@ library(data.table)
 
 dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Results", showWarnings = F)
 
-output.creater = function(cv.df, results.dir, tissue, cv.names, rs.plotter){
-  useModel = modelLINEAR
-  
-  # snp data
-  SNP_file_name = paste0(results.dir, "/matqtl/inputs/genotype.txt")
-  snps_location_file_name = paste0(results.dir, "/matqtl/inputs/snp_location.txt")
-  #snps = fread(cmd=paste("head", SNP_file_name))
-  
-  # Gene expression file name
-  expression_file_name = paste0(results.dir, "/matqtl/inputs/gene_expression_cqn.txt")
-  gene_location_file_name = paste0(results.dir, "/matqtl/inputs/gene_location.txt")
-  #gene = fread(cmd=paste("head", expression_file_name))
-  
-  # Covariate matrix
-  if (nrow(cv.df) != 0){
-    cv.df = cv.df[cv.names, ]
-    cv.df = as.matrix(cv.df)
-    cv.df = t(apply(cv.df, 1, as.numeric))
-  }
-  
-  # Output file name
-  covars.info = cv.names
-  dir.create(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue), showWarnings = F)
-  abr = paste0(c("EV", gsub("EV", "", covars.info[grepl("EV", covars.info)]), "_", "PEER", gsub("PEER", "", covars.info[grepl("PEER", covars.info)])), collapse="")
-  dir.create(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue, "/", abr), showWarnings = F)
-  output_file_name_cis = paste0("/home/kgoldmann/Documents/PEAC_eqtl/Results/", tissue, "/", 
-                                abr, "/", tissue, "_", abr, ".csv")
-  
-  
-  pvOutputThreshold_cis = 1 # Only associations significant at this level will be saved
-  #pvOutputThreshold_tra = 0; ## only cis-eqtl
-  errorCovariance = numeric(); # Error covariance matrix # Set to numeric() for identity.
-  cisDist = 5e5; # Distance for local gene-SNP pairs
-  
-  ## Load genotype data
-  print("## SNP organiser")
-  snps = SlicedData$new();
-  snps$fileDelimiter = " ";      # the ' ' character
-  snps$fileOmitCharacters = "NA"; # denote missing values;
-  snps$fileSkipRows = 1;          # one row of column labels
-  snps$fileSkipColumns = 1;       # one column of row labels
-  snps$fileSliceSize = 2000;      # read file in slices of 2,000 rows
-  snps$LoadFile(SNP_file_name)
-  
-  # Calculate the MAF for each snp
-  maf.list = vector('list', length(snps))
-  for(sl in 1:length(snps)) {
-    if(sl %% 50 == 0) print(sl)
-    slice = snps[[sl]];
-    maf.list[[sl]] = rowMeans(slice,na.rm=TRUE)/2;
-    maf.list[[sl]] = pmin(maf.list[[sl]],1-maf.list[[sl]]);
-  }
-  maf = setNames(unlist(maf.list), unlist(snps$rowNameSlices))
-  
-  ## Load gene expression data
-  print("## Gene organiser")
-  gene = SlicedData$new();
-  gene$fileDelimiter = " ";      # the  character
-  gene$fileOmitCharacters = "NA"; # denote missing values;
-  gene$fileSkipRows = 1;          # one row of column labels
-  gene$fileSkipColumns = 1;       # one column of row labels
-  gene$fileSliceSize = 2000;      # read file in slices of 2,000 rows
-  gene$LoadFile(expression_file_name);
-  
-  ## Load covariates
-  #write.table(cv.df, "/home/kgoldmann/Documents/tmp_cv.txt")
-  print("## Covariate organiser")
-  if(nrow(cv.df) != 0) {
-    cvrt = SlicedData$new();
-    cvrt$CreateFromMatrix(cv.df)
-  } else{
-    cvrt = SlicedData$new()
-    cvrt$fileDelimiter = " ";      # the TAB character
-    cvrt$fileOmitCharacters = "NA"; # denote missing values;
-    cvrt$fileSkipRows = 0;          # one row of column labels
-    cvrt$fileSkipColumns = 1;       # one column of row labels
-  }
-  
-  ## Run the analysis
-  snpspos = read.table(snps_location_file_name, header = TRUE, stringsAsFactors = FALSE);
-  snpspos2 = snpspos[, 1:3]
-  
-  genepos = read.table(gene_location_file_name, header = TRUE, stringsAsFactors = FALSE);
-  genepos2 = genepos[, 1:4]
-  
-  print("## matrix EQTL")
-  me = Matrix_eQTL_main(
-    snps = snps, gene = gene, cvrt = cvrt, output_file_name = NULL, ## for trans-eqtl
-    pvOutputThreshold = 0, ## only cis-eqtl
-    useModel = useModel, errorCovariance = errorCovariance, verbose = TRUE,
-    output_file_name.cis = NULL, pvOutputThreshold.cis = pvOutputThreshold_cis,
-    snpspos = snpspos2, genepos = genepos2, cisDist = cisDist,
-    pvalue.hist = "qqplot", min.pv.by.genesnp = FALSE, noFDRsaveMemory = FALSE);
-  
-  out <- me$cis$eqtls
-  out$rs.id = snpspos$rs.id[match(out$snps, snpspos$snp)]
-  out$maf = maf[match(out$snps, names(maf))]
-  out$symbol = genepos$symbol[match(out$gene, genepos$gene_id)]
-  out$g_start = genepos$start[match(out$gene, genepos$gene_id)]
-  out$g_end = genepos$end[match(out$gene, genepos$gene_id)]
-  out$chr = gsub("\\:.*", "", out$snps)
-  out$pos = as.numeric(as.character(unlist(lapply(out$snps, function(x) unlist(lapply(strsplit(as.character(x), split=":"), "[[", 2))))))
-  
-  
-  
-  print("## Output")
-  fwrite(list(paste("#", tissue), paste("\n#", paste(covars.info, collapse=",")), 
-              paste("\n#", "p <", pvOutputThreshold_cis, "#")), 
-              row.names=F, file=output_file_name_cis, col.names=F, append=F, quote=F)
-  fwrite(out, file=output_file_name_cis, append=T, col.names = T)
-  fwrite(out[out$pvalue < 1e-8, ], file=gsub(".csv", "_p_1e-8.csv", output_file_name_cis), append=T, col.names = T)
-  fwrite(out[out$FDR < 0.05, ], file=gsub(".csv", "_fdr_0.05.csv", output_file_name_cis), append=T, col.names = T)
-  fwrite(out[out$pvalue < 1e-5, ], file=gsub(".csv", "_supp_p_1e-5.csv", output_file_name_cis), append=T, col.names = T)
-  
-}
+source("/home/kgoldmann/Documents/peac/Rfunctions/matrixEQTL.R")
 
 ###############
 # Synovium
 ###############
 # Covariates file name
-covariates_mat =  read.table(paste0("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
-rownames(covariates_mat) = covariates_mat[, "rn"]
-covariates_mat = as.matrix(covariates_mat[, colnames(covariates_mat) != "rn"]) 
+args = commandArgs()
 
-meta = read.table("/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt")
-covariates_mat = rbind(covariates_mat, t(meta[match(colnames(covariates_mat), meta$vcf_id), c("Ethnicity", "Gender")]))
-covariates_mat[c("Ethnicity", "Gender"),] = apply(covariates_mat[c("Ethnicity", "Gender"),], 1, function(x) factor(x, labels=1:length(levels(factor(x)))))
-covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
-dimnames(covariates_mat2) = dimnames(covariates_mat)
-covariates_mat = rbind(covariates_mat2, "none"=1)
+i = args[6]
+tiss = args[7]
+if(tiss == "Synovium"){
+  covariates_mat =  read.table(paste0("/media/d1/KG_Outputs/Syn_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
+  rownames(covariates_mat) = covariates_mat[, "rn"]
+  covariates_mat = as.matrix(covariates_mat[, colnames(covariates_mat) != "rn"])
 
-opts = list(c(paste0("EV", 1:4), paste0("PEER", c(1, 3, 4))), c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4))
+  meta = read.table("/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt")
+  covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
+  dimnames(covariates_mat2) = dimnames(covariates_mat)
+  covariates_mat = rbind(covariates_mat2, "none"=1)
 
-for(i in 1){
-  cv = as.character(opts[[i]])
-  print(c("###", cv))
-  cm = covariates_mat
-  if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)
-  output.creater(cv.df=cm, results.dir="/media/d1/KG_Outputs/Syn_out_KG/", tissue="Synovium", cv.names=cv, rs.plotter=c())
+  dir = "/media/d1/KG_Outputs/Syn_out_KG/"
+  opts = list(c(paste0("EV", 1:4), "PEER1"), c(paste0("EV", 1:4), paste0("PEER", c(1, 3, 4))), c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4))
+} else{
+  covariates_mat =  read.table(paste0("/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
+  rownames(covariates_mat) = covariates_mat[, "rn"]
+  covariates_mat = as.matrix(covariates_mat[, colnames(covariates_mat) != "rn"])
+
+  meta = read.table("/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt")
+  meta = meta[meta$vcf_id %in% colnames(covariates_mat), ]
+  covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
+  dimnames(covariates_mat2) = dimnames(covariates_mat)
+  covariates_mat = rbind(covariates_mat2, "none"=1)
+
+  dir = "/media/d1/KG_Outputs/Bld_out_KG/"
+  opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:3)), c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4))
 }
 
 
-
-
-###############
-# Blood
-###############
-# Covariates file name
-covariates_mat =  read.table(paste0("/media/d1/KG_Outputs/Bld_out_KG/matqtl/inputs/PCA4.PEER4.txt"))
-rownames(covariates_mat) = covariates_mat[, "rn"]
-covariates_mat = as.matrix(covariates_mat[, colnames(covariates_mat) != "rn"]) 
-
-meta = read.table("/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth.txt")
-covariates_mat = rbind(covariates_mat, t(meta[match(colnames(covariates_mat), meta$vcf_id), c("Ethnicity", "Gender")]))
-covariates_mat[c("Ethnicity", "Gender"),] = apply(covariates_mat[c("Ethnicity", "Gender"),], 1, function(x) factor(x, labels=1:length(levels(factor(x)))))
-covariates_mat2 = t(apply(covariates_mat, 1, as.numeric))
-dimnames(covariates_mat2) = dimnames(covariates_mat)
-
-opts = list(c(paste0("EV", 1:4), paste0("PEER", 1:4)), c("none"), paste0("EV", 1:4), paste0("PEER", 1:4))
-for(i in 1:1){
-  cv = as.character(opts[[i]])
-  print(c("###", cv))
-  cm = covariates_mat
-  if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)  
-  output.creater(cv.df=cm, results.dir="/media/d1/KG_Outputs/Bld_out_KG/", tissue="Blood", cv.names=cv, rs.plotter=c())
-}
-
-
-
-
-
-###############
-# Sanity test
-###############
-#lets investigate one of the top hits in blood with covariates as the PCAs
-
-snps = read.table(SNP_file_name)
-snp = snps["6:32194854:G:A", ]
-
-genes = read.table(expression_file_name)
-gene = genes["ENSG00000198502", ]
-
-df = data.frame("snp"=as.numeric(as.character(snp)), "gene"=as.numeric(as.character(gene)))
-
-
-ggplot(df, aes(x=snp, y=gene)) + geom_point()
-cor.test(x=df$snp, y=df$gene, use="complete.obs")      
+# runner = function(i) {
+#   keep(opts, covariates_mat, output.creater, runner, sure=T, all=T)
+#   gc()
+cv = as.character(opts[[as.numeric(i)]])
+print("###")
+print(c("###", cv))
+cm = covariates_mat
+if (length(cv) == 1) cm = matrix(ncol = ncol(covariates_mat), nrow=0)
+output.creater(cv.df=cm, results.dir=dir, tissue=tiss, cv.names=cv, rs.plotter=c())
+#   keep(opts, covariates_mat, output.creater, runner, sure=T, all=T)
+#   

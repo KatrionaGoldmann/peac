@@ -80,17 +80,40 @@ write.table(df, "/media/d1/KG_Outputs/Syn_out_KG/RNA_counts/groups/Genentech.txt
 
 # Create the sample_meta file
 df = meta.use.peac[, 1:4]
+colnames(df) = c("samp.et", "HospitalNumber", "vcf_id", "Batch")
 load("/home/kgoldmann/Documents/gcpeac/Chris/PEAC2_data/PEAC2_alldata.RData")
 m2 = meta
-df$Gender = m2$GENDER[match(df$SampleID..QMUL.ID.only., m2$Sample.ID)]
+
+m2_sixmonth = m2[m2$Timepoint == 6, ]
+m2_baseline = m2[m2$Timepoint == 0, ]
+df$SixMonth_DAS28 = m2_sixmonth$DAS28.imp[match(df$HospitalNumber, m2_sixmonth$hosp_num)]
+df$SixMonth_ESR = m2_sixmonth$ESR.imp[match(df$HospitalNumber, m2_sixmonth$hosp_num)]
+df$SixMonth_DAS28[abs(df$SixMonth_DAS28) == Inf] = NA
+df$Gender = m2$GENDER[match(df$vcf_id, m2$Sample.ID)]
+
+meta_temp = m2[match(df$vcf_id, m2$Sample.ID), c("Sample.ID", "CRP", "CCP", "ESR", 
+                                                 "Tender", "Swollen", "VAS", "DAS28", "HAQ_sum", "Visser", "RF.1",
+                                                 "Inflammatory.score", "Pathotype", "CD3.max", "CD20.max", "CD68L.max", 
+                                                 "CD68SL.max", "CD138.max", "CD21", "ESR.imp", "Tender.imp", "Swollen.imp", 
+                                                 "VAS.imp", "DAS28.imp")]
+colnames(meta_temp) = c("meta_sample", "CRP", "CCP", "ESR", "Tender", "Swollen", "VAS", "DAS28", "HAQ_sum", "Visser", "RF_factor",
+                        "Inflammatory.score", "Pathotype", "CD3", "CD20", "CD68L", "CD68SL", "CD138", "CD21", "ESR.imp", "Tender.imp", 
+                        "Swollen.imp", "VAS.imp", "DAS28.imp")
+
+df=cbind(df, meta_temp)
+df$DeltaDAS = df$SixMonth_DAS28 - df$DAS28
+df$DeltaESR = df$SixMonth_ESR - df$ESR
+df$DeltaDAS[abs(df$DeltaDAS) == Inf] = NA
 
 load("/home/kgoldmann/Documents/gcpeac/Chris/PEAC_data/PEACmetadataV12.RData")
 m1 = metadata$baseline
-df$Gender[is.na(df$Gender)] = m1$GENDER[match(df$SampleID..QMUL.ID.only.[is.na(df$Gender)], m1$SampleID)]
-df$Ethnicity = m1$Ethnicity[match(df$SampleID..QMUL.ID.only., m1$SampleID)]
+meta_temp = m1[match(df$vcf_id, m1$SampleID), c("Ethnicity", "EULAR3response", "age", "erosionstatus", "Delta.DAS", "DAS28.real.6M")]
+colnames(meta_temp) = c("Ethnicity", "EULAR3_response", "Age", "Erosion_Status", "Delta_DAS", "DAS28_6m") 
+df = cbind(df, meta_temp)
 
-df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only.", "Batch" )]
-colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")
+
+df = df[, c("samp.et", "HospitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch", colnames(df)[! colnames(df) %in% c("samp.et", "HospitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")] )]
+
 write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_syn.txt", row.names=T, col.names=T)
 
 
@@ -144,41 +167,67 @@ meta.use.peac$Dir = unlist(lapply(meta.use.peac$R1, function(x) gsub("/[^/]+$", 
 meta.use.peac = meta.use.peac[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber", "SampleID..QMUL.ID.only.", "Batch", "Reads", "Timepoint", "Tissue", "Diagnosis", "Dir", "R1", "R2" )]
 meta.use.peac$SampleID..QMUL.ID.only. = gsub("b", "", meta.use.peac$SampleID..QMUL.ID.only.)
 
-write.table(meta.use.peac, "/home/kgoldmann/Documents/PEAC_eqtl/Data/RA_blood.csv", col.names = F, row.names = F, quote=F, sep=",")
+#write.table(meta.use.peac, "/home/kgoldmann/Documents/PEAC_eqtl/Data/RA_blood.csv", col.names = F, row.names = F, quote=F, sep=",")
 
 # Create the Genentech file
-temp = list.files("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/", pattern=".txt")
+temp = list.files("/media/d1/KG_Outputs/Bld_out_KG/RNA_counts/", pattern=".txt")
 samps = gsub(".txt", "", temp)
 
 #/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood_Blood/RNA_counts/QMUL2008043.txt
-df= read.table(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/", samps[1], ".txt"))
+df= read.table(paste0("/media/d1/KG_Outputs/Bld_out_KG/RNA_counts/", samps[1], ".txt"))
 for(i in samps[2:length(samps)]){
-  tt = read.table(paste0("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/", i, ".txt"))
-  # if(length(rownames(tt)[! rownames(tt) %in% rownames(df)]) > 0){
-  #   df = rbind(df, NA)
-  #   rownames(df)[-length(rownames(tt)[! rownames(tt) %in% rownames(df)])] = rownames(tt)[! rownames(tt) %in% rownames(df)]
-  # }
+  tt = read.table(paste0("/media/d1/KG_Outputs/Bld_out_KG/RNA_counts/", i, ".txt"))
+  if(length(rownames(tt)[! rownames(tt) %in% rownames(df)]) > 0){
+    df = rbind(df, NA)
+    rownames(df)[-length(rownames(tt)[! rownames(tt) %in% rownames(df)])] = rownames(tt)[! rownames(tt) %in% rownames(df)]
+  }
   df = cbind(df, tt[match(rownames(df), rownames(tt)), ])
   colnames(df)[ncol(df)] = i
 }
-dir.create("/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/", showWarnings = F)
-write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Outputs_Blood/RNA_counts/groups/Genentech.txt")
+dir.create("/media/d1/KG_Outputs/Bld_out_KG/RNA_counts/groups/", showWarnings = F)
+write.table(df, "/media/d1/KG_Outputs/Bld_out_KG/RNA_counts/groups/Genentech.txt")
 
 # Create the sample_meta file
 df = meta.use.peac[, 1:4]
+colnames(df) = c("samp.et", "HospitalNumber", "vcf_id", "Batch")
 load("/home/kgoldmann/Documents/gcpeac/Chris/PEAC2_data/PEAC2_alldata.RData")
 m2 = meta
-df$Gender = m2$GENDER[match(df$SampleID..QMUL.ID.only., m2$Sample.ID)]
+
+m2_sixmonth = m2[m2$Timepoint == 6, ]
+m2_baseline = m2[m2$Timepoint == 0, ]
+df$SixMonth_DAS28 = m2_sixmonth$DAS28.imp[match(df$HospitalNumber, m2_sixmonth$hosp_num)]
+df$SixMonth_ESR = m2_sixmonth$ESR.imp[match(df$HospitalNumber, m2_sixmonth$hosp_num)]
+df$SixMonth_DAS28[abs(df$SixMonth_DAS28) == Inf] = NA
+df$Gender = m2$GENDER[match(df$vcf_id, m2$Sample.ID)]
+
+meta_temp = m2[match(df$vcf_id, m2$Sample.ID), c("Sample.ID", "CRP", "CCP", "ESR", 
+                                                 "Tender", "Swollen", "VAS", "DAS28", "HAQ_sum", "Visser", "RF.1",
+                                                 "Inflammatory.score", "Pathotype", "CD3.max", "CD20.max", "CD68L.max", 
+                                                 "CD68SL.max", "CD138.max", "CD21", "ESR.imp", "Tender.imp", "Swollen.imp", 
+                                                 "VAS.imp", "DAS28.imp")]
+colnames(meta_temp) = c("meta_sample", "CRP", "CCP", "ESR", "Tender", "Swollen", "VAS", "DAS28", "HAQ_sum", "Visser", "RF_factor",
+                        "Inflammatory.score", "Pathotype", "CD3", "CD20", "CD68L", "CD68SL", "CD138", "CD21", "ESR.imp", "Tender.imp", 
+                        "Swollen.imp", "VAS.imp", "DAS28.imp")
+
+df=cbind(df, meta_temp)
+df$DeltaDAS = df$SixMonth_DAS28 - df$DAS28
+df$DeltaESR = df$SixMonth_ESR - df$ESR
+df$DeltaDAS[abs(df$DeltaDAS) == Inf] = NA
 
 load("/home/kgoldmann/Documents/gcpeac/Chris/PEAC_data/PEACmetadataV12.RData")
 m1 = metadata$baseline
-df$Gender[is.na(df$Gender)] = m1$GENDER[match(df$SampleID..QMUL.ID.only.[is.na(df$Gender)], m1$SampleID)]
-df$Ethnicity = m1$Ethnicity[match(df$SampleID..QMUL.ID.only., m1$SampleID)]
+meta_temp = m1[match(df$vcf_id, m1$SampleID), c("Ethnicity", "EULAR3response", "age", "erosionstatus", "Delta.DAS", "DAS28.real.6M")]
+colnames(meta_temp) = c("Ethnicity", "EULAR3_response", "Age", "Erosion_Status", "Delta_DAS", "DAS28_6m") 
+df = cbind(df, meta_temp)
 
 
-df = df[, c("SampleID..QMUL.or.Genentech.", "HospitalNumber" , "Ethnicity", "Gender", "SampleID..QMUL.ID.only.", "Batch" )]
-colnames(df) = c("samp.et", "HostpitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")
-write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_blood.txt", row.names=T, col.names=T)
+df = df[, c("samp.et", "HospitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch", colnames(df)[! colnames(df) %in% c("samp.et", "HospitalNumber", "Ethnicity", "Gender", "vcf_id", "Batch")] )]
+
+write.table(df, "/home/kgoldmann/Documents/PEAC_eqtl/Data/PEAC/PEAC_eth_bld.txt", row.names=T, col.names=T)
+
+
+
+# 
 
 # 94 for GenentechID Peac_data
 # 104 for SampleID Peac_data

@@ -1,4 +1,4 @@
-## Snakefile for emedlab
+ ## Snakefile for emedlab
 
 
 ## https://hpc-carpentry.github.io/hpc-python/17-cluster/
@@ -6,7 +6,7 @@
 ## shell.prefix("module load samtools-1.4-gcc-5.4.0-derfxbk; ")
 #shell.prefix("source ~/.bashrc; ")
 import pandas as pd
-configfile: "config.yaml"
+configfile: "config_blood.yaml"
 
 def read_samples():
     """
@@ -101,7 +101,7 @@ rule all_counts:
     """ Get the gene counts """
     input:
         # star index
-        #config['indices'],
+        config['indices'],
         # star
         expand("/media/d1/STAR/{read}/{sample}/Aligned.sortedByCoord.out.bam" , zip, sample=read_samples().keys(), read=[item[3] for item in read_samples().values()]),
         # exon_by_gene
@@ -185,7 +185,7 @@ rule star_index:
          " --sjdbOverhang 100 "
 
 rule star:
-    """ Map paired or sigle end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
+    """ Map paired or single end reads using STAR, stores single reads in dir 'single' and paired reads in 'paired' """
     input:
         lambda wildcards: read_samples()[wildcards.sample][-1]
         #lambda wildcards: [item[7] for item in read_samples().values()] #read_samples()

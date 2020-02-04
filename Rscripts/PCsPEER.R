@@ -13,7 +13,7 @@ pcs.peer <- function(gds.in, snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, g
     meta <- read.table(meta.in)
     
     ## get genotypes
-    #    snpgdsClose(sampgds)
+    # snpgdsClose(sampgds)
     sampgds <- snpgdsOpen(gds.in)
                       
     ## get eigenvectors
@@ -87,6 +87,10 @@ pcs.peer <- function(gds.in, snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, g
 
     ## cqn normalise
     cqn.peac <- cqn(counts = matExp, x = gc$gc/100, lengths = gc$length,   verbose=T)
+    vst.peac <- varianceStabilizingTransformation(object=matExp, blind=TRUE)
+    print("saving vst")
+    saveRDS(vst.peac, gsub("snp_location.txt", "vst.rds", out[['snpLoc']]))
+    
 
     ## get normalised values
     rpkm.peac <- cqn.peac$y + cqn.peac$offset
@@ -161,8 +165,6 @@ pcs.peer <- function(gds.in, snpL.in, n=10,  ld, eaf, counts, meta.in, prefix, g
 
     rownames(gmat) <- sampId
     colnames(gmat) <- paste(chrom, pos,ref,alt,sep=":")
-
-    
    
     
     ## SNPrelate/gds counts the number of "A" alleles, need to change 2 to 0 and 0 to 2

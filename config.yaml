@@ -17,7 +17,7 @@
     "scripts_dir" : "/home/kgoldmann/Documents/peac/",
 
     # directory to write all output data files to
-    "output_dir" :  "/media/d1/Syn_out_KG/",
+    "output_dir" :  "/media/d1/Syn_out_KG",
 
     # path to STAR
     "STAR" : "/home/kgoldmann/Applications/STAR/source/STAR",
@@ -28,7 +28,7 @@
 
     # ftp://ftp.ensembl.org/pub/grch37/current/gtf/homo_sapiens/Homo_sapiens.GRCh37.87.gtf.gz
     "ref_gtf" : "/home/kgoldmann/Documents/PEAC_eqtl/Data/Reference/GRCh37/Homo_sapiens.GRCh37.87.gtf",
-    "indices" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/indices",
+    "indices" : "/media/d1/KG_Outputs/Syn_out_KG/indices",
 
     # path to save file for exon by gene rds object to use for counting reads, or path to file if already made.
     "ebg" : "/home/kgoldmann/Documents/PEAC_eqtl/Outputs/b37_ebg.rds",
